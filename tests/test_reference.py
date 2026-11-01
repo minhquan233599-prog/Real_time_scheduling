@@ -73,3 +73,17 @@ def test_same_deadline_tiebreak():
 
 def test_overload_no_trace():
     assert simulate(SETS["OVERLOAD"], "EDF", 10)["trace"] == []
+
+def test_simulate_invalid_tasks():
+    res = simulate([("A", 6, 5)], "EDF", 10)
+
+    assert res["status"] == "INVALID"
+    assert res["trace"] == []
+    assert res["events"] == []
+    assert res["misses"] == {}
+
+
+def test_idle_timeline():
+    res = simulate([("A", 1, 5)], "EDF", 4)
+
+    assert timeline(res) == ["A", "IDLE", "IDLE", "IDLE"]
