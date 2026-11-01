@@ -280,27 +280,7 @@ và job cũ được xử lý trước khi metadata bị thay bằng job mới.
 Kernel không thực hiện các bước bằng một vòng lặp mô phỏng duy nhất.
 Cần phối hợp timer, syscall và scheduler để đạt hành vi tương ứng.
 
-## 13. Sơ đồ vòng đời job
-
-```mermaid
-stateDiagram-v2
-    [*] --> WAIT_RELEASE
-    WAIT_RELEASE --> ACTIVE_READY: Tới kỳ phát hành
-    ACTIVE_READY --> ACTIVE_RUNNING: Được scheduler chọn
-    ACTIVE_RUNNING --> ACTIVE_READY: Bị preempt
-    ACTIVE_RUNNING --> DONE: Báo hoàn thành đúng hạn
-    ACTIVE_RUNNING --> BUDGET_EXHAUSTED: Hết budget, chưa báo xong
-    ACTIVE_READY --> LATE: Tới deadline, chưa hoàn thành
-    ACTIVE_RUNNING --> LATE: Tới deadline, chưa hoàn thành
-    BUDGET_EXHAUSTED --> LATE: Tới deadline, chưa hoàn thành
-    DONE --> WAIT_RELEASE: Đợi kỳ tiếp theo
-    LATE --> WAIT_RELEASE: Sau khi xử lý job trễ
-```
-
-Mũi tên từ LATE về WAIT_RELEASE mô tả chính sách mong muốn.
-Cơ chế thực hiện an toàn trong kernel còn cần được nhóm thống nhất.
-
-## 14. Vị trí dự kiến tích hợp vào xv6
+## 13. Vị trí dự kiến tích hợp vào xv6
 
 | Vị trí | Trách nhiệm dự kiến |
 |---|---|
@@ -316,7 +296,7 @@ Chưa chốt cách giữ lock giữa tickslock và p->lock.
 Không duyệt process hoặc gọi cơ chế đánh thức tùy tiện trong lúc
 giữ tickslock; cần kiểm tra thứ tự lock để tránh deadlock.
 
-## sơ đồ vòng đời RT job
+## 14. sơ đồ vòng đời RT job
 
 Link FigJam: https://www.figma.com/board/cnW4szKxKBeDlrX66pZ5iI/Project-13-%E2%80%93-xv6-architecture-%E2%80%93-W01?node-id=0-1&t=L8BzdxWcaxE045KD-1
 
