@@ -1,0 +1,16 @@
+Xv6 baseline test
+
+Build:
+make clean
+make
+Result: SUCCESS
+
+Runtime:
+make qemu
+Default CPUS: 3
+Result: ALL TESTS PASSED
+
+Runtime:
+make qemu CPUS=1
+CPUS: 1
+Result: ALL TESTS PASSED
