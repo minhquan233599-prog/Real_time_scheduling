@@ -9,6 +9,7 @@
 struct cpu cpus[NCPU];
 
 struct proc proc[NPROC];
+struct spinlock rt_lock;
 
 struct proc *initproc;
 
@@ -25,6 +26,15 @@ extern char trampoline[]; // trampoline.S
 // memory model when using p->parent.
 // must be acquired before any p->lock.
 struct spinlock wait_lock;
+
+// Caller must NOT hold rt_lock; may hold p->lock.
+static void
+rt_reset(struct proc *p)
+{
+  acquire(&rt_lock);
+  memset(&p->rt, 0, sizeof(p->rt));
+  release(&rt_lock);
+}
 
 // Allocate a page for each process's kernel stack.
 // Map it high in memory, followed by an invalid
@@ -51,6 +61,7 @@ procinit(void)
 
   initlock(&pid_lock, "nextpid");
   initlock(&wait_lock, "wait_lock");
+  initlock(&rt_lock, "rt_lock");
   for (p = proc; p < &proc[NPROC]; p++) {
     initlock(&p->lock, "proc");
     p->state = UNUSED;
@@ -122,6 +133,7 @@ allocproc(void)
   return 0;
 
 found:
+  rt_reset(p);
   p->pid = allocpid();
   p->state = USED;
 
@@ -155,6 +167,7 @@ found:
 static void
 freeproc(struct proc *p)
 {
+  rt_reset(p);
   if (p->trapframe)
     kfree((void *)p->trapframe);
   p->trapframe = 0;
@@ -343,6 +356,9 @@ kexit(int status)
   iput(p->cwd);
   end_op();
   p->cwd = 0;
+
+  // Remove RT registration before ZOMBIE.
+  rt_reset(p);
 
   acquire(&wait_lock);
 

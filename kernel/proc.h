@@ -78,6 +78,12 @@ struct trapframe {
 
 enum procstate { UNUSED, USED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
+struct rt_meta {
+  int enabled;
+  int period;
+  int runtime;
+};
+
 // Per-process state
 struct proc {
   struct spinlock lock;
@@ -101,4 +107,8 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
+  struct rt_meta rt;
 };
+
+extern struct spinlock rt_lock;
+extern struct proc proc[NPROC];

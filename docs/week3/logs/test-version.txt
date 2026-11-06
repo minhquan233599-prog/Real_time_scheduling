@@ -1,0 +1,20 @@
+w3_nhanhchaythu
+7174ae776cb02c90765401d728b0a37b4041c6a3
+ M Makefile
+ M kernel/proc.c
+ M kernel/proc.h
+ M kernel/syscall.c
+ M kernel/syscall.h
+ M kernel/sysproc.c
+ M user/user.h
+ M user/usys.pl
+?? docs/week3/
+?? user/rt_smoke.c
+?? user/rttest.c
+QEMU emulator version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)
+Copyright (c) 2003-2023 Fabrice Bellard and the QEMU Project developers
+riscv64-unknown-elf-gcc (13.2.0-11ubuntu1+12) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
