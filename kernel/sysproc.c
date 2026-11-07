@@ -122,8 +122,8 @@ rt_add_fraction(uint *num, uint *den, int period, int runtime)
   uint64 carry_den = 0;
 
   for (int i = 0; i < RT_WORDS; i++) {
-    uint64 n = (uint64)num[i] * (uint)period
-             + (uint64)den[i] * (uint)runtime + carry_num;
+    uint64 n = (uint64)num[i] * (uint)period + (uint64)den[i] * (uint)runtime +
+               carry_num;
     uint64 d = (uint64)den[i] * (uint)period + carry_den;
     num[i] = (uint)n;
     den[i] = (uint)d;
