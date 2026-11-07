@@ -25,6 +25,7 @@ char *sys_sbrk(int, int);
 int pause(int);
 int uptime(void);
 int sync(void);
+int sched_setdeadline(int period, int runtime); // New
 
 // ulib.c
 int stat(const char *, struct stat *);
