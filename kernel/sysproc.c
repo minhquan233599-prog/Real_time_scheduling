@@ -110,3 +110,74 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+#define RT_WORDS (NPROC + 1)
+
+// Add C/T to num/den exactly. Return 1 if the new sum is <= 1.
+// Called at most NPROC times, with 0 < C <= T <= INT_MAX.
+static int
+rt_add_fraction(uint *num, uint *den, int period, int runtime)
+{
+  uint64 carry_num = 0;
+  uint64 carry_den = 0;
+
+  for (int i = 0; i < RT_WORDS; i++) {
+    uint64 n = (uint64)num[i] * (uint)period
+             + (uint64)den[i] * (uint)runtime + carry_num;
+    uint64 d = (uint64)den[i] * (uint)period + carry_den;
+    num[i] = (uint)n;
+    den[i] = (uint)d;
+    carry_num = n >> 32;
+    carry_den = d >> 32;
+  }
+
+  for (int i = RT_WORDS - 1; i >= 0; i--) {
+    if (num[i] != den[i])
+      return num[i] < den[i];
+  }
+  return 1;
+}
+
+// Caller holds rt_lock. Do not acquire any proc lock here.
+static int
+rt_admit_locked(struct proc *self, int period, int runtime)
+{
+  uint num[RT_WORDS] = {0};
+  uint den[RT_WORDS] = {1};
+
+  for (int i = 0; i < NPROC; i++) {
+    struct proc *q = &proc[i];
+    if (q == self || !q->rt.enabled)
+      continue;
+    if (!rt_add_fraction(num, den, q->rt.period, q->rt.runtime))
+      return 0;
+  }
+
+  return rt_add_fraction(num, den, period, runtime);
+}
+
+uint64
+sys_sched_setdeadline(void)
+{
+  int period, runtime;
+  argint(0, &period);
+  argint(1, &runtime);
+
+  if (period <= 0 || runtime <= 0 || runtime > period)
+    return (uint64)-1;
+
+  struct proc *p = myproc();
+  acquire(&rt_lock);
+
+  if (!rt_admit_locked(p, period, runtime)) {
+    release(&rt_lock);
+    return (uint64)-2;
+  }
+
+  p->rt.period = period;
+  p->rt.runtime = runtime;
+  p->rt.enabled = 1;
+
+  release(&rt_lock);
+  return 0;
+}
