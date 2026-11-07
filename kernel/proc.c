@@ -9,6 +9,7 @@
 struct cpu cpus[NCPU];
 
 struct proc proc[NPROC];
+struct spinlock rt_lock;
 
 struct proc *initproc;
 
@@ -25,6 +26,14 @@ extern char trampoline[]; // trampoline.S
 // memory model when using p->parent.
 // must be acquired before any p->lock.
 struct spinlock wait_lock;
+// Caller must NOT hold rt_lock; may hold p->lock.
+static void
+rt_reset(struct proc *p)
+{
+  acquire(&rt_lock);                  // Lấy khóa bảo vệ metadata RT.
+  memset(&p->rt, 0, sizeof(p->rt));    // Đưa các trường RT về 0.
+  release(&rt_lock);                  // Nhả khóa.
+}
 
 // Allocate a page for each process's kernel stack.
 // Map it high in memory, followed by an invalid
@@ -51,6 +60,7 @@ procinit(void)
 
   initlock(&pid_lock, "nextpid");
   initlock(&wait_lock, "wait_lock");
+  initlock(&rt_lock, "rt_lock");
   for (p = proc; p < &proc[NPROC]; p++) {
     initlock(&p->lock, "proc");
     p->state = UNUSED;
@@ -122,6 +132,7 @@ allocproc(void)
   return 0;
 
 found:
+  rt_reset(p);   // Tiến trình mới bắt đầu chưa đăng ký RT.
   p->pid = allocpid();
   p->state = USED;
 
@@ -155,6 +166,7 @@ found:
 static void
 freeproc(struct proc *p)
 {
+  rt_reset(p); // Dọn metadata trước khi tải sử dụng ô tiến trình
   if (p->trapframe)
     kfree((void *)p->trapframe);
   p->trapframe = 0;
@@ -343,6 +355,7 @@ kexit(int status)
   iput(p->cwd);
   end_op();
   p->cwd = 0;
+  rt_reset(p); // Xóa đăng ký RT trước ZOMBIE
 
   acquire(&wait_lock);
 
