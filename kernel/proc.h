@@ -81,9 +81,9 @@ enum procstate { UNUSED, USED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 // All RT fields are protected by rt_lock.
 // period = T, runtime = C; D = T.
 struct rt_meta {
-  int enabled;  // 0: chưa đăng ký RT; 1: đã đăng ký RT.
-  int period;   // Chu kỳ T, đơn vị tick.
-  int runtime;  // Ngân sách CPU C, đơn vị tick.
+  int enabled; // 0: chưa đăng ký RT; 1: đã đăng ký RT.
+  int period;  // Chu kỳ T, đơn vị tick.
+  int runtime; // Ngân sách CPU C, đơn vị tick.
 };
 
 // Per-process state
