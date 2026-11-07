@@ -30,9 +30,9 @@ struct spinlock wait_lock;
 static void
 rt_reset(struct proc *p)
 {
-  acquire(&rt_lock);                  // Lấy khóa bảo vệ metadata RT.
-  memset(&p->rt, 0, sizeof(p->rt));    // Đưa các trường RT về 0.
-  release(&rt_lock);                  // Nhả khóa.
+  acquire(&rt_lock);                // Lấy khóa bảo vệ metadata RT.
+  memset(&p->rt, 0, sizeof(p->rt)); // Đưa các trường RT về 0.
+  release(&rt_lock);                // Nhả khóa.
 }
 
 // Allocate a page for each process's kernel stack.
@@ -132,7 +132,7 @@ allocproc(void)
   return 0;
 
 found:
-  rt_reset(p);   // Tiến trình mới bắt đầu chưa đăng ký RT.
+  rt_reset(p); // Tiến trình mới bắt đầu chưa đăng ký RT.
   p->pid = allocpid();
   p->state = USED;
 
