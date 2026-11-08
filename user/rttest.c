@@ -7,9 +7,8 @@ static int
 expect_rt(const char *label, int period, int runtime, int expected)
 {
   int actual = sched_setdeadline(period, runtime);
-  printf("  %s: T=%d C=%d expected=%d actual=%d [%s]\n",
-         label, period, runtime, expected, actual,
-         actual == expected ? "PASS" : "FAIL");
+  printf("  %s: T=%d C=%d expected=%d actual=%d [%s]\n", label, period, runtime,
+         expected, actual, actual == expected ? "PASS" : "FAIL");
   return actual == expected;
 }
 
@@ -20,8 +19,8 @@ wait_ok(int pid)
   int status = -1;
   int got = wait(&status);
   if (got != pid || status != 0) {
-    printf("  child failed: expected_pid=%d got=%d status=%d\n",
-           pid, got, status);
+    printf("  child failed: expected_pid=%d got=%d status=%d\n", pid, got,
+           status);
     return 0;
   }
   return 1;
@@ -96,7 +95,7 @@ test05(void)
     if (write(ready[1], &flag, 1) != 1)
       ok = 0;
     close(ready[1]);
-    
+
     // A van song va giu dang ky 3/5 trong luc B thu.
     // read tra 0 khi B dong hold[1].
     char unused;
@@ -104,9 +103,9 @@ test05(void)
       ok = 0;
     close(hold[0]);
     exit(ok ? 0 : 1);
-    }
+  }
 
-    // B.
+  // B.
   close(ready[1]);
   close(hold[0]);
   char flag = '0';
@@ -148,19 +147,15 @@ struct test_case {
   const char *name;
 
   int (*run)(void);
-
 };
 
 int
 main(void)
 {
   struct test_case cases[] = {
-    {"valid registration", test01},
-    {"zero arguments", test02},
-    {"runtime exceeds period", test03},
-    {"utilization equals one", test04},
-    {"overload and retry", test05},
-    {"release after exit", test06},
+    {"valid registration", test01},     {"zero arguments", test02},
+    {"runtime exceeds period", test03}, {"utilization equals one", test04},
+    {"overload and retry", test05},     {"release after exit", test06},
   };
   int total = sizeof(cases) / sizeof(cases[0]);
   int passed = 0;
