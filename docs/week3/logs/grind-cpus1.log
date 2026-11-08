@@ -1,0 +1,10 @@
+Script started on 2026-11-08 23:38:33+07:00 [COMMAND="make qemu CPUS=1" TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="148" LINES="11"]
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 1 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+init: starting sh
+$ grind
+ABABABABABBABABAABABABABAQEMU: Terminated
+
+Script done on 2026-11-08 23:41:19+07:00 [COMMAND_EXIT_CODE="0"]
