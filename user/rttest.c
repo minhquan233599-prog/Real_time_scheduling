@@ -1,5 +1,6 @@
 #include "kernel/types.h"
 #include "user/user.h"
+#include "kernel/riscv.h"
 
 // Tra 1 neu ket qua dung nhu mong doi.
 
@@ -149,6 +150,20 @@ struct test_case {
   int (*run)(void);
 };
 
+static int
+countfree(void)
+{
+  int n = 0;
+  uint64 sz0 = (uint64)sbrk(0);
+
+  while (sbrk(PGSIZE) != SBRK_ERROR)
+    n++;
+
+  sbrk(-((uint64)sbrk(0) - sz0));
+  return n;
+}
+
+
 int
 main(void)
 {
@@ -160,6 +175,9 @@ main(void)
   int total = sizeof(cases) / sizeof(cases[0]);
   int passed = 0;
   printf("RT syscall tests - Sprint 3\n");
+
+  int pages_before = countfree();
+
   for (int i = 0; i < total; i++) {
     printf("\nCASE %d: %s\n", i + 1, cases[i].name);
     // Moi ca chay trong mot tien trinh rieng.
@@ -179,5 +197,12 @@ main(void)
     printf("CASE %d: %s\n", i + 1, ok ? "PASS" : "FAIL");
   }
   printf("\nRESULT: %d/%d PASS\n", passed, total);
-  exit(passed == total ? 0 : 1);
+
+  int pages_after = countfree();
+  int pages_ok = pages_after >= pages_before;
+
+  printf("FREE PAGES: before=%d after=%d [%s]\n",
+       pages_before, pages_after, pages_ok ? "PASS" : "FAIL");
+ 
+  exit(passed == total && pages_ok ? 0 : 1);
 }
