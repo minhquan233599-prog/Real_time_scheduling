@@ -33,8 +33,8 @@ main(void)
       passed++;
       printf("RUN %d: PASS\n", i + 1);
     } else {
-      printf("RUN %d: FAIL (pid=%d, got=%d, status=%d)\n",
-             i + 1, pid, got, status);
+      printf("RUN %d: FAIL (pid=%d, got=%d, status=%d)\n", i + 1, pid, got,
+             status);
     }
   }
 

@@ -163,7 +163,6 @@ countfree(void)
   return n;
 }
 
-
 int
 main(void)
 {
@@ -201,8 +200,8 @@ main(void)
   int pages_after = countfree();
   int pages_ok = pages_after >= pages_before;
 
-  printf("FREE PAGES: before=%d after=%d [%s]\n",
-       pages_before, pages_after, pages_ok ? "PASS" : "FAIL");
- 
+  printf("FREE PAGES: before=%d after=%d [%s]\n", pages_before, pages_after,
+         pages_ok ? "PASS" : "FAIL");
+
   exit(passed == total && pages_ok ? 0 : 1);
 }
