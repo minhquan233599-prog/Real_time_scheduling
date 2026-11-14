@@ -160,24 +160,54 @@ uint64
 sys_sched_setdeadline(void)
 {
   int period, runtime;
+
   argint(0, &period);
   argint(1, &runtime);
 
+  // Kiểm tra cả số âm, số 0 và trường hợp C lớn hơn T.
   if (period <= 0 || runtime <= 0 || runtime > period)
     return (uint64)-1;
 
   struct proc *p = myproc();
+
   acquire(&rt_lock);
 
+  if (p->rt.active) {
+    int same = p->rt.period == period &&
+               p->rt.runtime == runtime;
+
+    release(&rt_lock);
+
+    // Cùng tham số: thành công nhưng không khởi tạo lại job hay budget.
+    // Khác tham số: chưa cho phép đổi cấu hình khi đang kích hoạt RT.
+    return same ? 0 : (uint64)-3;
+  }
+
+  release(&rt_lock);
+
+  // Không giữ khóa khi chuyển tiến trình về CPU 0.
+  rt_bind_cpu0();
+
+  acquire(&rt_lock);
+
+  // Kiểm tra tải và cập nhật đăng ký trong cùng một vùng khóa.
   if (!rt_admit_locked(p, period, runtime)) {
     release(&rt_lock);
+
+    rt_unbind_if_inactive();
     return (uint64)-2;
   }
 
-  p->rt.period = period;
-  p->rt.runtime = runtime;
-  p->rt.enabled = 1;
+  rt_start_locked(p, period, runtime);
 
   release(&rt_lock);
+
   return 0;
+}
+
+uint64
+sys_rt_job_done(void)
+{
+  // Khi syscall trả về, prepare_return sẽ chờ job kế tiếp đủ điều kiện.
+  return (uint64)rt_finish_current_job();
 }

@@ -48,7 +48,10 @@ usertrap(void)
 
   struct proc *p = myproc();
 
-  // save user program counter.
+  // Đánh dấu đang xử lý trong kernel trước khi bật ngắt.
+  rt_kernel_enter();
+
+  // Lưu vị trí lệnh của chương trình user.
   p->trapframe->epc = r_sepc();
 
   if (r_scause() == 8) {
@@ -81,8 +84,9 @@ usertrap(void)
   if (killed(p))
     kexit(-1);
 
-  // give up the CPU if this is a timer interrupt.
-  if (which_dev == 2)
+  // Tiến trình thường vẫn nhường CPU theo timer như xv6 gốc.
+  // Tác vụ RT được chọn lại tại rt_prepare_user_return().
+  if (which_dev == 2 && !rt_current_active())
     yield();
 
   prepare_return();
@@ -106,6 +110,10 @@ prepare_return(void)
   // kerneltrap() to usertrap(). because a trap from kernel
   // code to usertrap would be a disaster, turn off interrupts.
   intr_off();
+
+  // Chỉ cho trở về user khi job đủ điều kiện và đã qua lựa chọn EDF.
+  // Lúc này vector trap vẫn trỏ về kernel, nên có thể chuyển ngữ cảnh.
+  rt_prepare_user_return();
 
   // send syscalls, interrupts, and exceptions to uservec in trampoline.S
   uint64 trampoline_uservec = TRAMPOLINE + (uservec - trampoline);
@@ -168,14 +176,18 @@ clockintr()
 {
   if (cpuid() == 0) {
     acquire(&tickslock);
+
     ticks++;
     wakeup(&ticks);
+
     release(&tickslock);
+
+    // Cập nhật RT sau khi đã nhả tickslock.
+    // Chỉ CPU 0 được tăng đồng hồ RT và tính budget.
+    rt_clock_tick();
   }
 
-  // ask for the next timer interrupt. this also clears
-  // the interrupt request. 1000000 is about a tenth
-  // of a second.
+  // Giữ nguyên chu kỳ timer của baseline hiện tại.
   w_stimecmp(r_time() + 1000000);
 }
 

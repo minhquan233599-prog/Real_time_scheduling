@@ -106,6 +106,14 @@ void            procdump(void);
 void            rt_bind_cpu0(void);
 void            rt_unbind_if_inactive(void);
 
+// rt.c
+void            rt_start_locked(struct proc*, int, int);
+void            rt_kernel_enter(void);
+int             rt_current_active(void);
+void            rt_clock_tick(void);
+int             rt_finish_current_job(void);
+void            rt_prepare_user_return(void);
+
 // swtch.S
 void            swtch(struct context*, struct context*);
 

@@ -109,6 +109,8 @@ struct rt_meta {
   uint64 next_release;
   uint64 job_id;
   uint64 deadline_misses;
+
+  int miss_reported; // Đã ghi nhận trễ deadline cho job hiện tại hay chưa.
 };
 
 // Updated once per CPU-0 timer tick.
