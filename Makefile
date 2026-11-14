@@ -13,6 +13,7 @@ OBJS = \
   $K/main.o \
   $K/vm.o \
   $K/proc.o \
+  $K/rt.o \
   $K/swtch.o \
   $K/trampoline.o \
   $K/trap.o \
@@ -153,6 +154,7 @@ UPROGS=\
 	$U/_sync\
 	$U/_rttest\
 	$U/_rtstress\
+	$U/_rt_job_smoke\
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)
