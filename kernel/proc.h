@@ -1,3 +1,4 @@
+#define RT_CPU 0
 // Saved registers for kernel context switches.
 struct context {
   uint64 ra;
@@ -80,11 +81,39 @@ enum procstate { UNUSED, USED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
 // All RT fields are protected by rt_lock.
 // period = T, runtime = C; D = T.
-struct rt_meta {
-  int enabled; // 0: chưa đăng ký RT; 1: đã đăng ký RT.
-  int period;  // Chu kỳ T, đơn vị tick.
-  int runtime; // Ngân sách CPU C, đơn vị tick.
+enum rt_jobstate {
+  RT_JOB_NONE = 0,
+  RT_JOB_WAIT_RELEASE,
+  RT_JOB_READY,
+  RT_JOB_COMPLETE,
+  RT_JOB_THROTTLED
 };
+
+// Every field below is protected by rt_lock.
+struct rt_meta {
+  // Registration information from Week 3.
+  int enabled;
+  int period;
+  int runtime;
+
+  // Week 4 scheduling control.
+  int active;        // Job lifecycle has been initialized.
+  int pinned;        // Restricted to RT_CPU.
+  int kernel_resume; // Kernel continuation must be allowed to finish.
+
+  enum rt_jobstate job_state;
+  int remaining;
+
+  uint64 release;
+  uint64 deadline;
+  uint64 next_release;
+  uint64 job_id;
+  uint64 deadline_misses;
+};
+
+// Updated once per CPU-0 timer tick.
+// Read and write only while holding rt_lock.
+extern uint64 rt_now;
 
 // Per-process state
 struct proc {

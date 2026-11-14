@@ -11,6 +11,8 @@ struct cpu cpus[NCPU];
 struct proc proc[NPROC];
 struct spinlock rt_lock;
 
+uint64 rt_now;
+
 struct proc *initproc;
 
 int nextpid = 1;
@@ -61,6 +63,9 @@ procinit(void)
   initlock(&pid_lock, "nextpid");
   initlock(&wait_lock, "wait_lock");
   initlock(&rt_lock, "rt_lock");
+
+  rt_now = 0;
+
   for (p = proc; p < &proc[NPROC]; p++) {
     initlock(&p->lock, "proc");
     p->state = UNUSED;
@@ -431,6 +436,154 @@ kwait(uint64 addr)
   }
 }
 
+// Caller is the current process and holds no spinlock.
+// Call before admission/activation; never while holding rt_lock.
+void
+rt_bind_cpu0(void)
+{
+  struct proc *p = myproc();
+
+  acquire(&p->lock);
+  acquire(&rt_lock);
+
+  p->rt.pinned = 1;
+
+  release(&rt_lock);
+
+  if (cpuid() != RT_CPU) {
+    p->state = RUNNABLE;
+
+    // Only p->lock is held here.
+    // The scheduler will resume this process on CPU 0.
+    sched();
+  }
+
+  release(&p->lock);
+}
+
+// Use after failed admission of a process that has not activated EDF.
+// Existing active RT registrations stay pinned.
+void
+rt_unbind_if_inactive(void)
+{
+  struct proc *p = myproc();
+
+  acquire(&rt_lock);
+
+  if (!p->rt.active)
+    p->rt.pinned = 0;
+
+  release(&rt_lock);
+}
+
+enum dispatch_class {
+  DISPATCH_NONE = -1,
+  DISPATCH_KERNEL = 0,
+  DISPATCH_EDF = 1,
+  DISPATCH_NORMAL = 2
+};
+
+// Caller holds p->lock and rt_lock, in that order.
+static int
+rt_dispatch_class_locked(struct proc *p, int cpu)
+{
+  if (p->state != RUNNABLE)
+    return DISPATCH_NONE;
+
+  // Active RT must never be dispatched on another CPU.
+  // pinned also covers a process migrating before activation.
+  if ((p->rt.pinned || p->rt.active) && cpu != RT_CPU)
+    return DISPATCH_NONE;
+
+  // Allow a killed process to reach its exit path.
+  if (p->killed)
+    return DISPATCH_KERNEL;
+
+  // Week 3 registration alone does not activate EDF.
+  if (!p->rt.active)
+    return DISPATCH_NORMAL;
+
+  // Do not throttle an unfinished kernel path that may hold resources.
+  if (p->rt.kernel_resume)
+    return DISPATCH_KERNEL;
+
+  if (p->rt.enabled && p->rt.job_state == RT_JOB_READY &&
+      p->rt.remaining > 0 && p->rt.release <= rt_now)
+    return DISPATCH_EDF;
+
+  return DISPATCH_NONE;
+}
+
+// Return the selected process WITH its p->lock held.
+// Never return with rt_lock held.
+// Return 0 if this scan found no eligible process.
+static struct proc *
+rt_pick_next(int cpu, int start)
+{
+  for (;;) {
+    struct proc *best = 0;
+    int best_class = DISPATCH_NONE;
+    int best_pid = 0;
+    uint64 best_deadline = 0;
+    uint64 best_job = 0;
+
+    for (int n = 0; n < NPROC; n++) {
+      struct proc *p = &proc[(start + n) % NPROC];
+
+      acquire(&p->lock);
+      acquire(&rt_lock);
+
+      int cls = rt_dispatch_class_locked(p, cpu);
+      int better = 0;
+
+      if (cls != DISPATCH_NONE) {
+        if (best == 0 || cls < best_class) {
+          better = 1;
+        } else if (cls == DISPATCH_EDF && best_class == DISPATCH_EDF) {
+          better = p->rt.deadline < best_deadline ||
+                   (p->rt.deadline == best_deadline && p->pid < best_pid);
+        }
+      }
+
+      if (better) {
+        best = p;
+        best_class = cls;
+        best_pid = p->pid;
+        best_deadline = p->rt.deadline;
+        best_job = p->rt.job_id;
+      }
+
+      release(&rt_lock);
+      release(&p->lock);
+    }
+
+    if (best == 0)
+      return 0;
+
+    // Another CPU may have dispatched or reaped the candidate
+    // after the scan. Lock it again and revalidate.
+    acquire(&best->lock);
+    acquire(&rt_lock);
+
+    int cls = rt_dispatch_class_locked(best, cpu);
+    int valid = best->pid == best_pid && cls == best_class;
+
+    if (valid && cls == DISPATCH_EDF) {
+      valid = best->rt.deadline == best_deadline &&
+              best->rt.job_id == best_job;
+    }
+
+    release(&rt_lock);
+
+    if (valid)
+      return best;
+
+    release(&best->lock);
+
+    // Candidate changed: rescan instead of dispatching stale information.
+  }
+}
+
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.
 // Scheduler never returns.  It loops, doing:
@@ -441,46 +594,38 @@ kwait(uint64 addr)
 void
 scheduler(void)
 {
-  struct proc *p;
   struct cpu *c = mycpu();
+  int cursor = 0;
 
   c->proc = 0;
   for (;;) {
-    // The most recent process to run may have had interrupts
-    // turned off; enable them to avoid a deadlock if all
-    // processes are waiting. Then turn them back off
-    // to avoid a possible race between an interrupt
-    // and wfi.
     intr_on();
     intr_off();
 
-    int found = 0;
-    for (p = proc; p < &proc[NPROC]; p++) {
-      acquire(&p->lock);
-      if (p->state == RUNNABLE) {
-        // Switch to chosen process.  It is the process's job
-        // to release its lock and then reacquire it
-        // before jumping back to us.
-        p->state = RUNNING;
-        c->proc = p;
-        swtch(&c->context, &p->context);
+    struct proc *p = rt_pick_next(cpuid(), cursor);
 
-        // Don't re-enable interrupts on release.
-        mycpu()->intena = 0;
-
-        // Process is done running for now.
-        // It should have changed its p->state before coming back.
-        c->proc = 0;
-        found = 1;
-      }
-      release(&p->lock);
-    }
-    if (found == 0) {
-      // nothing to run; stop running on this core until an interrupt.
+    if (p == 0) {
       asm volatile("wfi");
+      continue;
     }
+
+    // rt_pick_next returned with only p->lock held.
+    // Move the cursor to preserve round-robin order for normal processes.
+    cursor = ((int)(p - proc) + 1) % NPROC;
+
+    p->state = RUNNING;
+    c->proc = p;
+
+    swtch(&c->context, &p->context);
+
+    // Preserve this xv6 version's interrupt convention.
+    mycpu()->intena = 0;
+    c->proc = 0;
+
+    release(&p->lock);
   }
 }
+
 
 // Switch to scheduler.  Must hold only p->lock
 // and have changed proc->state. Saves and restores
@@ -714,3 +859,6 @@ procdump(void)
     printk("\n");
   }
 }
+
+
+
