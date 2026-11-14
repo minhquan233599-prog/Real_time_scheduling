@@ -1,0 +1,14 @@
+]633;E;date -Is;6accb734-c60f-4dae-a96c-0c3cc6afd06e]633;C2026-11-15T00:00:25+07:00
+feature/quan-week4-edf
+42a145c0f9ff707d49265412d8fcc83f1bc08533
+ M kernel/defs.h
+ M kernel/proc.c
+ M kernel/proc.h
+?? docs/week4/
+QEMU emulator version 10.2.1 (Debian 1:10.2.1+ds-1ubuntu3.2)
+Copyright (c) 2003-2025 Fabrice Bellard and the QEMU Project developers
+riscv64-unknown-elf-gcc (14.2.0+19) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
