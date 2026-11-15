@@ -44,3 +44,4 @@ entry("pause");
 entry("uptime");
 entry("sync");
 entry("sched_setdeadline"); #New
+entry("rt_job_done"); #New

@@ -163,21 +163,38 @@ sys_sched_setdeadline(void)
   argint(0, &period);
   argint(1, &runtime);
 
+  // Kiểm tra số âm, số 0 và trường hợp C lớn hơn T.
   if (period <= 0 || runtime <= 0 || runtime > period)
     return (uint64)-1;
 
   struct proc *p = myproc();
   acquire(&rt_lock);
 
+  if (p->rt.active) {
+    int same = p->rt.period == period &&
+               p->rt.runtime == runtime;
+    release(&rt_lock);
+    return same ? 0 : (uint64)-3; // Không khởi tạo lại job đang chạy.
+  }
+
+  release(&rt_lock);
+  rt_bind_cpu0(); // Không giữ spinlock trong lúc chuyển CPU.
+  acquire(&rt_lock);
+
   if (!rt_admit_locked(p, period, runtime)) {
     release(&rt_lock);
+    rt_unbind_if_inactive();
     return (uint64)-2;
   }
 
-  p->rt.period = period;
-  p->rt.runtime = runtime;
-  p->rt.enabled = 1;
-
+  rt_start_locked(p, period, runtime);
   release(&rt_lock);
   return 0;
+}
+
+uint64
+sys_rt_job_done(void)
+{
+  // Điểm trở về user sẽ chờ kỳ tiếp theo sau khi đánh dấu hoàn thành.
+  return (uint64)rt_finish_current_job();
 }
