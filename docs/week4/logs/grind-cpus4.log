@@ -1,14 +1,14 @@
-Script started on 2026-11-15 11:46:21+07:00 [COMMAND="make qemu CPUS=4" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="141" LINES="30"]
 qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 4 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
 
 xv6 kernel is booting
 
+hart 1 starting
 hart 3 starting
 hart 2 starting
-hart 1 starting
-ireclaim: orphaned inode 32
+ireclaim: orphaned inode 30
 init: starting sh
 $ grind
-ABABABABABABABABABABABABABABABABABABABQEMU: Terminated
-
-Script done on 2026-11-15 11:50:36+07:00 [COMMAND_EXIT_CODE="0"]
+ABBABAABABABABABAB
+HARNESS RESULT — GRIND CPUS=4: PASS
+A=9, B=9
+Đủ 60 giây, có A/B và không phát hiện lỗi.
