@@ -443,9 +443,9 @@ run_benchmark(void)
   // In trung bình hai chữ số thập phân bằng phép toán số nguyên.
   int mean100 = sum * 100 / 5;
 
-  printf("BENCH SUMMARY: n=5 mean=%d.%02d ticks "
+  printf("BENCH SUMMARY: n=5 mean=%d.%d%d ticks "
          "min=%d max=%d range=%d ticks\n",
-         mean100 / 100, mean100 % 100,
+         mean100 / 100, (mean100 % 100) / 10, mean100 % 10,
          smallest, largest, largest - smallest);
 
   printf("BENCH RESULT: PASS\n");

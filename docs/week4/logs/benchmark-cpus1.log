@@ -1,33 +1,47 @@
-Script started on 2026-11-15 14:37:24+07:00 [COMMAND="make qemu CPUS=1" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="141" LINES="19"]
+Script started on 2026-11-15 17:57:24+07:00 [COMMAND="make qemu CPUS=1" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="141" LINES="12"]
 qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 1 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
 
 xv6 kernel is booting
 
 init: starting sh
+$ rt_ _edftest --
+runs must be between 1 and 100
 $ rt_edftest --bench
 BENCH: preemption response, unit=tick, repetitions=5
-PREEMPT: expected=4 actual=4 delay_ticks=0 [PASS]
-PREEMPT TRACE: observations=1 lost=0
+PREEMPT: expected=5 actual=5 delay_ticks=0 [PASS]
+PREEMPT: expected=5 actual=5 delay_ticks=0 [PASS]
+PREEMPT: expected=5 actual=5 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
 CHECK preemption: PASS
 BENCH SAMPLE 1: max_delay=0 ticks
-PREEMPT: expected=6 actual=6 delay_ticks=0 [PASS]
-PREEMPT TRACE: observations=1 lost=0
+PREEMPT: expected=7 actual=7 delay_ticks=0 [PASS]
+PREEMPT: expected=7 actual=7 delay_ticks=0 [PASS]
+PREEMPT: expected=7 actual=7 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
 CHECK preemption: PASS
 BENCH SAMPLE 2: max_delay=0 ticks
-PREEMPT: expected=8 actual=8 delay_ticks=0 [PASS]
-PREEMPT TRACE: observations=1 lost=0
+PREEMPT: expected=9 actual=9 delay_ticks=0 [PASS]
+PREEMPT: expected=9 actual=9 delay_ticks=0 [PASS]
+PREEMPT: expected=9 actual=9 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
 CHECK preemption: PASS
 BENCH SAMPLE 3: max_delay=0 ticks
-PREEMPT: expected=10 actual=10 delay_ticks=0 [PASS]
-PREEMPT TRACE: observations=1 lost=0
+PREEMPT: expected=11 actual=11 delay_ticks=0 [PASS]
+PREEMPT: expected=11 actual=11 delay_ticks=0 [PASS]
+PREEMPT: expected=11 actual=11 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
 CHECK preemption: PASS
 BENCH SAMPLE 4: max_delay=0 ticks
-PREEMPT: expected=12 actual=12 delay_ticks=0 [PASS]
-PREEMPT TRACE: observations=1 lost=0
+PREEMPT: expected=13 actual=13 delay_ticks=0 [PASS]
+PREEMPT: expected=13 actual=13 delay_ticks=0 [PASS]
+PREEMPT: expected=13 actual=13 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
 CHECK preemption: PASS
 BENCH SAMPLE 5: max_delay=0 ticks
-BENCH SUMMARY: n=5 mean=0.%02d ticks min=0 max=0 range=0 ticks
+BENCH SUMMARY: n=5 mean=0.00 ticks min=0 max=0 range=0 ticks
 BENCH RESULT: PASS
+$ x
+exec x failed
 $ QEMU: Terminated
 
-Script done on 2026-11-15 14:37:58+07:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2026-11-15 17:58:56+07:00 [COMMAND_EXIT_CODE="0"]
