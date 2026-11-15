@@ -192,5 +192,8 @@ void            rt_clock_tick(void);
 int             rt_finish_current_job(void);
 void            rt_prepare_user_return(void);
 
+// rttrace.c
+void            rt_trace_emit_locked(struct proc *, int, int);
+
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x) / sizeof((x)[0]))
