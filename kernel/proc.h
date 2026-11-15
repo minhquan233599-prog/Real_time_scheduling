@@ -78,13 +78,42 @@ struct trapframe {
 
 enum procstate { UNUSED, USED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
-// All RT fields are protected by rt_lock.
-// period = T, runtime = C; D = T.
-struct rt_meta {
-  int enabled; // 0: chưa đăng ký RT; 1: đã đăng ký RT.
-  int period;  // Chu kỳ T, đơn vị tick.
-  int runtime; // Ngân sách CPU C, đơn vị tick.
+#define RT_CPU 0
+
+// Trạng thái job RT, tách biệt với trạng thái process của xv6.
+enum rt_jobstate {
+  RT_JOB_NONE = 0,
+  RT_JOB_WAIT_RELEASE,
+  RT_JOB_READY,
+  RT_JOB_COMPLETE,
+  RT_JOB_THROTTLED
 };
+
+// Toàn bộ các trường được bảo vệ bởi rt_lock.
+// period = T, runtime = C; deadline tương đối D = T.
+struct rt_meta {
+  int enabled; // Đăng ký đã được admission chấp nhận.
+  int period;  // Chu kỳ T, đơn vị tick.
+  int runtime; // Budget C của mỗi kỳ, đơn vị tick.
+
+  int active;        // Vòng đời job đã được khởi tạo đầy đủ.
+  int pinned;        // Ràng buộc process chạy trên CPU 0.
+  int kernel_resume; // Cần tiếp tục đường kernel trước khi chặn workload.
+
+  enum rt_jobstate job_state;
+  int remaining; // Budget còn lại của job.
+
+  uint64 release;         // Thời điểm job được phép bắt đầu.
+  uint64 deadline;        // Deadline tuyệt đối của job.
+  uint64 next_release;    // Mốc xử lý kỳ tiếp theo.
+  uint64 job_id;          // Số thứ tự job.
+  uint64 deadline_misses; // Số job đã được ghi nhận trễ hạn.
+
+  int miss_reported; // Ngăn đếm lặp deadline miss của một job.
+};
+
+// Đồng hồ RT; mọi truy cập phải giữ rt_lock.
+extern uint64 rt_now;
 
 // Per-process state
 struct proc {

@@ -10,6 +10,7 @@ struct cpu cpus[NCPU];
 
 struct proc proc[NPROC];
 struct spinlock rt_lock;
+uint64 rt_now; // Đồng hồ RT, được bảo vệ bởi rt_lock.
 
 struct proc *initproc;
 
@@ -61,6 +62,7 @@ procinit(void)
   initlock(&pid_lock, "nextpid");
   initlock(&wait_lock, "wait_lock");
   initlock(&rt_lock, "rt_lock");
+  rt_now = 0;
   for (p = proc; p < &proc[NPROC]; p++) {
     initlock(&p->lock, "proc");
     p->state = UNUSED;
@@ -430,7 +432,144 @@ kwait(uint64 addr)
     acquire(&wait_lock);
   }
 }
+// Chuyển tiến trình hiện tại về CPU 0.
+// Bên gọi không được giữ spinlock nào.
+void
+rt_bind_cpu0(void)
+{
+  struct proc *p = myproc();
 
+  acquire(&p->lock);
+  acquire(&rt_lock);
+  p->rt.pinned = 1;
+  release(&rt_lock);
+
+  if (cpuid() != RT_CPU) {
+    p->state = RUNNABLE;
+
+    // Chỉ giữ p->lock; scheduler CPU 0 sẽ chọn lại tiến trình.
+    sched();
+  }
+
+  release(&p->lock);
+}
+
+// Gỡ ràng buộc CPU nếu đăng ký thất bại và chưa active.
+// Bên gọi phải nhả rt_lock trước khi gọi.
+void
+rt_unbind_if_inactive(void)
+{
+  struct proc *p = myproc();
+
+  acquire(&rt_lock);
+  if (!p->rt.active)
+    p->rt.pinned = 0;
+  release(&rt_lock);
+}
+// Giá trị nhỏ hơn được ưu tiên trước; NONE là không đủ điều kiện.
+enum dispatch_class {
+  DISPATCH_NONE = -1,
+  DISPATCH_KERNEL = 0,
+  DISPATCH_EDF = 1,
+  DISPATCH_NORMAL = 2
+};
+
+// Bên gọi phải giữ p->lock rồi rt_lock, theo đúng thứ tự.
+static int
+rt_dispatch_class_locked(struct proc *p, int cpu)
+{
+  if (p->state != RUNNABLE)
+    return DISPATCH_NONE;
+
+  // RT active hoặc đang chuyển CPU chỉ được chạy trên CPU 0.
+  if ((p->rt.pinned || p->rt.active) && cpu != RT_CPU)
+    return DISPATCH_NONE;
+
+  // Cho process bị kill tiếp tục chạy để đi vào đường thoát.
+  if (p->killed)
+    return DISPATCH_KERNEL;
+
+  // Chưa kích hoạt vòng đời job thì xử lý như process thường.
+  if (!p->rt.active)
+    return DISPATCH_NORMAL;
+
+  // Cho phép hoàn tất đường kernel trước khi chặn workload.
+  if (p->rt.kernel_resume)
+    return DISPATCH_KERNEL;
+
+  // Job được chạy khi đã release, READY và còn budget.
+  if (p->rt.enabled && p->rt.job_state == RT_JOB_READY && p->rt.remaining > 0 &&
+      p->rt.release <= rt_now)
+    return DISPATCH_EDF;
+
+  return DISPATCH_NONE;
+}
+// Trả ứng viên với p->lock đang được giữ, không giữ rt_lock.
+// Trả 0 nếu không tìm được process đủ điều kiện.
+static struct proc *
+rt_pick_next(int cpu, int start)
+{
+  for (;;) {
+    struct proc *best = 0;
+    int best_class = DISPATCH_NONE;
+    int best_pid = 0;
+    uint64 best_deadline = 0;
+    uint64 best_job = 0;
+
+    for (int n = 0; n < NPROC; n++) {
+      struct proc *p = &proc[(start + n) % NPROC];
+
+      acquire(&p->lock);
+      acquire(&rt_lock);
+
+      int cls = rt_dispatch_class_locked(p, cpu);
+      int better = 0;
+
+      if (cls != DISPATCH_NONE) {
+        if (best == 0 || cls < best_class) {
+          better = 1;
+        } else if (cls == DISPATCH_EDF && best_class == DISPATCH_EDF) {
+          better = p->rt.deadline < best_deadline ||
+                   (p->rt.deadline == best_deadline && p->pid < best_pid);
+        }
+      }
+
+      if (better) {
+        best = p;
+        best_class = cls;
+        best_pid = p->pid;
+        best_deadline = p->rt.deadline;
+        best_job = p->rt.job_id;
+      }
+
+      release(&rt_lock);
+      release(&p->lock);
+    }
+
+    if (best == 0)
+      return 0;
+
+    // Kiểm tra lại vì ứng viên có thể đã đổi sau lần quét.
+    acquire(&best->lock);
+    acquire(&rt_lock);
+
+    int cls = rt_dispatch_class_locked(best, cpu);
+    int valid = best->pid == best_pid && cls == best_class;
+
+    if (valid && cls == DISPATCH_EDF) {
+      valid = best->rt.deadline == best_deadline && best->rt.job_id == best_job;
+    }
+
+    release(&rt_lock);
+
+    if (valid)
+      return best;
+
+    release(&best->lock);
+
+    // Ứng viên không còn hợp lệ thì quét lại.
+  }
+}
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.
 // Scheduler never returns.  It loops, doing:
@@ -441,44 +580,36 @@ kwait(uint64 addr)
 void
 scheduler(void)
 {
-  struct proc *p;
   struct cpu *c = mycpu();
+  int cursor = 0;
 
   c->proc = 0;
+
   for (;;) {
-    // The most recent process to run may have had interrupts
-    // turned off; enable them to avoid a deadlock if all
-    // processes are waiting. Then turn them back off
-    // to avoid a possible race between an interrupt
-    // and wfi.
     intr_on();
     intr_off();
 
-    int found = 0;
-    for (p = proc; p < &proc[NPROC]; p++) {
-      acquire(&p->lock);
-      if (p->state == RUNNABLE) {
-        // Switch to chosen process.  It is the process's job
-        // to release its lock and then reacquire it
-        // before jumping back to us.
-        p->state = RUNNING;
-        c->proc = p;
-        swtch(&c->context, &p->context);
+    struct proc *p = rt_pick_next(cpuid(), cursor);
 
-        // Don't re-enable interrupts on release.
-        mycpu()->intena = 0;
-
-        // Process is done running for now.
-        // It should have changed its p->state before coming back.
-        c->proc = 0;
-        found = 1;
-      }
-      release(&p->lock);
-    }
-    if (found == 0) {
-      // nothing to run; stop running on this core until an interrupt.
+    if (p == 0) {
       asm volatile("wfi");
+      continue;
     }
+
+    // Bắt đầu lượt quét sau từ ô kế tiếp để luân phiên process thường.
+    cursor = ((int)(p - proc) + 1) % NPROC;
+
+    // Bộ chọn trả về khi chỉ đang giữ p->lock.
+    p->state = RUNNING;
+    c->proc = p;
+
+    swtch(&c->context, &p->context);
+
+    // Giữ quy ước ngắt của baseline xv6 hiện tại.
+    mycpu()->intena = 0;
+    c->proc = 0;
+
+    release(&p->lock);
   }
 }
 

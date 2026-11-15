@@ -1,0 +1,523 @@
+Script started on 2026-11-08 16:09:55+07:00 [COMMAND="make qemu CPUS=1" TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="154" LINES="15"]
+gcc -Wno-unknown-attributes -I. -o mkfs/mkfs mkfs/mkfs.c
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/ulib.o user/ulib.c
+perl user/usys.pl > user/usys.S
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie -c -o user/usys.o user/usys.S
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/printf.o user/printf.c
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/umalloc.o user/umalloc.c
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/cat.o user/cat.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_cat user/cat.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_cat > user/cat.asm
+riscv64-unknown-elf-objdump -t user/_cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/cat.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/echo.o user/echo.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_echo user/echo.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_echo > user/echo.asm
+riscv64-unknown-elf-objdump -t user/_echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/echo.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/forktest.o user/forktest.c
+# forktest has less library code linked in - needs to be small
+# in order to be able to max out the proc table.
+riscv64-unknown-elf-ld -z max-page-size=4096 -N -e main -Ttext 0 -o user/_forktest user/forktest.o user/ulib.o user/usys.o
+riscv64-unknown-elf-ld: warning: user/_forktest has a LOAD segment with RWX permissions
+riscv64-unknown-elf-objdump -S user/_forktest > user/forktest.asm
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/grep.o user/grep.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_grep user/grep.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_grep > user/grep.asm
+riscv64-unknown-elf-objdump -t user/_grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/grep.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/init.o user/init.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_init user/init.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_init > user/init.asm
+riscv64-unknown-elf-objdump -t user/_init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/init.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/kill.o user/kill.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_kill user/kill.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_kill > user/kill.asm
+riscv64-unknown-elf-objdump -t user/_kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/kill.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/ln.o user/ln.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_ln user/ln.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_ln > user/ln.asm
+riscv64-unknown-elf-objdump -t user/_ln | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/ln.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/ls.o user/ls.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_ls user/ls.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_ls > user/ls.asm
+riscv64-unknown-elf-objdump -t user/_ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/ls.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/mkdir.o user/mkdir.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_mkdir user/mkdir.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_mkdir > user/mkdir.asm
+riscv64-unknown-elf-objdump -t user/_mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/mkdir.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/rm.o user/rm.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_rm user/rm.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_rm > user/rm.asm
+riscv64-unknown-elf-objdump -t user/_rm | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/rm.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/sh.o user/sh.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_sh user/sh.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_sh > user/sh.asm
+riscv64-unknown-elf-objdump -t user/_sh | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/sh.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/stressfs.o user/stressfs.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_stressfs user/stressfs.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_stressfs > user/stressfs.asm
+riscv64-unknown-elf-objdump -t user/_stressfs | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/stressfs.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/usertests.o user/usertests.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_usertests user/usertests.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_usertests > user/usertests.asm
+riscv64-unknown-elf-objdump -t user/_usertests | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/usertests.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/grind.o user/grind.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_grind user/grind.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_grind > user/grind.asm
+riscv64-unknown-elf-objdump -t user/_grind | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/grind.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/wc.o user/wc.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_wc user/wc.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_wc > user/wc.asm
+riscv64-unknown-elf-objdump -t user/_wc | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/wc.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/zombie.o user/zombie.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_zombie user/zombie.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_zombie > user/zombie.asm
+riscv64-unknown-elf-objdump -t user/_zombie | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/zombie.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/logstress.o user/logstress.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_logstress user/logstress.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_logstress > user/logstress.asm
+riscv64-unknown-elf-objdump -t user/_logstress | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/logstress.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/forphan.o user/forphan.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_forphan user/forphan.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_forphan > user/forphan.asm
+riscv64-unknown-elf-objdump -t user/_forphan | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/forphan.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/dorphan.o user/dorphan.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_dorphan user/dorphan.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_dorphan > user/dorphan.asm
+riscv64-unknown-elf-objdump -t user/_dorphan | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/dorphan.sym
+riscv64-unknown-elf-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/buicongthanh_20233643/Projects/Real_time_scheduling=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-delete-null-pointer-checks -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/sync.o user/sync.c
+riscv64-unknown-elf-ld -z max-page-size=4096 -T user/user.ld -o user/_sync user/sync.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_sync > user/sync.asm
+riscv64-unknown-elf-objdump -t user/_sync | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/sync.sym
+mkfs/mkfs fs.img README user/_cat user/_echo user/_forktest user/_grep user/_init user/_kill user/_ln user/_ls user/_mkdir user/_rm user/_sh user/_stressfs user/_usertests user/_grind user/_wc user/_zombie user/_logstress user/_forphan user/_dorphan user/_sync 
+nmeta 47 (boot, super, log blocks 31, inode blocks 13, bitmap blocks 1) blocks 1953 total 2000
+balloc: first 973 blocks have been allocated
+balloc: write bitmap block at sector 46
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 1 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+init: starting sh
+$ ls
+echo quan-boot-ok
+forktest
+forktest
+usertests
+ls
+echo quan-shell-final-ok.              1 1 1024
+..             1 1 1024
+README         2 2 2441
+cat            2 3 36792
+echo           2 4 35640
+forktest       2 5 17416
+grep           2 6 40224
+init           2 7 36096
+kill           2 8 35584
+ln             2 9 35376
+ls             2 10 38920
+mkdir          2 11 35624
+rm             2 12 35616
+sh             2 13 58640
+stressfs       2 14 36488
+usertests      2 15 202504
+grind          2 16 52048
+wc             2 17 37776
+zombie         2 18 34976
+logstress      2 19 37560
+forphan        2 20 36376
+dorphan        2 21 35824
+sync           2 22 35040
+console        3 23 0
+$ quan-boot-ok
+$ fork test
+fork test OK
+$ fork test
+fork test OK
+$ usertests starting
+test copyin: OK
+test copyout: OK
+test copyinstr1: OK
+test copyinstr2: OK
+test copyinstr3: OK
+test rwsbrk: OK
+test truncate1: OK
+test truncate2: OK
+test truncate3: OK
+test openiput: OK
+test exitiput: OK
+test iput: OK
+test opentest: OK
+test writetest: OK
+test writebig: OK
+test createtest: OK
+test dirtest: OK
+test exectest: OK
+test pipe1: OK
+test killstatus: OK
+test killzero: OK
+test preempt: kill... wait... OK
+test exitwait: OK
+test reparent: OK
+test twochildren: OK
+test forkfork: OK
+test forkforkfork: OK
+test reparent2: OK
+test mem: OK
+test sharedfd: OK
+test fourfiles: OK
+test createdelete: OK
+test unlinkread: OK
+test linktest: OK
+test concreate: OK
+test linkunlink: OK
+test subdir: OK
+test bigwrite: OK
+test bigfile: OK
+test fourteen: OK
+test rmdot: OK
+test dirfile: OK
+test iref: OK
+test forktest: OK
+test sbrkbasic: OK
+test sbrkmuch: OK
+test kernmem: usertrap(): unexpected scause 0xd pid=6602
+            sepc=0x1a86 stval=0x80000000
+usertrap(): unexpected scause 0xd pid=6603
+            sepc=0x1a86 stval=0x8000c350
+usertrap(): unexpected scause 0xd pid=6604
+            sepc=0x1a86 stval=0x800186a0
+usertrap(): unexpected scause 0xd pid=6605
+            sepc=0x1a86 stval=0x800249f0
+usertrap(): unexpected scause 0xd pid=6606
+            sepc=0x1a86 stval=0x80030d40
+usertrap(): unexpected scause 0xd pid=6607
+            sepc=0x1a86 stval=0x8003d090
+usertrap(): unexpected scause 0xd pid=6608
+            sepc=0x1a86 stval=0x800493e0
+usertrap(): unexpected scause 0xd pid=6609
+            sepc=0x1a86 stval=0x80055730
+usertrap(): unexpected scause 0xd pid=6610
+            sepc=0x1a86 stval=0x80061a80
+usertrap(): unexpected scause 0xd pid=6611
+            sepc=0x1a86 stval=0x8006ddd0
+usertrap(): unexpected scause 0xd pid=6612
+            sepc=0x1a86 stval=0x8007a120
+usertrap(): unexpected scause 0xd pid=6613
+            sepc=0x1a86 stval=0x80086470
+usertrap(): unexpected scause 0xd pid=6614
+            sepc=0x1a86 stval=0x800927c0
+usertrap(): unexpected scause 0xd pid=6615
+            sepc=0x1a86 stval=0x8009eb10
+usertrap(): unexpected scause 0xd pid=6616
+            sepc=0x1a86 stval=0x800aae60
+usertrap(): unexpected scause 0xd pid=6617
+            sepc=0x1a86 stval=0x800b71b0
+usertrap(): unexpected scause 0xd pid=6618
+            sepc=0x1a86 stval=0x800c3500
+usertrap(): unexpected scause 0xd pid=6619
+            sepc=0x1a86 stval=0x800cf850
+usertrap(): unexpected scause 0xd pid=6620
+            sepc=0x1a86 stval=0x800dbba0
+usertrap(): unexpected scause 0xd pid=6621
+            sepc=0x1a86 stval=0x800e7ef0
+usertrap(): unexpected scause 0xd pid=6622
+            sepc=0x1a86 stval=0x800f4240
+usertrap(): unexpected scause 0xd pid=6623
+            sepc=0x1a86 stval=0x80100590
+usertrap(): unexpected scause 0xd pid=6624
+            sepc=0x1a86 stval=0x8010c8e0
+usertrap(): unexpected scause 0xd pid=6625
+            sepc=0x1a86 stval=0x80118c30
+usertrap(): unexpected scause 0xd pid=6626
+            sepc=0x1a86 stval=0x80124f80
+usertrap(): unexpected scause 0xd pid=6627
+            sepc=0x1a86 stval=0x801312d0
+usertrap(): unexpected scause 0xd pid=6628
+            sepc=0x1a86 stval=0x8013d620
+usertrap(): unexpected scause 0xd pid=6629
+            sepc=0x1a86 stval=0x80149970
+usertrap(): unexpected scause 0xd pid=6630
+            sepc=0x1a86 stval=0x80155cc0
+usertrap(): unexpected scause 0xd pid=6631
+            sepc=0x1a86 stval=0x80162010
+usertrap(): unexpected scause 0xd pid=6632
+            sepc=0x1a86 stval=0x8016e360
+usertrap(): unexpected scause 0xd pid=6633
+            sepc=0x1a86 stval=0x8017a6b0
+usertrap(): unexpected scause 0xd pid=6634
+            sepc=0x1a86 stval=0x80186a00
+usertrap(): unexpected scause 0xd pid=6635
+            sepc=0x1a86 stval=0x80192d50
+usertrap(): unexpected scause 0xd pid=6636
+            sepc=0x1a86 stval=0x8019f0a0
+usertrap(): unexpected scause 0xd pid=6637
+            sepc=0x1a86 stval=0x801ab3f0
+usertrap(): unexpected scause 0xd pid=6638
+            sepc=0x1a86 stval=0x801b7740
+usertrap(): unexpected scause 0xd pid=6639
+            sepc=0x1a86 stval=0x801c3a90
+usertrap(): unexpected scause 0xd pid=6640
+            sepc=0x1a86 stval=0x801cfde0
+usertrap(): unexpected scause 0xd pid=6641
+            sepc=0x1a86 stval=0x801dc130
+OK
+test MAXVAplus: usertrap(): unexpected scause 0xf pid=6643
+            sepc=0x1b16 stval=0x4000000000
+usertrap(): unexpected scause 0xf pid=6644
+            sepc=0x1b16 stval=0x8000000000
+usertrap(): unexpected scause 0xf pid=6645
+            sepc=0x1b16 stval=0x10000000000
+usertrap(): unexpected scause 0xf pid=6646
+            sepc=0x1b16 stval=0x20000000000
+usertrap(): unexpected scause 0xf pid=6647
+            sepc=0x1b16 stval=0x40000000000
+usertrap(): unexpected scause 0xf pid=6648
+            sepc=0x1b16 stval=0x80000000000
+usertrap(): unexpected scause 0xf pid=6649
+            sepc=0x1b16 stval=0x100000000000
+usertrap(): unexpected scause 0xf pid=6650
+            sepc=0x1b16 stval=0x200000000000
+usertrap(): unexpected scause 0xf pid=6651
+            sepc=0x1b16 stval=0x400000000000
+usertrap(): unexpected scause 0xf pid=6652
+            sepc=0x1b16 stval=0x800000000000
+usertrap(): unexpected scause 0xf pid=6653
+            sepc=0x1b16 stval=0x1000000000000
+usertrap(): unexpected scause 0xf pid=6654
+            sepc=0x1b16 stval=0x2000000000000
+usertrap(): unexpected scause 0xf pid=6655
+            sepc=0x1b16 stval=0x4000000000000
+usertrap(): unexpected scause 0xf pid=6656
+            sepc=0x1b16 stval=0x8000000000000
+usertrap(): unexpected scause 0xf pid=6657
+            sepc=0x1b16 stval=0x10000000000000
+usertrap(): unexpected scause 0xf pid=6658
+            sepc=0x1b16 stval=0x20000000000000
+usertrap(): unexpected scause 0xf pid=6659
+            sepc=0x1b16 stval=0x40000000000000
+usertrap(): unexpected scause 0xf pid=6660
+            sepc=0x1b16 stval=0x80000000000000
+usertrap(): unexpected scause 0xf pid=6661
+            sepc=0x1b16 stval=0x100000000000000
+usertrap(): unexpected scause 0xf pid=6662
+            sepc=0x1b16 stval=0x200000000000000
+usertrap(): unexpected scause 0xf pid=6663
+            sepc=0x1b16 stval=0x400000000000000
+usertrap(): unexpected scause 0xf pid=6664
+            sepc=0x1b16 stval=0x800000000000000
+usertrap(): unexpected scause 0xf pid=6665
+            sepc=0x1b16 stval=0x1000000000000000
+usertrap(): unexpected scause 0xf pid=6666
+            sepc=0x1b16 stval=0x2000000000000000
+usertrap(): unexpected scause 0xf pid=6667
+            sepc=0x1b16 stval=0x4000000000000000
+usertrap(): unexpected scause 0xf pid=6668
+            sepc=0x1b16 stval=0x8000000000000000
+OK
+test sbrkfail: OK
+test sbrkarg: OK
+test validatetest: OK
+test bsstest: OK
+test bigargtest: OK
+test argptest: OK
+test stacktest: usertrap(): unexpected scause 0xd pid=6688
+            sepc=0x1b6a stval=0x10ea0
+OK
+test nowrite: usertrap(): unexpected scause 0xf pid=6690
+            sepc=0x1c10 stval=0x0
+usertrap(): unexpected scause 0xf pid=6691
+            sepc=0x1c10 stval=0x80000000
+usertrap(): unexpected scause 0xf pid=6692
+            sepc=0x1c10 stval=0x3fffffe000
+usertrap(): unexpected scause 0xf pid=6693
+            sepc=0x1c10 stval=0x3ffffff000
+usertrap(): unexpected scause 0xf pid=6694
+            sepc=0x1c10 stval=0x4000000000
+usertrap(): unexpected scause 0xf pid=6695
+            sepc=0x1c10 stval=0xffffffffffffffff
+OK
+test pgbug: OK
+test sbrkbugs: usertrap(): unexpected scause 0xc pid=6698
+            sepc=0x554a stval=0x554a
+usertrap(): unexpected scause 0xc pid=6699
+            sepc=0x554a stval=0x554a
+usertrap(): unexpected scause 0xd pid=6700
+            sepc=0x5496 stval=0x11eb8
+OK
+test sbrklast: OK
+test sbrk8000: OK
+test badarg: OK
+test lazy_alloc: OK
+test lazy_unmap: usertrap(): unexpected scause 0xf pid=6706
+            sepc=0x488e stval=0x13000
+usertrap(): unexpected scause 0xf pid=6707
+            sepc=0x488e stval=0x1013000
+usertrap(): unexpected scause 0xf pid=6708
+            sepc=0x488e stval=0x2013000
+usertrap(): unexpected scause 0xf pid=6709
+            sepc=0x488e stval=0x3013000
+usertrap(): unexpected scause 0xf pid=6710
+            sepc=0x488e stval=0x4013000
+usertrap(): unexpected scause 0xf pid=6711
+            sepc=0x488e stval=0x5013000
+usertrap(): unexpected scause 0xf pid=6712
+            sepc=0x488e stval=0x6013000
+usertrap(): unexpected scause 0xf pid=6713
+            sepc=0x488e stval=0x7013000
+usertrap(): unexpected scause 0xf pid=6714
+            sepc=0x488e stval=0x8013000
+usertrap(): unexpected scause 0xf pid=6715
+            sepc=0x488e stval=0x9013000
+usertrap(): unexpected scause 0xf pid=6716
+            sepc=0x488e stval=0xa013000
+usertrap(): unexpected scause 0xf pid=6717
+            sepc=0x488e stval=0xb013000
+usertrap(): unexpected scause 0xf pid=6718
+            sepc=0x488e stval=0xc013000
+usertrap(): unexpected scause 0xf pid=6719
+            sepc=0x488e stval=0xd013000
+usertrap(): unexpected scause 0xf pid=6720
+            sepc=0x488e stval=0xe013000
+usertrap(): unexpected scause 0xf pid=6721
+            sepc=0x488e stval=0xf013000
+usertrap(): unexpected scause 0xf pid=6722
+            sepc=0x488e stval=0x10013000
+usertrap(): unexpected scause 0xf pid=6723
+            sepc=0x488e stval=0x11013000
+usertrap(): unexpected scause 0xf pid=6724
+            sepc=0x488e stval=0x12013000
+usertrap(): unexpected scause 0xf pid=6725
+            sepc=0x488e stval=0x13013000
+usertrap(): unexpected scause 0xf pid=6726
+            sepc=0x488e stval=0x14013000
+usertrap(): unexpected scause 0xf pid=6727
+            sepc=0x488e stval=0x15013000
+usertrap(): unexpected scause 0xf pid=6728
+            sepc=0x488e stval=0x16013000
+usertrap(): unexpected scause 0xf pid=6729
+            sepc=0x488e stval=0x17013000
+usertrap(): unexpected scause 0xf pid=6730
+            sepc=0x488e stval=0x18013000
+usertrap(): unexpected scause 0xf pid=6731
+            sepc=0x488e stval=0x19013000
+usertrap(): unexpected scause 0xf pid=6732
+            sepc=0x488e stval=0x1a013000
+usertrap(): unexpected scause 0xf pid=6733
+            sepc=0x488e stval=0x1b013000
+usertrap(): unexpected scause 0xf pid=6734
+            sepc=0x488e stval=0x1c013000
+usertrap(): unexpected scause 0xf pid=6735
+            sepc=0x488e stval=0x1d013000
+usertrap(): unexpected scause 0xf pid=6736
+            sepc=0x488e stval=0x1e013000
+usertrap(): unexpected scause 0xf pid=6737
+            sepc=0x488e stval=0x1f013000
+usertrap(): unexpected scause 0xf pid=6738
+            sepc=0x488e stval=0x20013000
+usertrap(): unexpected scause 0xf pid=6739
+            sepc=0x488e stval=0x21013000
+usertrap(): unexpected scause 0xf pid=6740
+            sepc=0x488e stval=0x22013000
+usertrap(): unexpected scause 0xf pid=6741
+            sepc=0x488e stval=0x23013000
+usertrap(): unexpected scause 0xf pid=6742
+            sepc=0x488e stval=0x24013000
+usertrap(): unexpected scause 0xf pid=6743
+            sepc=0x488e stval=0x25013000
+usertrap(): unexpected scause 0xf pid=6744
+            sepc=0x488e stval=0x26013000
+usertrap(): unexpected scause 0xf pid=6745
+            sepc=0x488e stval=0x27013000
+usertrap(): unexpected scause 0xf pid=6746
+            sepc=0x488e stval=0x28013000
+usertrap(): unexpected scause 0xf pid=6747
+            sepc=0x488e stval=0x29013000
+usertrap(): unexpected scause 0xf pid=6748
+            sepc=0x488e stval=0x2a013000
+usertrap(): unexpected scause 0xf pid=6749
+            sepc=0x488e stval=0x2b013000
+usertrap(): unexpected scause 0xf pid=6750
+            sepc=0x488e stval=0x2c013000
+usertrap(): unexpected scause 0xf pid=6751
+            sepc=0x488e stval=0x2d013000
+usertrap(): unexpected scause 0xf pid=6752
+            sepc=0x488e stval=0x2e013000
+usertrap(): unexpected scause 0xf pid=6753
+            sepc=0x488e stval=0x2f013000
+usertrap(): unexpected scause 0xf pid=6754
+            sepc=0x488e stval=0x30013000
+usertrap(): unexpected scause 0xf pid=6755
+            sepc=0x488e stval=0x31013000
+usertrap(): unexpected scause 0xf pid=6756
+            sepc=0x488e stval=0x32013000
+usertrap(): unexpected scause 0xf pid=6757
+            sepc=0x488e stval=0x33013000
+usertrap(): unexpected scause 0xf pid=6758
+            sepc=0x488e stval=0x34013000
+usertrap(): unexpected scause 0xf pid=6759
+            sepc=0x488e stval=0x35013000
+usertrap(): unexpected scause 0xf pid=6760
+            sepc=0x488e stval=0x36013000
+usertrap(): unexpected scause 0xf pid=6761
+            sepc=0x488e stval=0x37013000
+usertrap(): unexpected scause 0xf pid=6762
+            sepc=0x488e stval=0x38013000
+usertrap(): unexpected scause 0xf pid=6763
+            sepc=0x488e stval=0x39013000
+usertrap(): unexpected scause 0xf pid=6764
+            sepc=0x488e stval=0x3a013000
+usertrap(): unexpected scause 0xf pid=6765
+            sepc=0x488e stval=0x3b013000
+usertrap(): unexpected scause 0xf pid=6766
+            sepc=0x488e stval=0x3c013000
+usertrap(): unexpected scause 0xf pid=6767
+            sepc=0x488e stval=0x3d013000
+usertrap(): unexpected scause 0xf pid=6768
+            sepc=0x488e stval=0x3e013000
+usertrap(): unexpected scause 0xf pid=6769
+            sepc=0x488e stval=0x3f013000
+OK
+test lazy_copy: OK
+test lazy_copyinstr: OK
+test lazy_sbrk: OK
+test partial_write: OK
+test unlinkcwd: OK
+usertests slow tests starting
+test bigdir: OK
+test manywrites: OK
+test badwrite: OK
+test execout: OK
+test diskfull: balloc: out of blocks
+balloc: out of blocks
+OK
+test outofinodes: ialloc: no inodes
+OK
+ALL TESTS PASSED
+$ .              1 1 8464
+..             1 1 8464
+README         2 2 2441
+cat            2 3 36792
+echo           2 4 35640
+forktest       2 5 17416
+grep           2 6 40224
+init           2 7 36096
+kill           2 8 35584
+ln             2 9 35376
+ls             2 10 38920
+mkdir          2 11 35624
+rm             2 12 35616
+sh             2 13 58640
+stressfs       2 14 36488
+usertests      2 15 202504
+grind          2 16 52048
+wc             2 17 37776
+zombie         2 18 34976
+logstress      2 19 37560
+forphan        2 20 36376
+dorphan        2 21 35824
+sync           2 22 35040
+console        3 23 0
+stopforking    2 24 0
+x              2 25 1
+bigarg-ok      2 26 0
+$ QEMU: Terminated
+
+Script done on 2026-11-08 16:14:08+07:00 [COMMAND_EXIT_CODE="0"]

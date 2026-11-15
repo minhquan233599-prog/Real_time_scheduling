@@ -79,6 +79,8 @@ void            panic(char*) __attribute__((noreturn));
 void            printkinit(void);
 
 // proc.c
+void            rt_bind_cpu0(void);
+void            rt_unbind_if_inactive(void);
 int             cpuid(void);
 void            kexit(int);
 int             kfork(void);
