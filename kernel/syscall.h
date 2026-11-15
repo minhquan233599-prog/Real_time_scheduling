@@ -22,4 +22,4 @@
 #define SYS_close             21
 #define SYS_sync              22
 #define SYS_sched_setdeadline 23 // New
-#define SYS_rt_job_done 24 //New
+#define SYS_rt_job_done       24 //New

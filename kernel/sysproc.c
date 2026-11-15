@@ -171,8 +171,7 @@ sys_sched_setdeadline(void)
   acquire(&rt_lock);
 
   if (p->rt.active) {
-    int same = p->rt.period == period &&
-               p->rt.runtime == runtime;
+    int same = p->rt.period == period && p->rt.runtime == runtime;
     release(&rt_lock);
     return same ? 0 : (uint64)-3; // Không khởi tạo lại job đang chạy.
   }

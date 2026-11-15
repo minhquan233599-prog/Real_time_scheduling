@@ -5,8 +5,8 @@ static int
 expect(const char *name, int actual, int expected)
 {
   int ok = actual == expected;
-  printf("%s: expected=%d actual=%d [%s]\n",
-         name, expected, actual, ok ? "PASS" : "FAIL");
+  printf("%s: expected=%d actual=%d [%s]\n", name, expected, actual,
+         ok ? "PASS" : "FAIL");
   return ok;
 }
 
@@ -26,8 +26,7 @@ main(void)
   }
 
   ok &= expect("same parameters", sched_setdeadline(20, 5), 0);
-  ok &= expect("change active parameters",
-               sched_setdeadline(30, 5), -3);
+  ok &= expect("change active parameters", sched_setdeadline(30, 5), -3);
 
   for (int i = 0; i < 3; i++) {
     // Công việc ngắn để thử đường completion và kỳ tiếp theo.

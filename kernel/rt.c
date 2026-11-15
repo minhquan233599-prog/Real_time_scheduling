@@ -68,8 +68,7 @@ rt_clock_tick(void)
 
   // Chỉ tiến trình đang chạy tại tick lấy mẫu bị trừ budget.
   if (running != 0 && running->rt.active &&
-      running->rt.job_state == RT_JOB_READY &&
-      running->rt.remaining > 0) {
+      running->rt.job_state == RT_JOB_READY && running->rt.remaining > 0) {
     running->rt.remaining--;
     if (running->rt.remaining == 0)
       running->rt.job_state = RT_JOB_THROTTLED;
@@ -79,12 +78,11 @@ rt_clock_tick(void)
     if (!p->rt.active || !p->rt.enabled)
       continue;
 
-    int unfinished = p->rt.job_state == RT_JOB_READY ||
-                     p->rt.job_state == RT_JOB_THROTTLED;
+    int unfinished =
+      p->rt.job_state == RT_JOB_READY || p->rt.job_state == RT_JOB_THROTTLED;
 
     // Mỗi job chỉ ghi nhận một lần trễ deadline.
-    if (unfinished && rt_now >= p->rt.deadline &&
-        !p->rt.miss_reported) {
+    if (unfinished && rt_now >= p->rt.deadline && !p->rt.miss_reported) {
       p->rt.deadline_misses++;
       p->rt.miss_reported = 1;
     }
@@ -149,10 +147,8 @@ rt_prepare_user_return(void)
 
     p->rt.kernel_resume = 0; // Đã tới điểm an toàn để chặn workload.
     int active = p->rt.active;
-    int ready = p->rt.enabled &&
-                p->rt.job_state == RT_JOB_READY &&
-                p->rt.remaining > 0 &&
-                p->rt.release <= rt_now;
+    int ready = p->rt.enabled && p->rt.job_state == RT_JOB_READY &&
+                p->rt.remaining > 0 && p->rt.release <= rt_now;
 
     if (!active || (ready && scheduled)) {
       if (active && cpuid() != RT_CPU)
