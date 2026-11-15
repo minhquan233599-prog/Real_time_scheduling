@@ -1,0 +1,737 @@
+Script started on 2026-11-15 11:32:43+07:00 [COMMAND="make qemu CPUS=4" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="141" LINES="10"]
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 4 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 1 starting
+hart 2 starting
+hart 3 starting
+init: starting sh
+$ rt_w4test 10
+ls
+echo thanh-cpus4-shell-ok
+W4 RUN 1/10
+TRACE i=0 type=1 cpu=0 pid=4 job=1 tick=83 r=83 d=91 next=91 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=4 job=1 tick=83 r=83 d=91 next=91 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=4 job=1 tick=83 r=83 d=91 next=91 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=5 job=1 tick=83 r=83 d=95 next=95 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=5 job=1 tick=83 r=83 d=95 next=95 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=5 job=1 tick=83 r=83 d=95 next=95 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=4 job=2 tick=91 r=91 d=99 next=99 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=4 job=2 tick=91 r=91 d=99 next=99 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=4 job=2 tick=91 r=91 d=99 next=99 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=5 job=2 tick=95 r=95 d=107 next=107 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=5 job=2 tick=95 r=95 d=107 next=107 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=5 job=2 tick=95 r=95 d=107 next=107 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=4 job=3 tick=99 r=99 d=107 next=107 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=4 job=3 tick=99 r=99 d=107 next=107 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=4 job=3 tick=99 r=99 d=107 next=107 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=4 job=4 tick=107 r=107 d=115 next=115 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=5 job=3 tick=107 r=107 d=119 next=119 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=4 job=4 tick=107 r=107 d=115 next=115 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=5 job=3 tick=107 r=107 d=119 next=119 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=5 job=3 tick=107 r=107 d=119 next=119 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=5 job=4 tick=119 r=119 d=131 next=131 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=5 job=4 tick=119 r=119 d=131 next=131 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=6 job=1 tick=119 r=119 d=125 next=125 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=6 job=1 tick=119 r=119 d=125 next=125 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=6 job=1 tick=119 r=119 d=125 next=125 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=6 job=1 tick=119 r=119 d=125 next=125 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=6 job=1 tick=119 r=119 d=125 next=125 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=6 job=1 tick=119 r=119 d=125 next=125 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=6 job=1 tick=119 r=119 d=125 next=125 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=6 job=1 tick=119 r=119 d=125 next=125 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=6 job=1 tick=120 r=119 d=125 next=125 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=6 job=1 tick=120 r=119 d=125 next=125 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=6 job=1 tick=125 r=119 d=125 next=125 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=6 job=1 tick=125 r=119 d=125 next=131 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=6 job=1 tick=125 r=119 d=125 next=131 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=6 job=1 tick=125 r=119 d=125 next=131 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=6 job=1 tick=125 r=119 d=125 next=131 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=6 job=1 tick=125 r=119 d=125 next=131 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=6 job=1 tick=125 r=119 d=125 next=131 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=3 cpu=0 pid=6 job=1 tick=126 r=119 d=125 next=131 C=1 rem=0 kr=1 aux=1
+TRACE i=40 type=4 cpu=0 pid=6 job=1 tick=126 r=119 d=125 next=131 C=1 rem=0 kr=1 aux=0
+TRACE i=41 type=7 cpu=0 pid=6 job=1 tick=131 r=119 d=125 next=137 C=1 rem=1 kr=0 aux=0
+TRACE i=42 type=2 cpu=0 pid=6 job=1 tick=131 r=119 d=125 next=137 C=1 rem=1 kr=0 aux=1
+TRACE i=43 type=2 cpu=0 pid=6 job=1 tick=131 r=119 d=125 next=137 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=6 job=1 tick=131 r=119 d=125 next=137 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=6 job=1 tick=131 r=119 d=125 next=137 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=6 job=1 tick=131 r=119 d=125 next=137 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=2 cpu=0 pid=6 job=1 tick=131 r=119 d=125 next=137 C=1 rem=1 kr=0 aux=1
+TRACE i=48 type=3 cpu=0 pid=6 job=1 tick=132 r=119 d=125 next=137 C=1 rem=0 kr=1 aux=1
+TRACE i=49 type=4 cpu=0 pid=6 job=1 tick=132 r=119 d=125 next=137 C=1 rem=0 kr=1 aux=0
+TRACE i=50 type=7 cpu=0 pid=6 job=1 tick=137 r=119 d=125 next=143 C=1 rem=1 kr=0 aux=0
+TRACE i=51 type=2 cpu=0 pid=6 job=1 tick=137 r=119 d=125 next=143 C=1 rem=1 kr=0 aux=1
+TRACE i=52 type=2 cpu=0 pid=6 job=1 tick=137 r=119 d=125 next=143 C=1 rem=1 kr=0 aux=1
+TRACE i=53 type=5 cpu=0 pid=6 job=1 tick=137 r=119 d=125 next=143 C=1 rem=0 kr=1 aux=0
+TRACE i=54 type=1 cpu=0 pid=6 job=2 tick=143 r=143 d=149 next=149 C=1 rem=1 kr=0 aux=0
+TRACE i=55 type=2 cpu=0 pid=6 job=2 tick=143 r=143 d=149 next=149 C=1 rem=1 kr=0 aux=1
+TRACE: events=56 lost=0
+EVENTS: release=10 tick=3 dispatch=29 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+W4 RUN 1: PASS
+
+W4 RUN 2/10
+TRACE i=0 type=1 cpu=0 pid=7 job=1 tick=151 r=151 d=159 next=159 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=7 job=1 tick=151 r=151 d=159 next=159 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=7 job=1 tick=151 r=151 d=159 next=159 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=8 job=1 tick=151 r=151 d=163 next=163 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=8 job=1 tick=151 r=151 d=163 next=163 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=8 job=1 tick=151 r=151 d=163 next=163 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=7 job=2 tick=159 r=159 d=167 next=167 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=7 job=2 tick=159 r=159 d=167 next=167 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=7 job=2 tick=159 r=159 d=167 next=167 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=8 job=2 tick=163 r=163 d=175 next=175 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=8 job=2 tick=163 r=163 d=175 next=175 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=8 job=2 tick=163 r=163 d=175 next=175 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=7 job=3 tick=167 r=167 d=175 next=175 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=7 job=3 tick=167 r=167 d=175 next=175 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=7 job=3 tick=167 r=167 d=175 next=175 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=7 job=4 tick=175 r=175 d=183 next=183 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=8 job=3 tick=175 r=175 d=187 next=187 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=7 job=4 tick=175 r=175 d=183 next=183 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=8 job=3 tick=175 r=175 d=187 next=187 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=8 job=3 tick=175 r=175 d=187 next=187 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=8 job=4 tick=187 r=187 d=199 next=199 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=8 job=4 tick=187 r=187 d=199 next=199 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=9 job=1 tick=187 r=187 d=193 next=193 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=9 job=1 tick=187 r=187 d=193 next=193 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=9 job=1 tick=187 r=187 d=193 next=193 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=9 job=1 tick=187 r=187 d=193 next=193 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=9 job=1 tick=187 r=187 d=193 next=193 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=9 job=1 tick=187 r=187 d=193 next=193 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=9 job=1 tick=187 r=187 d=193 next=193 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=9 job=1 tick=187 r=187 d=193 next=193 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=9 job=1 tick=188 r=187 d=193 next=193 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=9 job=1 tick=188 r=187 d=193 next=193 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=9 job=1 tick=193 r=187 d=193 next=193 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=9 job=1 tick=193 r=187 d=193 next=199 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=9 job=1 tick=193 r=187 d=193 next=199 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=9 job=1 tick=193 r=187 d=193 next=199 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=9 job=1 tick=193 r=187 d=193 next=199 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=9 job=1 tick=193 r=187 d=193 next=199 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=9 job=1 tick=193 r=187 d=193 next=199 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=3 cpu=0 pid=9 job=1 tick=194 r=187 d=193 next=199 C=1 rem=0 kr=1 aux=1
+TRACE i=40 type=4 cpu=0 pid=9 job=1 tick=194 r=187 d=193 next=199 C=1 rem=0 kr=1 aux=0
+TRACE i=41 type=7 cpu=0 pid=9 job=1 tick=199 r=187 d=193 next=205 C=1 rem=1 kr=0 aux=0
+TRACE i=42 type=2 cpu=0 pid=9 job=1 tick=199 r=187 d=193 next=205 C=1 rem=1 kr=0 aux=1
+TRACE i=43 type=2 cpu=0 pid=9 job=1 tick=199 r=187 d=193 next=205 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=9 job=1 tick=199 r=187 d=193 next=205 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=9 job=1 tick=199 r=187 d=193 next=205 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=9 job=1 tick=199 r=187 d=193 next=205 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=2 cpu=0 pid=9 job=1 tick=199 r=187 d=193 next=205 C=1 rem=1 kr=0 aux=1
+TRACE i=48 type=3 cpu=0 pid=9 job=1 tick=200 r=187 d=193 next=205 C=1 rem=0 kr=1 aux=1
+TRACE i=49 type=4 cpu=0 pid=9 job=1 tick=200 r=187 d=193 next=205 C=1 rem=0 kr=1 aux=0
+TRACE i=50 type=7 cpu=0 pid=9 job=1 tick=205 r=187 d=193 next=211 C=1 rem=1 kr=0 aux=0
+TRACE i=51 type=2 cpu=0 pid=9 job=1 tick=205 r=187 d=193 next=211 C=1 rem=1 kr=0 aux=1
+TRACE i=52 type=2 cpu=0 pid=9 job=1 tick=205 r=187 d=193 next=211 C=1 rem=1 kr=0 aux=1
+TRACE i=53 type=5 cpu=0 pid=9 job=1 tick=205 r=187 d=193 next=211 C=1 rem=0 kr=1 aux=0
+TRACE i=54 type=1 cpu=0 pid=9 job=2 tick=211 r=211 d=217 next=217 C=1 rem=1 kr=0 aux=0
+TRACE i=55 type=2 cpu=0 pid=9 job=2 tick=211 r=211 d=217 next=217 C=1 rem=1 kr=0 aux=1
+TRACE: events=56 lost=0
+EVENTS: release=10 tick=3 dispatch=29 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+W4 RUN 2: PASS
+
+W4 RUN 3/10
+TRACE i=0 type=1 cpu=0 pid=10 job=1 tick=222 r=222 d=230 next=230 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=10 job=1 tick=222 r=222 d=230 next=230 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=10 job=1 tick=222 r=222 d=230 next=230 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=11 job=1 tick=222 r=222 d=234 next=234 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=11 job=1 tick=222 r=222 d=234 next=234 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=11 job=1 tick=222 r=222 d=234 next=234 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=10 job=2 tick=230 r=230 d=238 next=238 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=10 job=2 tick=230 r=230 d=238 next=238 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=10 job=2 tick=230 r=230 d=238 next=238 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=11 job=2 tick=234 r=234 d=246 next=246 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=11 job=2 tick=234 r=234 d=246 next=246 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=11 job=2 tick=234 r=234 d=246 next=246 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=10 job=3 tick=238 r=238 d=246 next=246 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=10 job=3 tick=238 r=238 d=246 next=246 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=10 job=3 tick=238 r=238 d=246 next=246 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=10 job=4 tick=246 r=246 d=254 next=254 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=11 job=3 tick=246 r=246 d=258 next=258 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=10 job=4 tick=246 r=246 d=254 next=254 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=11 job=3 tick=246 r=246 d=258 next=258 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=11 job=3 tick=246 r=246 d=258 next=258 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=11 job=4 tick=258 r=258 d=270 next=270 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=11 job=4 tick=258 r=258 d=270 next=270 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=12 job=1 tick=258 r=258 d=264 next=264 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=12 job=1 tick=258 r=258 d=264 next=264 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=12 job=1 tick=258 r=258 d=264 next=264 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=12 job=1 tick=258 r=258 d=264 next=264 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=12 job=1 tick=258 r=258 d=264 next=264 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=12 job=1 tick=258 r=258 d=264 next=264 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=12 job=1 tick=258 r=258 d=264 next=264 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=12 job=1 tick=258 r=258 d=264 next=264 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=12 job=1 tick=259 r=258 d=264 next=264 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=12 job=1 tick=259 r=258 d=264 next=264 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=12 job=1 tick=264 r=258 d=264 next=264 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=12 job=1 tick=264 r=258 d=264 next=270 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=12 job=1 tick=264 r=258 d=264 next=270 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=12 job=1 tick=264 r=258 d=264 next=270 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=12 job=1 tick=264 r=258 d=264 next=270 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=12 job=1 tick=264 r=258 d=264 next=270 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=12 job=1 tick=264 r=258 d=264 next=270 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=2 cpu=0 pid=12 job=1 tick=264 r=258 d=264 next=270 C=1 rem=1 kr=0 aux=1
+TRACE i=40 type=3 cpu=0 pid=12 job=1 tick=265 r=258 d=264 next=270 C=1 rem=0 kr=1 aux=1
+TRACE i=41 type=4 cpu=0 pid=12 job=1 tick=265 r=258 d=264 next=270 C=1 rem=0 kr=1 aux=0
+TRACE i=42 type=7 cpu=0 pid=12 job=1 tick=270 r=258 d=264 next=276 C=1 rem=1 kr=0 aux=0
+TRACE i=43 type=2 cpu=0 pid=12 job=1 tick=270 r=258 d=264 next=276 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=12 job=1 tick=270 r=258 d=264 next=276 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=12 job=1 tick=270 r=258 d=264 next=276 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=12 job=1 tick=270 r=258 d=264 next=276 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=2 cpu=0 pid=12 job=1 tick=270 r=258 d=264 next=276 C=1 rem=1 kr=0 aux=1
+TRACE i=48 type=3 cpu=0 pid=12 job=1 tick=271 r=258 d=264 next=276 C=1 rem=0 kr=1 aux=1
+TRACE i=49 type=4 cpu=0 pid=12 job=1 tick=271 r=258 d=264 next=276 C=1 rem=0 kr=1 aux=0
+TRACE i=50 type=7 cpu=0 pid=12 job=1 tick=276 r=258 d=264 next=282 C=1 rem=1 kr=0 aux=0
+TRACE i=51 type=2 cpu=0 pid=12 job=1 tick=276 r=258 d=264 next=282 C=1 rem=1 kr=0 aux=1
+TRACE i=52 type=2 cpu=0 pid=12 job=1 tick=276 r=258 d=264 next=282 C=1 rem=1 kr=0 aux=1
+TRACE i=53 type=5 cpu=0 pid=12 job=1 tick=276 r=258 d=264 next=282 C=1 rem=0 kr=1 aux=0
+TRACE i=54 type=1 cpu=0 pid=12 job=2 tick=282 r=282 d=288 next=288 C=1 rem=1 kr=0 aux=0
+TRACE i=55 type=2 cpu=0 pid=12 job=2 tick=282 r=282 d=288 next=288 C=1 rem=1 kr=0 aux=1
+TRACE: events=56 lost=0
+EVENTS: release=10 tick=3 dispatch=29 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+W4 RUN 3: PASS
+
+W4 RUN 4/10
+TRACE i=0 type=1 cpu=0 pid=13 job=1 tick=293 r=293 d=301 next=301 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=13 job=1 tick=293 r=293 d=301 next=301 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=13 job=1 tick=293 r=293 d=301 next=301 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=14 job=1 tick=293 r=293 d=305 next=305 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=14 job=1 tick=293 r=293 d=305 next=305 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=14 job=1 tick=293 r=293 d=305 next=305 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=13 job=2 tick=301 r=301 d=309 next=309 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=13 job=2 tick=301 r=301 d=309 next=309 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=13 job=2 tick=301 r=301 d=309 next=309 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=14 job=2 tick=305 r=305 d=317 next=317 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=14 job=2 tick=305 r=305 d=317 next=317 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=14 job=2 tick=305 r=305 d=317 next=317 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=13 job=3 tick=309 r=309 d=317 next=317 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=13 job=3 tick=309 r=309 d=317 next=317 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=13 job=3 tick=309 r=309 d=317 next=317 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=13 job=4 tick=317 r=317 d=325 next=325 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=14 job=3 tick=317 r=317 d=329 next=329 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=13 job=4 tick=317 r=317 d=325 next=325 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=14 job=3 tick=317 r=317 d=329 next=329 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=14 job=3 tick=317 r=317 d=329 next=329 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=14 job=4 tick=329 r=329 d=341 next=341 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=14 job=4 tick=329 r=329 d=341 next=341 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=15 job=1 tick=329 r=329 d=335 next=335 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=15 job=1 tick=329 r=329 d=335 next=335 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=15 job=1 tick=329 r=329 d=335 next=335 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=15 job=1 tick=329 r=329 d=335 next=335 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=15 job=1 tick=329 r=329 d=335 next=335 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=15 job=1 tick=329 r=329 d=335 next=335 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=15 job=1 tick=329 r=329 d=335 next=335 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=15 job=1 tick=329 r=329 d=335 next=335 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=15 job=1 tick=330 r=329 d=335 next=335 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=15 job=1 tick=330 r=329 d=335 next=335 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=15 job=1 tick=335 r=329 d=335 next=335 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=15 job=1 tick=335 r=329 d=335 next=341 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=15 job=1 tick=335 r=329 d=335 next=341 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=15 job=1 tick=335 r=329 d=335 next=341 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=15 job=1 tick=335 r=329 d=335 next=341 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=15 job=1 tick=335 r=329 d=335 next=341 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=15 job=1 tick=335 r=329 d=335 next=341 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=2 cpu=0 pid=15 job=1 tick=335 r=329 d=335 next=341 C=1 rem=1 kr=0 aux=1
+TRACE i=40 type=3 cpu=0 pid=15 job=1 tick=336 r=329 d=335 next=341 C=1 rem=0 kr=1 aux=1
+TRACE i=41 type=4 cpu=0 pid=15 job=1 tick=336 r=329 d=335 next=341 C=1 rem=0 kr=1 aux=0
+TRACE i=42 type=7 cpu=0 pid=15 job=1 tick=341 r=329 d=335 next=347 C=1 rem=1 kr=0 aux=0
+TRACE i=43 type=2 cpu=0 pid=15 job=1 tick=341 r=329 d=335 next=347 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=15 job=1 tick=341 r=329 d=335 next=347 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=15 job=1 tick=341 r=329 d=335 next=347 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=15 job=1 tick=341 r=329 d=335 next=347 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=2 cpu=0 pid=15 job=1 tick=341 r=329 d=335 next=347 C=1 rem=1 kr=0 aux=1
+TRACE i=48 type=3 cpu=0 pid=15 job=1 tick=342 r=329 d=335 next=347 C=1 rem=0 kr=1 aux=1
+TRACE i=49 type=4 cpu=0 pid=15 job=1 tick=342 r=329 d=335 next=347 C=1 rem=0 kr=1 aux=0
+TRACE i=50 type=7 cpu=0 pid=15 job=1 tick=347 r=329 d=335 next=353 C=1 rem=1 kr=0 aux=0
+TRACE i=51 type=2 cpu=0 pid=15 job=1 tick=347 r=329 d=335 next=353 C=1 rem=1 kr=0 aux=1
+TRACE i=52 type=2 cpu=0 pid=15 job=1 tick=347 r=329 d=335 next=353 C=1 rem=1 kr=0 aux=1
+TRACE i=53 type=5 cpu=0 pid=15 job=1 tick=347 r=329 d=335 next=353 C=1 rem=0 kr=1 aux=0
+TRACE i=54 type=1 cpu=0 pid=15 job=2 tick=353 r=353 d=359 next=359 C=1 rem=1 kr=0 aux=0
+TRACE i=55 type=2 cpu=0 pid=15 job=2 tick=353 r=353 d=359 next=359 C=1 rem=1 kr=0 aux=1
+TRACE: events=56 lost=0
+EVENTS: release=10 tick=3 dispatch=29 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+W4 RUN 4: PASS
+
+W4 RUN 5/10
+TRACE i=0 type=1 cpu=0 pid=16 job=1 tick=363 r=363 d=371 next=371 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=16 job=1 tick=363 r=363 d=371 next=371 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=16 job=1 tick=363 r=363 d=371 next=371 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=17 job=1 tick=363 r=363 d=375 next=375 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=17 job=1 tick=363 r=363 d=375 next=375 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=17 job=1 tick=363 r=363 d=375 next=375 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=16 job=2 tick=371 r=371 d=379 next=379 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=16 job=2 tick=371 r=371 d=379 next=379 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=16 job=2 tick=371 r=371 d=379 next=379 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=17 job=2 tick=375 r=375 d=387 next=387 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=17 job=2 tick=375 r=375 d=387 next=387 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=17 job=2 tick=375 r=375 d=387 next=387 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=16 job=3 tick=379 r=379 d=387 next=387 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=16 job=3 tick=379 r=379 d=387 next=387 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=16 job=3 tick=379 r=379 d=387 next=387 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=16 job=4 tick=387 r=387 d=395 next=395 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=17 job=3 tick=387 r=387 d=399 next=399 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=16 job=4 tick=387 r=387 d=395 next=395 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=17 job=3 tick=387 r=387 d=399 next=399 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=17 job=3 tick=387 r=387 d=399 next=399 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=17 job=4 tick=399 r=399 d=411 next=411 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=17 job=4 tick=399 r=399 d=411 next=411 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=18 job=1 tick=399 r=399 d=405 next=405 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=18 job=1 tick=399 r=399 d=405 next=405 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=18 job=1 tick=399 r=399 d=405 next=405 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=18 job=1 tick=399 r=399 d=405 next=405 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=18 job=1 tick=399 r=399 d=405 next=405 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=18 job=1 tick=399 r=399 d=405 next=405 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=18 job=1 tick=399 r=399 d=405 next=405 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=18 job=1 tick=399 r=399 d=405 next=405 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=18 job=1 tick=400 r=399 d=405 next=405 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=18 job=1 tick=400 r=399 d=405 next=405 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=18 job=1 tick=405 r=399 d=405 next=405 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=18 job=1 tick=405 r=399 d=405 next=411 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=18 job=1 tick=405 r=399 d=405 next=411 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=18 job=1 tick=405 r=399 d=405 next=411 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=18 job=1 tick=405 r=399 d=405 next=411 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=18 job=1 tick=405 r=399 d=405 next=411 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=18 job=1 tick=405 r=399 d=405 next=411 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=2 cpu=0 pid=18 job=1 tick=405 r=399 d=405 next=411 C=1 rem=1 kr=0 aux=1
+TRACE i=40 type=3 cpu=0 pid=18 job=1 tick=406 r=399 d=405 next=411 C=1 rem=0 kr=1 aux=1
+TRACE i=41 type=4 cpu=0 pid=18 job=1 tick=406 r=399 d=405 next=411 C=1 rem=0 kr=1 aux=0
+TRACE i=42 type=7 cpu=0 pid=18 job=1 tick=411 r=399 d=405 next=417 C=1 rem=1 kr=0 aux=0
+TRACE i=43 type=2 cpu=0 pid=18 job=1 tick=411 r=399 d=405 next=417 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=18 job=1 tick=411 r=399 d=405 next=417 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=18 job=1 tick=411 r=399 d=405 next=417 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=18 job=1 tick=411 r=399 d=405 next=417 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=2 cpu=0 pid=18 job=1 tick=411 r=399 d=405 next=417 C=1 rem=1 kr=0 aux=1
+TRACE i=48 type=2 cpu=0 pid=18 job=1 tick=411 r=399 d=405 next=417 C=1 rem=1 kr=0 aux=1
+TRACE i=49 type=3 cpu=0 pid=18 job=1 tick=412 r=399 d=405 next=417 C=1 rem=0 kr=1 aux=1
+TRACE i=50 type=4 cpu=0 pid=18 job=1 tick=412 r=399 d=405 next=417 C=1 rem=0 kr=1 aux=0
+TRACE i=51 type=7 cpu=0 pid=18 job=1 tick=417 r=399 d=405 next=423 C=1 rem=1 kr=0 aux=0
+TRACE i=52 type=2 cpu=0 pid=18 job=1 tick=417 r=399 d=405 next=423 C=1 rem=1 kr=0 aux=1
+TRACE i=53 type=2 cpu=0 pid=18 job=1 tick=417 r=399 d=405 next=423 C=1 rem=1 kr=0 aux=1
+TRACE i=54 type=5 cpu=0 pid=18 job=1 tick=417 r=399 d=405 next=423 C=1 rem=0 kr=1 aux=0
+TRACE i=55 type=1 cpu=0 pid=18 job=2 tick=423 r=423 d=429 next=429 C=1 rem=1 kr=0 aux=0
+TRACE i=56 type=2 cpu=0 pid=18 job=2 tick=423 r=423 d=429 next=429 C=1 rem=1 kr=0 aux=1
+TRACE: events=57 lost=0
+EVENTS: release=10 tick=3 dispatch=30 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+W4 RUN 5: PASS
+
+W4 RUN 6/10
+TRACE i=0 type=1 cpu=0 pid=19 job=1 tick=432 r=432 d=440 next=440 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=19 job=1 tick=432 r=432 d=440 next=440 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=19 job=1 tick=432 r=432 d=440 next=440 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=20 job=1 tick=432 r=432 d=444 next=444 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=20 job=1 tick=432 r=432 d=444 next=444 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=20 job=1 tick=432 r=432 d=444 next=444 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=19 job=2 tick=440 r=440 d=448 next=448 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=19 job=2 tick=440 r=440 d=448 next=448 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=19 job=2 tick=440 r=440 d=448 next=448 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=20 job=2 tick=444 r=444 d=456 next=456 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=20 job=2 tick=444 r=444 d=456 next=456 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=20 job=2 tick=444 r=444 d=456 next=456 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=19 job=3 tick=448 r=448 d=456 next=456 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=19 job=3 tick=448 r=448 d=456 next=456 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=19 job=3 tick=448 r=448 d=456 next=456 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=19 job=4 tick=456 r=456 d=464 next=464 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=20 job=3 tick=456 r=456 d=468 next=468 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=19 job=4 tick=456 r=456 d=464 next=464 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=20 job=3 tick=456 r=456 d=468 next=468 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=20 job=3 tick=456 r=456 d=468 next=468 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=20 job=4 tick=468 r=468 d=480 next=480 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=20 job=4 tick=468 r=468 d=480 next=480 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=21 job=1 tick=468 r=468 d=474 next=474 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=21 job=1 tick=468 r=468 d=474 next=474 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=21 job=1 tick=468 r=468 d=474 next=474 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=21 job=1 tick=468 r=468 d=474 next=474 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=21 job=1 tick=468 r=468 d=474 next=474 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=21 job=1 tick=468 r=468 d=474 next=474 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=21 job=1 tick=468 r=468 d=474 next=474 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=21 job=1 tick=468 r=468 d=474 next=474 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=21 job=1 tick=469 r=468 d=474 next=474 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=21 job=1 tick=469 r=468 d=474 next=474 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=21 job=1 tick=474 r=468 d=474 next=474 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=21 job=1 tick=474 r=468 d=474 next=480 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=21 job=1 tick=474 r=468 d=474 next=480 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=21 job=1 tick=474 r=468 d=474 next=480 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=21 job=1 tick=474 r=468 d=474 next=480 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=21 job=1 tick=474 r=468 d=474 next=480 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=21 job=1 tick=474 r=468 d=474 next=480 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=2 cpu=0 pid=21 job=1 tick=474 r=468 d=474 next=480 C=1 rem=1 kr=0 aux=1
+TRACE i=40 type=3 cpu=0 pid=21 job=1 tick=475 r=468 d=474 next=480 C=1 rem=0 kr=1 aux=1
+TRACE i=41 type=4 cpu=0 pid=21 job=1 tick=475 r=468 d=474 next=480 C=1 rem=0 kr=1 aux=0
+TRACE i=42 type=7 cpu=0 pid=21 job=1 tick=480 r=468 d=474 next=486 C=1 rem=1 kr=0 aux=0
+TRACE i=43 type=2 cpu=0 pid=21 job=1 tick=480 r=468 d=474 next=486 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=21 job=1 tick=480 r=468 d=474 next=486 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=21 job=1 tick=480 r=468 d=474 next=486 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=21 job=1 tick=480 r=468 d=474 next=486 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=2 cpu=0 pid=21 job=1 tick=480 r=468 d=474 next=486 C=1 rem=1 kr=0 aux=1
+TRACE i=48 type=3 cpu=0 pid=21 job=1 tick=481 r=468 d=474 next=486 C=1 rem=0 kr=1 aux=1
+TRACE i=49 type=4 cpu=0 pid=21 job=1 tick=481 r=468 d=474 next=486 C=1 rem=0 kr=1 aux=0
+TRACE i=50 type=7 cpu=0 pid=21 job=1 tick=486 r=468 d=474 next=492 C=1 rem=1 kr=0 aux=0
+TRACE i=51 type=2 cpu=0 pid=21 job=1 tick=486 r=468 d=474 next=492 C=1 rem=1 kr=0 aux=1
+TRACE i=52 type=2 cpu=0 pid=21 job=1 tick=486 r=468 d=474 next=492 C=1 rem=1 kr=0 aux=1
+TRACE i=53 type=5 cpu=0 pid=21 job=1 tick=486 r=468 d=474 next=492 C=1 rem=0 kr=1 aux=0
+TRACE i=54 type=1 cpu=0 pid=21 job=2 tick=492 r=492 d=498 next=498 C=1 rem=1 kr=0 aux=0
+TRACE i=55 type=2 cpu=0 pid=21 job=2 tick=492 r=492 d=498 next=498 C=1 rem=1 kr=0 aux=1
+TRACE: events=56 lost=0
+EVENTS: release=10 tick=3 dispatch=29 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+W4 RUN 6: PASS
+
+W4 RUN 7/10
+TRACE i=0 type=1 cpu=0 pid=22 job=1 tick=498 r=498 d=506 next=506 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=22 job=1 tick=498 r=498 d=506 next=506 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=22 job=1 tick=498 r=498 d=506 next=506 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=23 job=1 tick=498 r=498 d=510 next=510 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=23 job=1 tick=498 r=498 d=510 next=510 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=23 job=1 tick=498 r=498 d=510 next=510 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=22 job=2 tick=506 r=506 d=514 next=514 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=22 job=2 tick=506 r=506 d=514 next=514 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=22 job=2 tick=506 r=506 d=514 next=514 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=23 job=2 tick=510 r=510 d=522 next=522 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=23 job=2 tick=510 r=510 d=522 next=522 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=23 job=2 tick=510 r=510 d=522 next=522 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=22 job=3 tick=514 r=514 d=522 next=522 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=22 job=3 tick=514 r=514 d=522 next=522 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=22 job=3 tick=514 r=514 d=522 next=522 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=22 job=4 tick=522 r=522 d=530 next=530 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=23 job=3 tick=522 r=522 d=534 next=534 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=22 job=4 tick=522 r=522 d=530 next=530 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=23 job=3 tick=522 r=522 d=534 next=534 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=23 job=3 tick=522 r=522 d=534 next=534 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=23 job=4 tick=534 r=534 d=546 next=546 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=23 job=4 tick=534 r=534 d=546 next=546 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=24 job=1 tick=534 r=534 d=540 next=540 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=24 job=1 tick=534 r=534 d=540 next=540 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=24 job=1 tick=534 r=534 d=540 next=540 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=24 job=1 tick=534 r=534 d=540 next=540 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=24 job=1 tick=534 r=534 d=540 next=540 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=24 job=1 tick=534 r=534 d=540 next=540 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=24 job=1 tick=534 r=534 d=540 next=540 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=24 job=1 tick=534 r=534 d=540 next=540 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=24 job=1 tick=535 r=534 d=540 next=540 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=24 job=1 tick=535 r=534 d=540 next=540 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=24 job=1 tick=540 r=534 d=540 next=540 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=24 job=1 tick=540 r=534 d=540 next=546 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=24 job=1 tick=540 r=534 d=540 next=546 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=24 job=1 tick=540 r=534 d=540 next=546 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=24 job=1 tick=540 r=534 d=540 next=546 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=24 job=1 tick=540 r=534 d=540 next=546 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=24 job=1 tick=540 r=534 d=540 next=546 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=3 cpu=0 pid=24 job=1 tick=541 r=534 d=540 next=546 C=1 rem=0 kr=1 aux=1
+TRACE i=40 type=4 cpu=0 pid=24 job=1 tick=541 r=534 d=540 next=546 C=1 rem=0 kr=1 aux=0
+TRACE i=41 type=7 cpu=0 pid=24 job=1 tick=546 r=534 d=540 next=552 C=1 rem=1 kr=0 aux=0
+TRACE i=42 type=2 cpu=0 pid=24 job=1 tick=546 r=534 d=540 next=552 C=1 rem=1 kr=0 aux=1
+TRACE i=43 type=2 cpu=0 pid=24 job=1 tick=546 r=534 d=540 next=552 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=24 job=1 tick=546 r=534 d=540 next=552 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=24 job=1 tick=546 r=534 d=540 next=552 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=24 job=1 tick=546 r=534 d=540 next=552 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=3 cpu=0 pid=24 job=1 tick=547 r=534 d=540 next=552 C=1 rem=0 kr=1 aux=1
+TRACE i=48 type=4 cpu=0 pid=24 job=1 tick=547 r=534 d=540 next=552 C=1 rem=0 kr=1 aux=0
+TRACE i=49 type=7 cpu=0 pid=24 job=1 tick=552 r=534 d=540 next=558 C=1 rem=1 kr=0 aux=0
+TRACE i=50 type=2 cpu=0 pid=24 job=1 tick=552 r=534 d=540 next=558 C=1 rem=1 kr=0 aux=1
+TRACE i=51 type=2 cpu=0 pid=24 job=1 tick=552 r=534 d=540 next=558 C=1 rem=1 kr=0 aux=1
+TRACE i=52 type=5 cpu=0 pid=24 job=1 tick=552 r=534 d=540 next=558 C=1 rem=0 kr=1 aux=0
+TRACE i=53 type=1 cpu=0 pid=24 job=2 tick=558 r=558 d=564 next=564 C=1 rem=1 kr=0 aux=0
+TRACE i=54 type=2 cpu=0 pid=24 job=2 tick=558 r=558 d=564 next=564 C=1 rem=1 kr=0 aux=1
+TRACE: events=55 lost=0
+EVENTS: release=10 tick=3 dispatch=28 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+W4 RUN 7: PASS
+
+W4 RUN 8/10
+TRACE i=0 type=1 cpu=0 pid=25 job=1 tick=569 r=569 d=577 next=577 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=25 job=1 tick=569 r=569 d=577 next=577 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=25 job=1 tick=569 r=569 d=577 next=577 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=26 job=1 tick=569 r=569 d=581 next=581 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=26 job=1 tick=569 r=569 d=581 next=581 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=26 job=1 tick=569 r=569 d=581 next=581 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=25 job=2 tick=577 r=577 d=585 next=585 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=25 job=2 tick=577 r=577 d=585 next=585 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=25 job=2 tick=577 r=577 d=585 next=585 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=26 job=2 tick=581 r=581 d=593 next=593 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=26 job=2 tick=581 r=581 d=593 next=593 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=26 job=2 tick=581 r=581 d=593 next=593 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=25 job=3 tick=585 r=585 d=593 next=593 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=25 job=3 tick=585 r=585 d=593 next=593 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=25 job=3 tick=585 r=585 d=593 next=593 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=25 job=4 tick=593 r=593 d=601 next=601 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=26 job=3 tick=593 r=593 d=605 next=605 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=25 job=4 tick=593 r=593 d=601 next=601 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=26 job=3 tick=593 r=593 d=605 next=605 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=26 job=3 tick=593 r=593 d=605 next=605 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=26 job=4 tick=605 r=605 d=617 next=617 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=26 job=4 tick=605 r=605 d=617 next=617 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=27 job=1 tick=605 r=605 d=611 next=611 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=27 job=1 tick=605 r=605 d=611 next=611 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=27 job=1 tick=605 r=605 d=611 next=611 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=27 job=1 tick=605 r=605 d=611 next=611 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=27 job=1 tick=605 r=605 d=611 next=611 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=27 job=1 tick=605 r=605 d=611 next=611 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=27 job=1 tick=605 r=605 d=611 next=611 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=27 job=1 tick=605 r=605 d=611 next=611 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=27 job=1 tick=606 r=605 d=611 next=611 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=27 job=1 tick=606 r=605 d=611 next=611 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=27 job=1 tick=611 r=605 d=611 next=611 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=27 job=1 tick=611 r=605 d=611 next=617 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=27 job=1 tick=611 r=605 d=611 next=617 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=27 job=1 tick=611 r=605 d=611 next=617 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=27 job=1 tick=611 r=605 d=611 next=617 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=27 job=1 tick=611 r=605 d=611 next=617 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=27 job=1 tick=611 r=605 d=611 next=617 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=2 cpu=0 pid=27 job=1 tick=611 r=605 d=611 next=617 C=1 rem=1 kr=0 aux=1
+TRACE i=40 type=3 cpu=0 pid=27 job=1 tick=612 r=605 d=611 next=617 C=1 rem=0 kr=1 aux=1
+TRACE i=41 type=4 cpu=0 pid=27 job=1 tick=612 r=605 d=611 next=617 C=1 rem=0 kr=1 aux=0
+TRACE i=42 type=7 cpu=0 pid=27 job=1 tick=617 r=605 d=611 next=623 C=1 rem=1 kr=0 aux=0
+TRACE i=43 type=2 cpu=0 pid=27 job=1 tick=617 r=605 d=611 next=623 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=27 job=1 tick=617 r=605 d=611 next=623 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=27 job=1 tick=617 r=605 d=611 next=623 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=27 job=1 tick=617 r=605 d=611 next=623 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=2 cpu=0 pid=27 job=1 tick=617 r=605 d=611 next=623 C=1 rem=1 kr=0 aux=1
+TRACE i=48 type=3 cpu=0 pid=27 job=1 tick=618 r=605 d=611 next=623 C=1 rem=0 kr=1 aux=1
+TRACE i=49 type=4 cpu=0 pid=27 job=1 tick=618 r=605 d=611 next=623 C=1 rem=0 kr=1 aux=0
+TRACE i=50 type=7 cpu=0 pid=27 job=1 tick=623 r=605 d=611 next=629 C=1 rem=1 kr=0 aux=0
+TRACE i=51 type=2 cpu=0 pid=27 job=1 tick=623 r=605 d=611 next=629 C=1 rem=1 kr=0 aux=1
+TRACE i=52 type=2 cpu=0 pid=27 job=1 tick=623 r=605 d=611 next=629 C=1 rem=1 kr=0 aux=1
+TRACE i=53 type=5 cpu=0 pid=27 job=1 tick=623 r=605 d=611 next=629 C=1 rem=0 kr=1 aux=0
+TRACE i=54 type=1 cpu=0 pid=27 job=2 tick=629 r=629 d=635 next=635 C=1 rem=1 kr=0 aux=0
+TRACE i=55 type=2 cpu=0 pid=27 job=2 tick=629 r=629 d=635 next=635 C=1 rem=1 kr=0 aux=1
+TRACE: events=56 lost=0
+EVENTS: release=10 tick=3 dispatch=29 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+W4 RUN 8: PASS
+
+W4 RUN 9/10
+TRACE i=0 type=1 cpu=0 pid=28 job=1 tick=639 r=639 d=647 next=647 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=28 job=1 tick=639 r=639 d=647 next=647 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=28 job=1 tick=639 r=639 d=647 next=647 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=29 job=1 tick=639 r=639 d=651 next=651 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=29 job=1 tick=639 r=639 d=651 next=651 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=29 job=1 tick=639 r=639 d=651 next=651 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=28 job=2 tick=647 r=647 d=655 next=655 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=28 job=2 tick=647 r=647 d=655 next=655 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=28 job=2 tick=647 r=647 d=655 next=655 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=29 job=2 tick=651 r=651 d=663 next=663 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=29 job=2 tick=651 r=651 d=663 next=663 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=29 job=2 tick=651 r=651 d=663 next=663 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=28 job=3 tick=655 r=655 d=663 next=663 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=28 job=3 tick=655 r=655 d=663 next=663 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=28 job=3 tick=655 r=655 d=663 next=663 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=28 job=4 tick=663 r=663 d=671 next=671 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=29 job=3 tick=663 r=663 d=675 next=675 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=28 job=4 tick=663 r=663 d=671 next=671 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=29 job=3 tick=663 r=663 d=675 next=675 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=29 job=3 tick=663 r=663 d=675 next=675 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=29 job=4 tick=675 r=675 d=687 next=687 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=29 job=4 tick=675 r=675 d=687 next=687 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=30 job=1 tick=675 r=675 d=681 next=681 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=30 job=1 tick=675 r=675 d=681 next=681 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=30 job=1 tick=675 r=675 d=681 next=681 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=30 job=1 tick=675 r=675 d=681 next=681 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=30 job=1 tick=675 r=675 d=681 next=681 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=30 job=1 tick=675 r=675 d=681 next=681 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=30 job=1 tick=675 r=675 d=681 next=681 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=30 job=1 tick=675 r=675 d=681 next=681 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=30 job=1 tick=676 r=675 d=681 next=681 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=30 job=1 tick=676 r=675 d=681 next=681 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=30 job=1 tick=681 r=675 d=681 next=681 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=30 job=1 tick=681 r=675 d=681 next=687 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=30 job=1 tick=681 r=675 d=681 next=687 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=30 job=1 tick=681 r=675 d=681 next=687 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=30 job=1 tick=681 r=675 d=681 next=687 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=30 job=1 tick=681 r=675 d=681 next=687 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=30 job=1 tick=681 r=675 d=681 next=687 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=2 cpu=0 pid=30 job=1 tick=681 r=675 d=681 next=687 C=1 rem=1 kr=0 aux=1
+TRACE i=40 type=3 cpu=0 pid=30 job=1 tick=682 r=675 d=681 next=687 C=1 rem=0 kr=1 aux=1
+TRACE i=41 type=4 cpu=0 pid=30 job=1 tick=682 r=675 d=681 next=687 C=1 rem=0 kr=1 aux=0
+TRACE i=42 type=7 cpu=0 pid=30 job=1 tick=687 r=675 d=681 next=693 C=1 rem=1 kr=0 aux=0
+TRACE i=43 type=2 cpu=0 pid=30 job=1 tick=687 r=675 d=681 next=693 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=30 job=1 tick=687 r=675 d=681 next=693 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=30 job=1 tick=687 r=675 d=681 next=693 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=30 job=1 tick=687 r=675 d=681 next=693 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=2 cpu=0 pid=30 job=1 tick=687 r=675 d=681 next=693 C=1 rem=1 kr=0 aux=1
+TRACE i=48 type=3 cpu=0 pid=30 job=1 tick=688 r=675 d=681 next=693 C=1 rem=0 kr=1 aux=1
+TRACE i=49 type=4 cpu=0 pid=30 job=1 tick=688 r=675 d=681 next=693 C=1 rem=0 kr=1 aux=0
+TRACE i=50 type=7 cpu=0 pid=30 job=1 tick=693 r=675 d=681 next=699 C=1 rem=1 kr=0 aux=0
+TRACE i=51 type=2 cpu=0 pid=30 job=1 tick=693 r=675 d=681 next=699 C=1 rem=1 kr=0 aux=1
+TRACE i=52 type=2 cpu=0 pid=30 job=1 tick=693 r=675 d=681 next=699 C=1 rem=1 kr=0 aux=1
+TRACE i=53 type=5 cpu=0 pid=30 job=1 tick=693 r=675 d=681 next=699 C=1 rem=0 kr=1 aux=0
+TRACE i=54 type=1 cpu=0 pid=30 job=2 tick=699 r=699 d=705 next=705 C=1 rem=1 kr=0 aux=0
+TRACE i=55 type=2 cpu=0 pid=30 job=2 tick=699 r=699 d=705 next=705 C=1 rem=1 kr=0 aux=1
+TRACE: events=56 lost=0
+EVENTS: release=10 tick=3 dispatch=29 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+W4 RUN 9: PASS
+
+W4 RUN 10/10
+TRACE i=0 type=1 cpu=0 pid=31 job=1 tick=709 r=709 d=717 next=717 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=31 job=1 tick=709 r=709 d=717 next=717 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=31 job=1 tick=709 r=709 d=717 next=717 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=32 job=1 tick=709 r=709 d=721 next=721 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=32 job=1 tick=709 r=709 d=721 next=721 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=32 job=1 tick=709 r=709 d=721 next=721 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=31 job=2 tick=717 r=717 d=725 next=725 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=31 job=2 tick=717 r=717 d=725 next=725 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=31 job=2 tick=717 r=717 d=725 next=725 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=32 job=2 tick=721 r=721 d=733 next=733 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=32 job=2 tick=721 r=721 d=733 next=733 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=32 job=2 tick=721 r=721 d=733 next=733 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=31 job=3 tick=725 r=725 d=733 next=733 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=31 job=3 tick=725 r=725 d=733 next=733 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=31 job=3 tick=725 r=725 d=733 next=733 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=31 job=4 tick=733 r=733 d=741 next=741 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=32 job=3 tick=733 r=733 d=745 next=745 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=31 job=4 tick=733 r=733 d=741 next=741 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=32 job=3 tick=733 r=733 d=745 next=745 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=32 job=3 tick=733 r=733 d=745 next=745 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=32 job=4 tick=745 r=745 d=757 next=757 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=32 job=4 tick=745 r=745 d=757 next=757 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=33 job=1 tick=745 r=745 d=751 next=751 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=33 job=1 tick=745 r=745 d=751 next=751 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=33 job=1 tick=745 r=745 d=751 next=751 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=33 job=1 tick=745 r=745 d=751 next=751 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=33 job=1 tick=745 r=745 d=751 next=751 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=33 job=1 tick=745 r=745 d=751 next=751 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=33 job=1 tick=745 r=745 d=751 next=751 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=33 job=1 tick=745 r=745 d=751 next=751 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=33 job=1 tick=746 r=745 d=751 next=751 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=33 job=1 tick=746 r=745 d=751 next=751 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=33 job=1 tick=751 r=745 d=751 next=751 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=33 job=1 tick=751 r=745 d=751 next=757 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=33 job=1 tick=751 r=745 d=751 next=757 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=33 job=1 tick=751 r=745 d=751 next=757 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=33 job=1 tick=751 r=745 d=751 next=757 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=33 job=1 tick=751 r=745 d=751 next=757 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=33 job=1 tick=751 r=745 d=751 next=757 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=2 cpu=0 pid=33 job=1 tick=751 r=745 d=751 next=757 C=1 rem=1 kr=0 aux=1
+TRACE i=40 type=3 cpu=0 pid=33 job=1 tick=752 r=745 d=751 next=757 C=1 rem=0 kr=1 aux=1
+TRACE i=41 type=4 cpu=0 pid=33 job=1 tick=752 r=745 d=751 next=757 C=1 rem=0 kr=1 aux=0
+TRACE i=42 type=7 cpu=0 pid=33 job=1 tick=757 r=745 d=751 next=763 C=1 rem=1 kr=0 aux=0
+TRACE i=43 type=2 cpu=0 pid=33 job=1 tick=757 r=745 d=751 next=763 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=33 job=1 tick=757 r=745 d=751 next=763 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=33 job=1 tick=757 r=745 d=751 next=763 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=33 job=1 tick=757 r=745 d=751 next=763 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=2 cpu=0 pid=33 job=1 tick=757 r=745 d=751 next=763 C=1 rem=1 kr=0 aux=1
+TRACE i=48 type=2 cpu=0 pid=33 job=1 tick=757 r=745 d=751 next=763 C=1 rem=1 kr=0 aux=1
+TRACE i=49 type=3 cpu=0 pid=33 job=1 tick=758 r=745 d=751 next=763 C=1 rem=0 kr=1 aux=1
+TRACE i=50 type=4 cpu=0 pid=33 job=1 tick=758 r=745 d=751 next=763 C=1 rem=0 kr=1 aux=0
+TRACE i=51 type=7 cpu=0 pid=33 job=1 tick=763 r=745 d=751 next=769 C=1 rem=1 kr=0 aux=0
+TRACE i=52 type=2 cpu=0 pid=33 job=1 tick=763 r=745 d=751 next=769 C=1 rem=1 kr=0 aux=1
+TRACE i=53 type=2 cpu=0 pid=33 job=1 tick=763 r=745 d=751 next=769 C=1 rem=1 kr=0 aux=1
+TRACE i=54 type=5 cpu=0 pid=33 job=1 tick=763 r=745 d=751 next=769 C=1 rem=0 kr=1 aux=0
+TRACE i=55 type=1 cpu=0 pid=33 job=2 tick=769 r=769 d=775 next=775 C=1 rem=1 kr=0 aux=0
+TRACE i=56 type=2 cpu=0 pid=33 job=2 tick=769 r=769 d=775 next=775 C=1 rem=1 kr=0 aux=1
+TRACE: events=57 lost=0
+EVENTS: release=10 tick=3 dispatch=30 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+W4 RUN 10: PASS
+
+W4 RESULT: 10/10 PASS
+$ .              1 1 1024
+..             1 1 1024
+README         2 2 2441
+cat            2 3 37008
+echo           2 4 35856
+forktest       2 5 17672
+grep           2 6 40448
+init           2 7 36312
+kill           2 8 35800
+ln             2 9 35592
+ls             2 10 39136
+mkdir          2 11 35848
+rm             2 12 35832
+sh             2 13 58864
+stressfs       2 14 36712
+usertests      2 15 202728
+grind          2 16 52272
+wc             2 17 37992
+zombie         2 18 35200
+logstress      2 19 37784
+forphan        2 20 36592
+dorphan        2 21 36040
+sync           2 22 35256
+rttest         2 23 47984
+rtstress       2 24 36576
+rt_job_smoke   2 25 37576
+rt_w4test      2 26 52408
+console        3 27 0
+$ 
+thanh-cpus4-shell-ok
+$ QEMU: Terminated
+
+Script done on 2026-11-15 11:34:05+07:00 [COMMAND_EXIT_CODE="0"]

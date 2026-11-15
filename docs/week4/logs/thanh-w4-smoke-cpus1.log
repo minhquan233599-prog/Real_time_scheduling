@@ -1,0 +1,26 @@
+Script started on 2026-11-15 11:10:56+07:00 [COMMAND="make qemu CPUS=1" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="141" LINES="26"]
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 1 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+init: starting sh
+$ rt+ _w4test
+
+W4 RUN 1/1
+TRACE: events=52 lost=0
+EVENTS: release=10 tick=3 dispatch=29 complete=7
+EVENTS: budget0=3 miss=0 refill=0
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: FAIL
+CHECK dispatch eligibility and CPU: FAIL
+CHECK completion: PASS
+CHECK deadline miss and carry-over: FAIL
+W4 RUN 1: FAIL
+
+W4 RESULT: 0/1 FAIL
+$ QEMU: Terminated
+
+
+Script done on 2026-11-15 11:14:25+07:00 [COMMAND_EXIT_CODE="0"]

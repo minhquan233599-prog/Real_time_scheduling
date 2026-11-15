@@ -1,0 +1,28 @@
+Script started on 2026-11-15 14:26:42+07:00 [COMMAND="make qemu CPUS=4" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="141" LINES="12"]
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 4 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 3 starting
+hart 1 starting
+hart 2 starting
+init: starting sh
+$ rt_edftest
+
+EDF RUN 1/1
+ORDER tick=82 A=4 dA=90 B=5 dB=94 expected=4 actual=4 [PASS]
+ORDER TRACE: events=28 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=102 A=6 dA=110 B=7 dB=110 expected=6 actual=6 [PASS]
+ORDER tick=110 A=6 dA=118 B=7 dB=118 expected=6 actual=6 [PASS]
+ORDER tick=118 A=6 dA=126 B=7 dB=126 expected=6 actual=6 [PASS]
+ORDER TRACE: events=25 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+FALLBACK: observations=20 lost=0
+CHECK fallback: PASS
+EDF RUN 1: PASS
+
+EDF RESULT: 1/1 PASS
+$ QEMU: Terminated
+
+Script done on 2026-11-15 14:27:05+07:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,91 @@
+Script started on 2026-11-15 13:34:39+07:00 [COMMAND="make qemu CPUS=1" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="141" LINES="8"]
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 1 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+init: starting sh
+$ rt_w4test
+
+W4 RUN 1/1
+TRACE i=0 type=1 cpu=0 pid=4 job=1 tick=86 r=86 d=94 next=94 C=2 rem=2 kr=1 aux=0
+TRACE i=1 type=2 cpu=0 pid=4 job=1 tick=86 r=86 d=94 next=94 C=2 rem=2 kr=0 aux=1
+TRACE i=2 type=5 cpu=0 pid=4 job=1 tick=86 r=86 d=94 next=94 C=2 rem=0 kr=1 aux=0
+TRACE i=3 type=1 cpu=0 pid=5 job=1 tick=86 r=86 d=98 next=98 C=2 rem=2 kr=1 aux=0
+TRACE i=4 type=2 cpu=0 pid=5 job=1 tick=86 r=86 d=98 next=98 C=2 rem=2 kr=0 aux=1
+TRACE i=5 type=5 cpu=0 pid=5 job=1 tick=86 r=86 d=98 next=98 C=2 rem=0 kr=1 aux=0
+TRACE i=6 type=1 cpu=0 pid=4 job=2 tick=94 r=94 d=102 next=102 C=2 rem=2 kr=0 aux=0
+TRACE i=7 type=2 cpu=0 pid=4 job=2 tick=94 r=94 d=102 next=102 C=2 rem=2 kr=0 aux=1
+TRACE i=8 type=5 cpu=0 pid=4 job=2 tick=94 r=94 d=102 next=102 C=2 rem=0 kr=1 aux=0
+TRACE i=9 type=1 cpu=0 pid=5 job=2 tick=98 r=98 d=110 next=110 C=2 rem=2 kr=0 aux=0
+TRACE i=10 type=2 cpu=0 pid=5 job=2 tick=98 r=98 d=110 next=110 C=2 rem=2 kr=0 aux=1
+TRACE i=11 type=5 cpu=0 pid=5 job=2 tick=98 r=98 d=110 next=110 C=2 rem=0 kr=1 aux=0
+TRACE i=12 type=1 cpu=0 pid=4 job=3 tick=102 r=102 d=110 next=110 C=2 rem=2 kr=0 aux=0
+TRACE i=13 type=2 cpu=0 pid=4 job=3 tick=102 r=102 d=110 next=110 C=2 rem=2 kr=0 aux=1
+TRACE i=14 type=5 cpu=0 pid=4 job=3 tick=102 r=102 d=110 next=110 C=2 rem=0 kr=1 aux=0
+TRACE i=15 type=1 cpu=0 pid=4 job=4 tick=110 r=110 d=118 next=118 C=2 rem=2 kr=0 aux=0
+TRACE i=16 type=1 cpu=0 pid=5 job=3 tick=110 r=110 d=122 next=122 C=2 rem=2 kr=0 aux=0
+TRACE i=17 type=2 cpu=0 pid=4 job=4 tick=110 r=110 d=118 next=118 C=2 rem=2 kr=0 aux=1
+TRACE i=18 type=2 cpu=0 pid=5 job=3 tick=110 r=110 d=122 next=122 C=2 rem=2 kr=0 aux=1
+TRACE i=19 type=5 cpu=0 pid=5 job=3 tick=110 r=110 d=122 next=122 C=2 rem=0 kr=1 aux=0
+TRACE i=20 type=1 cpu=0 pid=5 job=4 tick=122 r=122 d=134 next=134 C=2 rem=2 kr=0 aux=0
+TRACE i=21 type=2 cpu=0 pid=5 job=4 tick=122 r=122 d=134 next=134 C=2 rem=2 kr=0 aux=1
+TRACE i=22 type=1 cpu=0 pid=6 job=1 tick=122 r=122 d=128 next=128 C=1 rem=1 kr=1 aux=0
+TRACE i=23 type=2 cpu=0 pid=6 job=1 tick=122 r=122 d=128 next=128 C=1 rem=1 kr=0 aux=1
+TRACE i=24 type=2 cpu=0 pid=6 job=1 tick=122 r=122 d=128 next=128 C=1 rem=1 kr=0 aux=1
+TRACE i=25 type=2 cpu=0 pid=6 job=1 tick=122 r=122 d=128 next=128 C=1 rem=1 kr=0 aux=1
+TRACE i=26 type=2 cpu=0 pid=6 job=1 tick=122 r=122 d=128 next=128 C=1 rem=1 kr=0 aux=1
+TRACE i=27 type=2 cpu=0 pid=6 job=1 tick=122 r=122 d=128 next=128 C=1 rem=1 kr=0 aux=1
+TRACE i=28 type=2 cpu=0 pid=6 job=1 tick=122 r=122 d=128 next=128 C=1 rem=1 kr=0 aux=1
+TRACE i=29 type=2 cpu=0 pid=6 job=1 tick=122 r=122 d=128 next=128 C=1 rem=1 kr=0 aux=1
+TRACE i=30 type=3 cpu=0 pid=6 job=1 tick=123 r=122 d=128 next=128 C=1 rem=0 kr=1 aux=1
+TRACE i=31 type=4 cpu=0 pid=6 job=1 tick=123 r=122 d=128 next=128 C=1 rem=0 kr=1 aux=0
+TRACE i=32 type=6 cpu=0 pid=6 job=1 tick=128 r=122 d=128 next=128 C=1 rem=0 kr=0 aux=0
+TRACE i=33 type=7 cpu=0 pid=6 job=1 tick=128 r=122 d=128 next=134 C=1 rem=1 kr=0 aux=0
+TRACE i=34 type=2 cpu=0 pid=6 job=1 tick=128 r=122 d=128 next=134 C=1 rem=1 kr=0 aux=1
+TRACE i=35 type=2 cpu=0 pid=6 job=1 tick=128 r=122 d=128 next=134 C=1 rem=1 kr=0 aux=1
+TRACE i=36 type=2 cpu=0 pid=6 job=1 tick=128 r=122 d=128 next=134 C=1 rem=1 kr=0 aux=1
+TRACE i=37 type=2 cpu=0 pid=6 job=1 tick=128 r=122 d=128 next=134 C=1 rem=1 kr=0 aux=1
+TRACE i=38 type=2 cpu=0 pid=6 job=1 tick=128 r=122 d=128 next=134 C=1 rem=1 kr=0 aux=1
+TRACE i=39 type=2 cpu=0 pid=6 job=1 tick=128 r=122 d=128 next=134 C=1 rem=1 kr=0 aux=1
+TRACE i=40 type=3 cpu=0 pid=6 job=1 tick=129 r=122 d=128 next=134 C=1 rem=0 kr=1 aux=1
+TRACE i=41 type=4 cpu=0 pid=6 job=1 tick=129 r=122 d=128 next=134 C=1 rem=0 kr=1 aux=0
+TRACE i=42 type=7 cpu=0 pid=6 job=1 tick=134 r=122 d=128 next=140 C=1 rem=1 kr=0 aux=0
+TRACE i=43 type=2 cpu=0 pid=6 job=1 tick=134 r=122 d=128 next=140 C=1 rem=1 kr=0 aux=1
+TRACE i=44 type=2 cpu=0 pid=6 job=1 tick=134 r=122 d=128 next=140 C=1 rem=1 kr=0 aux=1
+TRACE i=45 type=2 cpu=0 pid=6 job=1 tick=134 r=122 d=128 next=140 C=1 rem=1 kr=0 aux=1
+TRACE i=46 type=2 cpu=0 pid=6 job=1 tick=134 r=122 d=128 next=140 C=1 rem=1 kr=0 aux=1
+TRACE i=47 type=2 cpu=0 pid=6 job=1 tick=134 r=122 d=128 next=140 C=1 rem=1 kr=0 aux=1
+TRACE i=48 type=3 cpu=0 pid=6 job=1 tick=135 r=122 d=128 next=140 C=1 rem=0 kr=1 aux=1
+TRACE i=49 type=4 cpu=0 pid=6 job=1 tick=135 r=122 d=128 next=140 C=1 rem=0 kr=1 aux=0
+TRACE i=50 type=7 cpu=0 pid=6 job=1 tick=140 r=122 d=128 next=146 C=1 rem=1 kr=0 aux=0
+TRACE i=51 type=2 cpu=0 pid=6 job=1 tick=140 r=122 d=128 next=146 C=1 rem=1 kr=0 aux=1
+TRACE i=52 type=2 cpu=0 pid=6 job=1 tick=140 r=122 d=128 next=146 C=1 rem=1 kr=0 aux=1
+TRACE i=53 type=5 cpu=0 pid=6 job=1 tick=140 r=122 d=128 next=146 C=1 rem=0 kr=1 aux=0
+TRACE i=54 type=1 cpu=0 pid=6 job=2 tick=146 r=146 d=152 next=152 C=1 rem=1 kr=0 aux=0
+TRACE i=55 type=2 cpu=0 pid=6 job=2 tick=146 r=146 d=152 next=152 C=1 rem=1 kr=0 aux=1
+TRACE: events=56 lost=0
+EVENTS: release=10 tick=3 dispatch=29 complete=7
+EVENTS: budget0=3 miss=1 refill=3
+CHECK workers: PASS
+CHECK trace integrity: PASS
+CHECK release: PASS
+CHECK budget transitions: PASS
+CHECK dispatch eligibility and CPU: PASS
+CHECK completion: PASS
+CHECK deadline miss and carry-over: PASS
+ORDER tick=174 A=7 dA=182 B=8 dB=186 expected=7 actual=7 [PASS]
+ORDER TRACE: events=22 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=194 A=9 dA=202 B=10 dB=202 expected=9 actual=9 [PASS]
+ORDER tick=202 A=9 dA=210 B=10 dB=210 expected=9 actual=9 [PASS]
+ORDER tick=210 A=9 dA=218 B=10 dB=218 expected=9 actual=9 [PASS]
+ORDER TRACE: events=22 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+W4 RUN 1: PASS
+
+W4 RESULT: 1/1 PASS
+FREE PAGES: before=32380 after=32380 [PASS]
+W4 SUITE: PASS
+$ QEMU: Terminated
+
+Script done on 2026-11-15 13:35:58+07:00 [COMMAND_EXIT_CODE="0"]

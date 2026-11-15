@@ -1,0 +1,52 @@
+TỔNG KẾT KIỂM THỬ TUẦN 4 — CPUS=1
+
+=== Phiên bản code và môi trường ===
+Commit đã kiểm thử:
+Thay đổi chưa commit khi kiểm thử:
+Phiên bản QEMU:
+Cấu hình: CPUS=1
+Log nguồn:
+
+=== Chức năng syscall và vòng đời job ===
+rt_job_smoke:
+rtstress:
+rt_w4test:
+Release, budget, completion, miss và carry-over:
+
+=== EDF ===
+Deadline nhỏ nhất:
+Tie-break theo PID:
+Fallback trên CPU 0:
+Preemption:
+Kết quả rt_edftest 10:
+Số bản ghi trace bị mất:
+
+=== Tài nguyên trước và sau ===
+Free pages: before= ; after= ; kết quả=
+Free inodes: before= ; after= ; kết quả=
+
+=== Hồi quy ===
+usertests:
+grind:
+Thời gian chạy grind:
+Cách tự đánh giá grind:
+
+=== Benchmark ===
+Chỉ số: độ trễ release tới dispatch trong tình huống preemption
+Đơn vị: tick
+Trace: bật
+RT chạy trên CPU 0
+Số lần đo: 5
+Các mẫu:
+Mean:
+Min:
+Max:
+Range:
+
+=== Lỗi đã xử lý và giới hạn ===
+Đã bổ sung sự kiện MISS và REFILL còn thiếu trong trace.
+Giá trị độ trễ 0 tick nghĩa là release và dispatch trong cùng tick.
+
+=== Kết luận ===
+Các mục đạt:
+Các mục chưa hoàn thành:
