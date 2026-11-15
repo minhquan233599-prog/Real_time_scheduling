@@ -47,6 +47,7 @@ usertrap(void)
   w_stvec((uint64)kernelvec); //DOC: kernelvec
 
   struct proc *p = myproc();
+  rt_kernel_enter(); // Đánh dấu bắt đầu xử lý trong kernel.
 
   // save user program counter.
   p->trapframe->epc = r_sepc();
@@ -81,10 +82,9 @@ usertrap(void)
   if (killed(p))
     kexit(-1);
 
-  // give up the CPU if this is a timer interrupt.
-  if (which_dev == 2)
+  // RT được chọn lại ở điểm chuẩn bị trở về user.
+  if (which_dev == 2 && !rt_current_active())
     yield();
-
   prepare_return();
 
   // the user page table to switch to, for trampoline.S
@@ -106,6 +106,8 @@ prepare_return(void)
   // kerneltrap() to usertrap(). because a trap from kernel
   // code to usertrap would be a disaster, turn off interrupts.
   intr_off();
+
+  rt_prepare_user_return(); // Chờ job đủ điều kiện tại điểm an toàn.
 
   // send syscalls, interrupts, and exceptions to uservec in trampoline.S
   uint64 trampoline_uservec = TRAMPOLINE + (uservec - trampoline);
@@ -171,14 +173,13 @@ clockintr()
     ticks++;
     wakeup(&ticks);
     release(&tickslock);
+
+    rt_clock_tick(); // Chỉ xử lý RT sau khi đã nhả tickslock.
   }
 
-  // ask for the next timer interrupt. this also clears
-  // the interrupt request. 1000000 is about a tenth
-  // of a second.
+  // Giữ chu kỳ timer của baseline, khoảng 0,1 giây mỗi tick.
   w_stimecmp(r_time() + 1000000);
 }
-
 // check if it's an external interrupt or software interrupt,
 // and handle it.
 // returns 2 if timer interrupt,

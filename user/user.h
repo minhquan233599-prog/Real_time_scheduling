@@ -26,6 +26,7 @@ int pause(int);
 int uptime(void);
 int sync(void);
 int sched_setdeadline(int period, int runtime); // New
+int rt_job_done(void);                          // New
 
 // ulib.c
 int stat(const char *, struct stat *);

@@ -1,0 +1,17 @@
+commit fd1e87e8947254e257942fcdf59ab2468cdc4161
+Author: Nguyen Manh Dung <nguyenmanhdung2911@gmail.com>
+Date:   Sun Nov 15 16:59:52 2026 +0700
+
+    Week 4 (Dung): RT job lifecycle, rt_job_done, timer and trap hooks
+
+ Makefile            |   2 +
+ kernel/defs.h       |   8 +++
+ kernel/rt.c         | 171 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ kernel/syscall.c    |   2 +
+ kernel/syscall.h    |   1 +
+ kernel/sysproc.c    |  25 ++++++--
+ kernel/trap.c       |  15 ++---
+ user/rt_job_smoke.c |  42 +++++++++++++
+ user/user.h         |   1 +
+ user/usys.pl        |   1 +
+ 10 files changed, 257 insertions(+), 11 deletions(-)
