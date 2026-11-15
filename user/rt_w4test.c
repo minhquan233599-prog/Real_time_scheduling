@@ -76,8 +76,11 @@ check_event(struct rt_trace_event *e, int index)
 {
   if (e->seq != index)
     checks.sequence = 0;
-
-  struct tracked_job *s = find_job(e->pid);
+  
+    if (e->type == RT_EV_NORMAL)
+    return;
+  
+    struct tracked_job *s = find_job(e->pid);
 
   if (s == 0) {
     checks.sequence = 0;
@@ -429,9 +432,9 @@ main(int argc, char *argv[])
 {
   int runs = 1;
 
-  if (argc == 2) {
+  if (argc == 2)
     runs = atoi(argv[1]);
-  } else if (argc != 1) {
+  else if (argc != 1) {
     fprintf(2, "usage: rt_w4test [runs]\n");
     exit(1);
   }
@@ -441,7 +444,7 @@ main(int argc, char *argv[])
     exit(1);
   }
 
-  // Đo trước toàn bộ bộ kiểm thử.
+  // Đo RAM trước toàn bộ các lượt kiểm thử.
   int pages_before = countfree();
 
   if (pages_before <= 0) {
@@ -455,6 +458,7 @@ main(int argc, char *argv[])
   for (int i = 0; i < runs; i++) {
     printf("\nW4 RUN %d/%d\n", i + 1, runs);
 
+    // Kiểm tra vòng đời job, budget, completion và carry-over.
     int ok = run_once();
 
     if (ok)
@@ -463,20 +467,15 @@ main(int argc, char *argv[])
     printf("W4 RUN %d: %s\n", i + 1, ok ? "PASS" : "FAIL");
   }
 
-  // Các tiến trình con đã được wait trong run_once().
   int pages_after = countfree();
-
-  // Phép đo phải hợp lệ và số trang khả dụng không bị giảm.
   int pages_ok = pages_after >= pages_before;
-  int tests_ok = passed == runs;
-  int all_ok = tests_ok && pages_ok;
+  int all_ok = passed == runs && pages_ok;
 
   printf("\nW4 RESULT: %d/%d %s\n",
-         passed, runs, tests_ok ? "PASS" : "FAIL");
+         passed, runs, passed == runs ? "PASS" : "FAIL");
 
   printf("FREE PAGES: before=%d after=%d [%s]\n",
-         pages_before, pages_after,
-         pages_ok ? "PASS" : "FAIL");
+         pages_before, pages_after, pages_ok ? "PASS" : "FAIL");
 
   printf("W4 SUITE: %s\n", all_ok ? "PASS" : "FAIL");
 

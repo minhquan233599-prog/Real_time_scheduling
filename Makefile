@@ -157,6 +157,7 @@ UPROGS=\
 	$U/_rtstress\
 	$U/_rt_job_smoke\
 	$U/_rt_w4test\
+    $U/_rt_edftest\
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)
