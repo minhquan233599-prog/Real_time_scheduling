@@ -114,6 +114,9 @@ void            rt_clock_tick(void);
 int             rt_finish_current_job(void);
 void            rt_prepare_user_return(void);
 
+// rttrace.c
+void            rt_trace_emit_locked(struct proc *, int, int);
+
 // swtch.S
 void            swtch(struct context*, struct context*);
 

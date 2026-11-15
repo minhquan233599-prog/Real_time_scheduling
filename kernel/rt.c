@@ -4,6 +4,7 @@
 #include "spinlock.h"
 #include "proc.h"
 #include "defs.h"
+#include "rttrace.h"
 
 // Khởi tạo một job mới.
 // Hàm gọi phải đang giữ rt_lock.
@@ -19,6 +20,9 @@ rt_release_locked(struct proc *p, uint64 release)
   p->rt.job_state = RT_JOB_READY;
   p->rt.job_id++;
   p->rt.miss_reported = 0;
+
+  // Ghi sau khi metadata của job mới đã hoàn chỉnh.
+  rt_trace_emit_locked(p, RT_EV_RELEASE, 0);
 }
 
 // Khởi tạo đăng ký RT sau khi admission thành công.
@@ -89,10 +93,18 @@ rt_clock_tick(void)
   if (running != 0 && running->rt.active &&
       running->rt.job_state == RT_JOB_READY &&
       running->rt.remaining > 0) {
+
+    int before = running->rt.remaining;
     running->rt.remaining--;
 
     if (running->rt.remaining == 0)
       running->rt.job_state = RT_JOB_THROTTLED;
+
+    // aux lưu budget trước khi trừ.
+    rt_trace_emit_locked(running, RT_EV_TICK, before);
+
+    if (running->rt.remaining == 0)
+      rt_trace_emit_locked(running, RT_EV_BUDGET0, 0);
   }
 
   for (struct proc *p = proc; p < &proc[NPROC]; p++) {
@@ -148,6 +160,9 @@ rt_finish_current_job(void)
 
   p->rt.job_state = RT_JOB_COMPLETE;
   p->rt.remaining = 0;
+
+  // Ghi trạng thái sau khi job đã được đánh dấu hoàn thành.
+  rt_trace_emit_locked(p, RT_EV_COMPLETE, 0);
 
   release(&rt_lock);
 

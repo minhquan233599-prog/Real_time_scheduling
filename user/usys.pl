@@ -43,5 +43,7 @@ entry("sbrk");
 entry("pause");
 entry("uptime");
 entry("sync");
-entry("sched_setdeadline"); #New
+entry("sched_setdeadline");
 entry("rt_job_done");
+entry("rt_trace_ctl");
+entry("rt_trace_read");

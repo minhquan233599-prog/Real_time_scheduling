@@ -5,6 +5,7 @@
 #include "spinlock.h"
 #include "proc.h"
 #include "defs.h"
+#include "rttrace.h"
 
 struct cpu cpus[NCPU];
 
@@ -615,6 +616,25 @@ scheduler(void)
 
     p->state = RUNNING;
     c->proc = p;
+
+    // rt_pick_next đã trả về p với p->lock đang được giữ.
+    // Lấy thêm rt_lock theo thứ tự p->lock rồi rt_lock.
+    acquire(&rt_lock);
+
+    if (p->rt.active) {
+      int cls;
+
+      // Phân biệt chạy tiếp đường kernel với chạy workload EDF.
+      if (p->killed || p->rt.kernel_resume)
+        cls = RT_TRACE_KERNEL;
+      else
+        cls = RT_TRACE_EDF;
+
+      rt_trace_emit_locked(p, RT_EV_DISPATCH, cls);
+    }
+
+    // Phải nhả rt_lock trước khi chuyển ngữ cảnh.
+    release(&rt_lock);
 
     swtch(&c->context, &p->context);
 

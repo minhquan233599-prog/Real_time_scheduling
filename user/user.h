@@ -25,8 +25,13 @@ char *sys_sbrk(int, int);
 int pause(int);
 int uptime(void);
 int sync(void);
-int sched_setdeadline(int period, int runtime); // New
+int sched_setdeadline(int period, int runtime);
 int rt_job_done(void);
+
+struct rt_trace_event;
+
+int rt_trace_ctl(int);
+int rt_trace_read(int, struct rt_trace_event *);
 
 // ulib.c
 int stat(const char *, struct stat *);
