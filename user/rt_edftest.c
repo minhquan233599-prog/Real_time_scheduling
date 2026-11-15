@@ -51,7 +51,7 @@ wait_success(void)
 // equal_deadline = 0: kiểm tra deadline khác nhau.
 // equal_deadline = 1: kiểm tra tie-break bằng PID.
 static int
-test_edf_order(int period_a, int period_b, int equal_deadline)
+test_edf_order_once(int period_a, int period_b, int equal_deadline)
 {
   const char *name = equal_deadline ?
                      "EDF tie-break by PID" :
@@ -208,18 +208,40 @@ test_edf_order(int period_a, int period_b, int equal_deadline)
       trace_ok = 0;
   }
 
-  int covered = comparisons > 0;
-
-  if (!covered) {
-    printf("CHECK %s: missing simultaneous-release scenario\n",
-           name);
-  }
-
   printf("ORDER TRACE: events=%d lost=%d comparisons=%d\n",
          count, lost, comparisons);
 
-  return report(name,
-                workers_ok && trace_ok && order_ok && covered);
+  // Lỗi thực sự: không thử lại để che lỗi.
+  if (!workers_ok || !trace_ok || !order_ok)
+    return report(name, 0);
+
+  // -1 chỉ có nghĩa chưa tạo được tình huống cần kiểm tra.
+  if (comparisons == 0) {
+    printf("ORDER SETUP: missing simultaneous-release scenario\n");
+    return -1;
+  }
+
+  return report(name, 1);
+}
+
+static int
+test_edf_order(int period_a, int period_b, int equal_deadline)
+{
+  for (int attempt = 1; attempt <= 3; attempt++) {
+    int result = test_edf_order_once(period_a, period_b,
+                                    equal_deadline);
+
+    // Đã có kết quả PASS hoặc lỗi thực sự thì kết thúc ngay.
+    if (result >= 0)
+      return result;
+
+    printf("ORDER SETUP: attempt %d/3 had no comparison\n", attempt);
+  }
+
+  // Không được coi thiếu tình huống là PASS.
+  printf("ORDER SETUP: insufficient coverage after 3 attempts\n");
+  return report(equal_deadline ? "EDF tie-break by PID" :
+                                "EDF earliest deadline", 0);
 }
 
 static int
@@ -295,12 +317,12 @@ test_preemption(void)
   int low = fork();
 
   if (low == 0) {
-    if (sched_setdeadline(40, 12) != 0)
+    if (sched_setdeadline(80, 30) != 0)
       exit(1);
 
     uint start = uptime();
 
-    while ((uint)(uptime() - start) < 12) {
+    while ((uint)(uptime() - start) < 26) {
       for (volatile int n = 0; n < 10000000; n++) {
       }
     }

@@ -77,10 +77,10 @@ check_event(struct rt_trace_event *e, int index)
   if (e->seq != index)
     checks.sequence = 0;
   
-    if (e->type == RT_EV_NORMAL)
+  if (e->type == RT_EV_NORMAL)
     return;
   
-    struct tracked_job *s = find_job(e->pid);
+  struct tracked_job *s = find_job(e->pid);
 
   if (s == 0) {
     checks.sequence = 0;

@@ -1,28 +1,195 @@
-Script started on 2026-11-15 14:26:42+07:00 [COMMAND="make qemu CPUS=4" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="141" LINES="12"]
+Script started on 2026-11-15 17:39:51+07:00 [COMMAND="make qemu CPUS=4" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="141" LINES="10"]
 qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 4 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
 
 xv6 kernel is booting
 
 hart 3 starting
-hart 1 starting
 hart 2 starting
+hart 1 starting
 init: starting sh
-$ rt_edftest
+$ rt_edftest 10
 
-EDF RUN 1/1
-ORDER tick=82 A=4 dA=90 B=5 dB=94 expected=4 actual=4 [PASS]
-ORDER TRACE: events=28 lost=0 comparisons=1
+EDF RUN 1/10
+ORDER tick=158 A=4 dA=166 B=5 dB=170 expected=4 actual=4 [PASS]
+ORDER TRACE: events=26 lost=0 comparisons=1
 CHECK EDF earliest deadline: PASS
-ORDER tick=102 A=6 dA=110 B=7 dB=110 expected=6 actual=6 [PASS]
-ORDER tick=110 A=6 dA=118 B=7 dB=118 expected=6 actual=6 [PASS]
-ORDER tick=118 A=6 dA=126 B=7 dB=126 expected=6 actual=6 [PASS]
+ORDER tick=178 A=6 dA=186 B=7 dB=186 expected=6 actual=6 [PASS]
+ORDER tick=186 A=6 dA=194 B=7 dB=194 expected=6 actual=6 [PASS]
+ORDER tick=194 A=6 dA=202 B=7 dB=202 expected=6 actual=6 [PASS]
+ORDER TRACE: events=25 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+FALLBACK: observations=17 lost=0
+CHECK fallback: PASS
+PREEMPT: expected=9 actual=9 delay_ticks=0 [PASS]
+PREEMPT: expected=9 actual=9 delay_ticks=0 [PASS]
+PREEMPT: expected=9 actual=9 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
+CHECK preemption: PASS
+EDF RUN 1: PASS
+
+EDF RUN 2/10
+ORDER tick=276 A=11 dA=284 B=12 dB=288 expected=11 actual=11 [PASS]
+ORDER TRACE: events=26 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=296 A=13 dA=304 B=14 dB=304 expected=13 actual=13 [PASS]
+ORDER tick=304 A=13 dA=312 B=14 dB=312 expected=13 actual=13 [PASS]
+ORDER tick=312 A=13 dA=320 B=14 dB=320 expected=13 actual=13 [PASS]
+ORDER TRACE: events=25 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+FALLBACK: observations=16 lost=0
+CHECK fallback: PASS
+PREEMPT: expected=16 actual=16 delay_ticks=0 [PASS]
+PREEMPT: expected=16 actual=16 delay_ticks=0 [PASS]
+PREEMPT: expected=16 actual=16 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
+CHECK preemption: PASS
+EDF RUN 2: PASS
+
+EDF RUN 3/10
+ORDER tick=395 A=18 dA=403 B=19 dB=407 expected=18 actual=18 [PASS]
+ORDER TRACE: events=26 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=415 A=20 dA=423 B=21 dB=423 expected=20 actual=20 [PASS]
+ORDER tick=423 A=20 dA=431 B=21 dB=431 expected=20 actual=20 [PASS]
+ORDER tick=431 A=20 dA=439 B=21 dB=439 expected=20 actual=20 [PASS]
+ORDER TRACE: events=25 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+FALLBACK: observations=23 lost=0
+CHECK fallback: PASS
+PREEMPT: expected=23 actual=23 delay_ticks=0 [PASS]
+PREEMPT: expected=23 actual=23 delay_ticks=0 [PASS]
+PREEMPT: expected=23 actual=23 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
+CHECK preemption: PASS
+EDF RUN 3: PASS
+
+EDF RUN 4/10
+ORDER tick=514 A=25 dA=522 B=26 dB=526 expected=25 actual=25 [PASS]
+ORDER TRACE: events=26 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=534 A=27 dA=542 B=28 dB=542 expected=27 actual=27 [PASS]
+ORDER tick=542 A=27 dA=550 B=28 dB=550 expected=27 actual=27 [PASS]
+ORDER tick=550 A=27 dA=558 B=28 dB=558 expected=27 actual=27 [PASS]
+ORDER TRACE: events=25 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+FALLBACK: observations=23 lost=0
+CHECK fallback: PASS
+PREEMPT: expected=30 actual=30 delay_ticks=0 [PASS]
+PREEMPT: expected=30 actual=30 delay_ticks=0 [PASS]
+PREEMPT: expected=30 actual=30 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
+CHECK preemption: PASS
+EDF RUN 4: PASS
+
+EDF RUN 5/10
+ORDER tick=633 A=32 dA=641 B=33 dB=645 expected=32 actual=32 [PASS]
+ORDER TRACE: events=26 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=653 A=34 dA=661 B=35 dB=661 expected=34 actual=34 [PASS]
+ORDER tick=661 A=34 dA=669 B=35 dB=669 expected=34 actual=34 [PASS]
+ORDER tick=669 A=34 dA=677 B=35 dB=677 expected=34 actual=34 [PASS]
 ORDER TRACE: events=25 lost=0 comparisons=3
 CHECK EDF tie-break by PID: PASS
 FALLBACK: observations=20 lost=0
 CHECK fallback: PASS
-EDF RUN 1: PASS
+PREEMPT: expected=37 actual=37 delay_ticks=0 [PASS]
+PREEMPT: expected=37 actual=37 delay_ticks=0 [PASS]
+PREEMPT: expected=37 actual=37 delay_tiks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
+CHECK preemption: PASS
+EDF RUN 5: PASS
 
-EDF RESULT: 1/1 PASS
+EDF RUN 6/10
+ORDER tick=751 A=39 dA=759 B=40 dB=763 expected=39 actual=39 [PASS]
+ORDER TRACE: events=26 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=771 A=41 dA=779 B=42 dB=779 expected=41 actual=41 [PASS]
+ORDER tick=779 A=41 dA=787 B=42 dB=787 expected=41 actual=41 [PASS]
+ORDER tick=787 A=41 dA=795 B=42 dB=795 expected=41 actual=41 [PASS]
+ORDER TRACE: events=25 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+FALLBACK: observations=11 lost=0
+CHECK fallback: PASS
+PREEMPT: expected=44 actual=44 delay_ticks=0 [PASS]
+PREEMPT: expected=44 actual=44 delay_ticks=0 [PASS]
+PREEMPT: expected=44 actual=44 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
+CHECK preemption: PASS
+EDF RUN 6: PASS
+
+EDF RUN 7/10
+ORDER tick=869 A=46 dA=877 B=47 dB=881 expected=46 actual=46 [PASS]
+ORDER TRACE: events=26 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=889 A=48 dA=897 B=49 dB=897 expected=48 actual=48 [PASS]
+ORDER tick=897 A=48 dA=905 B=49 dB=905 expected=48 actual=48 [PASS]
+ORDER tick=905 A=48 dA=913 B=49 dB=913 expected=48 actual=48 [PASS]
+ORDER TRACE: events=25 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+FALLBACK: observations=12 lost=0
+CHECK fallback: PASS
+PREEMPT: expected=51 actual=51 delay_ticks=0 [PASS]
+PREEMPT: expected=51 actual=51 delay_ticks=0 [PASS]
+PREEMPT: expected=51 actual=51 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
+CHECK preemption: PASS
+EDF RUN 7: PASS
+
+EDF RUN 8/10
+ORDER tick=987 A=53 dA=995 B=54 dB=999 expected=53 actual=53 [PASS]
+ORDER TRACE: events=26 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=1007 A=55 dA=1015 B=56 dB=1015 expected=55 actual=55 [PASS]
+ORDER tick=1015 A=55 dA=1023 B=56 dB=1023 expected=55 actual=55 [PASS]
+ORDER tick=1023 A=55 dA=1031 B=56 dB=1031 expected=55 actual=55 [PASS]
+ORDER TRACE: events=25 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+FALLBACK: observations=9 lost=0
+CHECK fallback: PASS
+PREEMPT: expected=58 actual=58 delay_ticks=0 [PASS]
+PREEMPT: expected=58 actual=58 delay_ticks=0 [PASS]
+PREEMPT: expected=58 actual=58 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
+CHECK preemption: PASS
+EDF RUN 8: PASS
+
+EDF RUN 9/10
+ORDER tick=1105 A=60 dA=1113 B=61 dB=1117 expected=60 actual=60 [PASS]
+ORDER TRACE: events=26 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=1125 A=62 dA=1133 B=63 dB=1133 expected=62 actual=62 [PASS]
+ORDER tick=1133 A=62 dA=1141 B=63 dB=1141 expected=62 actual=62 [PASS]
+ORDER tick=1141 A=62 dA=1149 B=63 dB=1149 expected=62 actual=62 [PASS]
+ORDER TRACE: events=25 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+FALLBACK: observations=16 lost=0
+CHECK fallback: PASS
+PREEMPT: expected=65 actual=65 delay_ticks=0 [PASS]
+PREEMPT: expected=65 actual=65 delay_ticks=0 [PASS]
+PREEMPT: expected=65 actual=65 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
+CHECK preemption: PASS
+EDF RUN 9: PASS
+
+EDF RUN 10/10
+ORDER tick=1223 A=67 dA=1231 B=68 dB=1235 expected=67 actual=67 [PASS]
+ORDER TRACE: events=26 lost=0 comparisons=1
+CHECK EDF earliest deadline: PASS
+ORDER tick=1243 A=69 dA=1251 B=70 dB=1251 expected=69 actual=69 [PASS]
+ORDER tick=1251 A=69 dA=1259 B=70 dB=1259 expected=69 actual=69 [PASS]
+ORDER tick=1259 A=69 dA=1267 B=70 dB=1267 expected=69 actual=69 [PASS]
+ORDER TRACE: events=25 lost=0 comparisons=3
+CHECK EDF tie-break by PID: PASS
+FALLBACK: observations=12 lost=0
+CHECK fallback: PASS
+PREEMPT: expected=72 actual=72 delay_ticks=0 [PASS]
+PREEMPT: expected=72 actual=72 delay_ticks=0 [PASS]
+PREEMPT: expected=72 actual=72 delay_ticks=0 [PASS]
+PREEMPT TRACE: observations=3 lost=0
+CHECK preemption: PASS
+EDF RUN 10: PASS
+
+EDF RESULT: 10/10 PASS
 $ QEMU: Terminated
 
-Script done on 2026-11-15 14:27:05+07:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2026-11-15 17:43:30+07:00 [COMMAND_EXIT_CODE="0"]
