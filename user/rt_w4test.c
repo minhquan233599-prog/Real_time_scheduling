@@ -1,6 +1,7 @@
 #include "kernel/types.h"
 #include "kernel/rttrace.h"
 #include "user/user.h"
+#include "kernel/riscv.h"
 
 #define MAX_TRACKED 8
 
@@ -403,6 +404,26 @@ run_once(void)
   return ok;
 }
 
+// Đếm số trang RAM có thể cấp phát, rồi trả lại toàn bộ.
+// Dùng sbrk cấp phát ngay của bản xv6 hiện tại.
+static int
+countfree(void)
+{
+  int n = 0;
+  uint64 sz0 = (uint64)sbrk(0);
+
+  while (sbrk(PGSIZE) != SBRK_ERROR)
+    n++;
+
+  // Kiểm tra việc trả lại bộ nhớ vừa xin.
+  int allocated = (int)((uint64)sbrk(0) - sz0);
+
+  if (allocated > 0 && sbrk(-allocated) == SBRK_ERROR)
+    return -1;
+
+  return n;
+}
+
 int
 main(int argc, char *argv[])
 {
@@ -420,6 +441,15 @@ main(int argc, char *argv[])
     exit(1);
   }
 
+  // Đo trước toàn bộ bộ kiểm thử.
+  int pages_before = countfree();
+
+  if (pages_before <= 0) {
+    printf("FREE PAGES: FAIL (initial measurement failed)\n");
+    printf("W4 SUITE: FAIL\n");
+    exit(1);
+  }
+
   int passed = 0;
 
   for (int i = 0; i < runs; i++) {
@@ -433,10 +463,22 @@ main(int argc, char *argv[])
     printf("W4 RUN %d: %s\n", i + 1, ok ? "PASS" : "FAIL");
   }
 
-  int all_ok = passed == runs;
+  // Các tiến trình con đã được wait trong run_once().
+  int pages_after = countfree();
+
+  // Phép đo phải hợp lệ và số trang khả dụng không bị giảm.
+  int pages_ok = pages_after >= pages_before;
+  int tests_ok = passed == runs;
+  int all_ok = tests_ok && pages_ok;
 
   printf("\nW4 RESULT: %d/%d %s\n",
-         passed, runs, all_ok ? "PASS" : "FAIL");
+         passed, runs, tests_ok ? "PASS" : "FAIL");
+
+  printf("FREE PAGES: before=%d after=%d [%s]\n",
+         pages_before, pages_after,
+         pages_ok ? "PASS" : "FAIL");
+
+  printf("W4 SUITE: %s\n", all_ok ? "PASS" : "FAIL");
 
   exit(all_ok ? 0 : 1);
 }
