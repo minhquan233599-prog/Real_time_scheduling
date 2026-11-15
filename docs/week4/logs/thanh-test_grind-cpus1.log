@@ -1,0 +1,11 @@
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 1 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+ireclaim: orphaned inode 33
+init: starting sh
+$ grind
+ABABABAB
+HARNESS RESULT — GRIND CPUS=1: PASS
+A=4, B=4
+Đủ 60 giây, có A/B và không phát hiện lỗi.
