@@ -103,8 +103,10 @@ extern uint64 sys_link(void);
 extern uint64 sys_mkdir(void);
 extern uint64 sys_close(void);
 extern uint64 sys_sync(void);
-extern uint64 sys_sched_setdeadline(void); // New
-extern uint64 sys_rt_job_done(void);       // New
+extern uint64 sys_sched_setdeadline(void);
+extern uint64 sys_rt_job_done(void);
+extern uint64 sys_rt_trace_ctl(void);  // New
+extern uint64 sys_rt_trace_read(void); // New
 
 // An array mapping syscall numbers from syscall.h
 // to the function that handles the system call.
@@ -132,8 +134,10 @@ static uint64 (*syscalls[])(void) = {
   [SYS_mkdir]   = sys_mkdir,
   [SYS_close]   = sys_close,
   [SYS_sync]    = sys_sync,
-  [SYS_sched_setdeadline] = sys_sched_setdeadline,   // New
-  [SYS_rt_job_done] = sys_rt_job_done, // New
+  [SYS_sched_setdeadline] = sys_sched_setdeadline,   
+  [SYS_rt_job_done] = sys_rt_job_done,
+  [SYS_rt_trace_ctl] = sys_rt_trace_ctl,   // New
+  [SYS_rt_trace_read] = sys_rt_trace_read, // New
   // clang-format on
 };
 

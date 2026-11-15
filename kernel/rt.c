@@ -4,6 +4,7 @@
 #include "spinlock.h"
 #include "proc.h"
 #include "defs.h"
+#include "rttrace.h"
 
 // Bên gọi đang giữ rt_lock; không lấy p->lock ở đây.
 static void
@@ -16,6 +17,9 @@ rt_release_locked(struct proc *p, uint64 release)
   p->rt.job_state = RT_JOB_READY;
   p->rt.job_id++;
   p->rt.miss_reported = 0;
+
+  // Ghi sau khi metadata của job mới đã hoàn chỉnh.
+  rt_trace_emit_locked(p, RT_EV_RELEASE, 0);
 }
 
 // Gọi sau admission thành công, trên CPU 0 và đang giữ rt_lock.
@@ -69,9 +73,14 @@ rt_clock_tick(void)
   // Chỉ tiến trình đang chạy tại tick lấy mẫu bị trừ budget.
   if (running != 0 && running->rt.active &&
       running->rt.job_state == RT_JOB_READY && running->rt.remaining > 0) {
+    int before = running->rt.remaining;
     running->rt.remaining--;
     if (running->rt.remaining == 0)
       running->rt.job_state = RT_JOB_THROTTLED;
+    // lưu budget trước khi trừ.
+    rt_trace_emit_locked(running, RT_EV_TICK, before);
+    if (running->rt.remaining == 0)
+      rt_trace_emit_locked(running, RT_EV_BUDGET0, 0);
   }
 
   for (struct proc *p = proc; p < &proc[NPROC]; p++) {
@@ -85,6 +94,8 @@ rt_clock_tick(void)
     if (unfinished && rt_now >= p->rt.deadline && !p->rt.miss_reported) {
       p->rt.deadline_misses++;
       p->rt.miss_reported = 1;
+      // Ghi ngay sau khi cập nhật bộ đếm miss.
+      rt_trace_emit_locked(p, RT_EV_MISS, 0);
     }
 
     if (rt_now < p->rt.next_release)
@@ -101,6 +112,8 @@ rt_clock_tick(void)
       p->rt.remaining = p->rt.runtime;
       p->rt.job_state = RT_JOB_READY;
       p->rt.next_release = boundary + (uint64)p->rt.period;
+      // Ghi sau khi cấp lại budget, trước khi nhả rt_lock.
+      rt_trace_emit_locked(p, RT_EV_REFILL, 0);
     }
   }
 
@@ -122,6 +135,8 @@ rt_finish_current_job(void)
 
   p->rt.job_state = RT_JOB_COMPLETE;
   p->rt.remaining = 0;
+  // Ghi trạng thái sau khi job đã được đánh dấu hoàn thành.
+  rt_trace_emit_locked(p, RT_EV_COMPLETE, 0);
   release(&rt_lock);
   return 0;
 }
