@@ -631,6 +631,8 @@ scheduler(void)
         cls = RT_TRACE_EDF;
 
       rt_trace_emit_locked(p, RT_EV_DISPATCH, cls);
+    } else if (!p->killed) {
+      rt_trace_emit_locked(p, RT_EV_NORMAL, 0);
     }
 
     // Phải nhả rt_lock trước khi chuyển ngữ cảnh.

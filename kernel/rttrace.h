@@ -12,7 +12,8 @@ enum rt_trace_type {
   RT_EV_BUDGET0,      // Budget vừa giảm về 0.
   RT_EV_COMPLETE,     // Tiến trình báo hoàn thành job.
   RT_EV_MISS,         // Job bị trễ deadline.
-  RT_EV_REFILL       // Cấp lại budget cho job còn dang dở.
+  RT_EV_REFILL,       // Cấp lại budget cho job còn dang dở.
+  RT_EV_NORMAL
 };
 
 // Lệnh điều khiển bộ ghi trace.

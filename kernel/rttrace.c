@@ -24,7 +24,8 @@ rt_trace_emit_locked(struct proc *p, int type, int aux)
   if (!holding(&rt_lock))
     panic("rt trace lock");
 
-  if (!trace_enabled || !p->rt.active)
+  if (!trace_enabled ||
+      (!p->rt.active && type != RT_EV_NORMAL))
     return;
 
   // Khi đầy, bỏ bản ghi mới và đếm số bản ghi bị mất.
