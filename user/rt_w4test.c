@@ -342,6 +342,16 @@ run_once(void)
         break;
       }
 
+      // In dữ liệu sau khi đã dừng trace để tìm bản ghi sai.
+      // Ép về int chỉ để đọc các giá trị nhỏ trong lượt test ngắn này.
+      printf("TRACE i=%d type=%d cpu=%d pid=%d job=%d tick=%d "
+             "r=%d d=%d next=%d C=%d rem=%d kr=%d aux=%d\n",
+             i, event.type, event.cpu, event.pid,
+             (int)event.job_id, (int)event.tick,
+             (int)event.release, (int)event.deadline,
+             (int)event.next_release, event.runtime,
+             event.remaining, event.kernel_resume, event.aux);
+
       check_event(&event, i);
     }
 

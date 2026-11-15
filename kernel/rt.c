@@ -119,6 +119,9 @@ rt_clock_tick(void)
         !p->rt.miss_reported) {
       p->rt.deadline_misses++;
       p->rt.miss_reported = 1;
+
+      // Ghi ngay sau khi cập nhật bộ đếm miss.
+      rt_trace_emit_locked(p, RT_EV_MISS, 0);
     }
 
     if (rt_now < p->rt.next_release)
@@ -131,11 +134,13 @@ rt_clock_tick(void)
       // Job cũ đã xong: bắt đầu job mới tại mốc chu kỳ.
       rt_release_locked(p, boundary);
     } else if (unfinished) {
-      // Job cũ chưa xong: cấp lại budget, tiếp tục công việc cũ.
-      // Không thay job_id, release hoặc deadline của job cũ.
+      // Job chưa xong: giữ nguyên job_id, release và deadline.
       p->rt.remaining = p->rt.runtime;
       p->rt.job_state = RT_JOB_READY;
       p->rt.next_release = boundary + (uint64)p->rt.period;
+
+      // Ghi sau khi cấp lại budget, trước khi nhả rt_lock.
+      rt_trace_emit_locked(p, RT_EV_REFILL, 0);
     }
   }
 
