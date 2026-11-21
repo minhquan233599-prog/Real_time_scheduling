@@ -32,6 +32,9 @@ struct rt_trace_event;
 int rt_trace_ctl(int);
 int rt_trace_read(int, struct rt_trace_event *);
 
+int sched_setpolicy(int);
+int sched_getpolicy(void);
+
 // ulib.c
 int stat(const char *, struct stat *);
 char *strcpy(char *, const char *);

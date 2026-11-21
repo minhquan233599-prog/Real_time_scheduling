@@ -6,12 +6,17 @@
 #include "proc.h"
 #include "defs.h"
 #include "rttrace.h"
+#include "schedpolicy.h"
 
 struct cpu cpus[NCPU];
 
 struct proc proc[NPROC];
 struct spinlock rt_lock;
 uint64 rt_now; // Đồng hồ RT, được bảo vệ bởi rt_lock.
+
+// Hai biến này chỉ được đọc/ghi khi giữ rt_lock sau khi khởi động.
+static int rt_policy = SCHED_EDF;
+static uint64 rt_policy_generation = 0;
 
 struct proc *initproc;
 
@@ -467,11 +472,52 @@ rt_unbind_if_inactive(void)
     p->rt.pinned = 0;
   release(&rt_lock);
 }
+
+int
+rt_get_policy(void)
+{
+  acquire(&rt_lock);
+  int policy = rt_policy;
+  release(&rt_lock);
+  return policy;
+}
+
+// new
+int
+rt_set_policy(int policy)
+{
+  if (policy != SCHED_EDF && policy != SCHED_RM)
+    return -1;
+
+  acquire(&rt_lock);
+
+  // Cùng chính sách thì không thay đổi gì, đặc biệt không reset budget.
+  if (policy == rt_policy) {
+    release(&rt_lock);
+    return 0;
+  }
+
+  // Quét metadata dưới cùng khóa với đăng ký và thu hồi RT.
+  // Không lấy p->lock khi đã giữ rt_lock.
+  for (struct proc *p = proc; p < &proc[NPROC]; p++) {
+    if (p->rt.enabled || p->rt.active || p->rt.pinned) {
+      release(&rt_lock);
+      return -2;
+    }
+  }
+
+  rt_policy = policy;
+  // Phát hiện cả trường hợp đổi EDF -> RM -> EDF trong một lần quét.
+  rt_policy_generation++;
+  release(&rt_lock);
+  return 0;
+}
+
 // Giá trị nhỏ hơn được ưu tiên trước; NONE là không đủ điều kiện.
 enum dispatch_class {
   DISPATCH_NONE = -1,
   DISPATCH_KERNEL = 0,
-  DISPATCH_EDF = 1,
+  DISPATCH_RT = 1,
   DISPATCH_NORMAL = 2
 };
 
@@ -501,7 +547,7 @@ rt_dispatch_class_locked(struct proc *p, int cpu)
   // Job được chạy khi đã release, READY và còn budget.
   if (p->rt.enabled && p->rt.job_state == RT_JOB_READY && p->rt.remaining > 0 &&
       p->rt.release <= rt_now)
-    return DISPATCH_EDF;
+    return DISPATCH_RT;
 
   return DISPATCH_NONE;
 }
@@ -514,8 +560,14 @@ rt_pick_next(int cpu, int start)
     struct proc *best = 0;
     int best_class = DISPATCH_NONE;
     int best_pid = 0;
-    uint64 best_deadline = 0;
+    uint64 best_key = 0;
     uint64 best_job = 0;
+
+    // Mỗi lượt quét dùng một policy thống nhất.
+    acquire(&rt_lock);
+    int policy = rt_policy;
+    uint64 generation = rt_policy_generation;
+    release(&rt_lock);
 
     for (int n = 0; n < NPROC; n++) {
       struct proc *p = &proc[(start + n) % NPROC];
@@ -524,14 +576,20 @@ rt_pick_next(int cpu, int start)
       acquire(&rt_lock);
 
       int cls = rt_dispatch_class_locked(p, cpu);
+      uint64 key = 0;
       int better = 0;
+
+      if (cls == DISPATCH_RT) {
+        // RM dùng chu kỳ; EDF dùng deadline tuyệt đối.
+        key = policy == SCHED_RM ? (uint64)p->rt.period : p->rt.deadline;
+      }
 
       if (cls != DISPATCH_NONE) {
         if (best == 0 || cls < best_class) {
           better = 1;
-        } else if (cls == DISPATCH_EDF && best_class == DISPATCH_EDF) {
-          better = p->rt.deadline < best_deadline ||
-                   (p->rt.deadline == best_deadline && p->pid < best_pid);
+        } else if (cls == DISPATCH_RT && best_class == DISPATCH_RT) {
+          // Hòa ưu tiên thì dùng PID để có kết quả ổn định.
+          better = key < best_key || (key == best_key && p->pid < best_pid);
         }
       }
 
@@ -539,7 +597,7 @@ rt_pick_next(int cpu, int start)
         best = p;
         best_class = cls;
         best_pid = p->pid;
-        best_deadline = p->rt.deadline;
+        best_key = key;
         best_job = p->rt.job_id;
       }
 
@@ -547,18 +605,27 @@ rt_pick_next(int cpu, int start)
       release(&p->lock);
     }
 
-    if (best == 0)
+    if (best == 0) {
+      acquire(&rt_lock);
+      int changed = generation != rt_policy_generation;
+      release(&rt_lock);
+      if (changed)
+        continue;
       return 0;
+    }
 
     // Kiểm tra lại vì ứng viên có thể đã đổi sau lần quét.
     acquire(&best->lock);
     acquire(&rt_lock);
 
     int cls = rt_dispatch_class_locked(best, cpu);
-    int valid = best->pid == best_pid && cls == best_class;
+    int valid = generation == rt_policy_generation && best->pid == best_pid &&
+                cls == best_class;
 
-    if (valid && cls == DISPATCH_EDF) {
-      valid = best->rt.deadline == best_deadline && best->rt.job_id == best_job;
+    if (valid && cls == DISPATCH_RT) {
+      uint64 key =
+        policy == SCHED_RM ? (uint64)best->rt.period : best->rt.deadline;
+      valid = key == best_key && best->rt.job_id == best_job;
     }
 
     release(&rt_lock);
@@ -615,7 +682,7 @@ scheduler(void)
       if (p->killed || p->rt.kernel_resume)
         cls = RT_TRACE_KERNEL;
       else
-        cls = RT_TRACE_EDF;
+        cls = rt_policy == SCHED_RM ? RT_TRACE_RM : RT_TRACE_EDF;
 
       rt_trace_emit_locked(p, RT_EV_DISPATCH, cls);
     } else if (!p->killed) {

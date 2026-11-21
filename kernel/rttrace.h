@@ -24,9 +24,12 @@ enum rt_trace_command {
   RT_TRACE_LOST
 };
 
-// Phân biệt chạy workload EDF với chạy tiếp đường kernel.
-// Giá trị tương ứng với lớp dispatch trong code Quân.
-enum rt_trace_dispatch { RT_TRACE_KERNEL = 0, RT_TRACE_EDF = 1 };
+// Phân biệt đường kernel với workload chạy theo từng chính sách.
+enum rt_trace_dispatch {
+  RT_TRACE_KERNEL = 0,
+  RT_TRACE_EDF = 1,
+  RT_TRACE_RM = 2
+};
 
 // Một bản ghi phản ánh metadata tại thời điểm xảy ra sự kiện.
 struct rt_trace_event {

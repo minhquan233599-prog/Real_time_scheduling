@@ -45,5 +45,7 @@ entry("uptime");
 entry("sync");
 entry("sched_setdeadline");
 entry("rt_job_done");
-entry("rt_trace_ctl");  # New
-entry("rt_trace_read"); # New
+entry("rt_trace_ctl");  
+entry("rt_trace_read"); 
+entry("sched_setpolicy"); # New
+entry("sched_getpolicy"); # New

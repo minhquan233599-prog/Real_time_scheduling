@@ -158,6 +158,7 @@ UPROGS=\
 	$U/_rt_job_smoke\
 	$U/_rt_w4test\
     $U/_rt_edftest\
+	$U/_rt_policytest\
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)
