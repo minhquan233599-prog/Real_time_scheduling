@@ -27,6 +27,8 @@ int uptime(void);
 int sync(void);
 int sched_setdeadline(int period, int runtime);
 int rt_job_done(void);
+int sched_setpolicy(int policy);
+int sched_getpolicy(void);
 
 struct rt_trace_event;
 int rt_trace_ctl(int);

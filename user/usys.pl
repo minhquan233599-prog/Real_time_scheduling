@@ -47,3 +47,5 @@ entry("sched_setdeadline");
 entry("rt_job_done");
 entry("rt_trace_ctl");  # New
 entry("rt_trace_read"); # New
+entry("sched_setpolicy");
+entry("sched_getpolicy");

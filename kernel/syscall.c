@@ -107,6 +107,8 @@ extern uint64 sys_sched_setdeadline(void);
 extern uint64 sys_rt_job_done(void);
 extern uint64 sys_rt_trace_ctl(void);  // New
 extern uint64 sys_rt_trace_read(void); // New
+extern uint64 sys_sched_setpolicy(void);
+extern uint64 sys_sched_getpolicy(void);
 
 // An array mapping syscall numbers from syscall.h
 // to the function that handles the system call.
@@ -139,6 +141,8 @@ static uint64 (*syscalls[])(void) = {
   [SYS_rt_trace_ctl] = sys_rt_trace_ctl,   // New
   [SYS_rt_trace_read] = sys_rt_trace_read, // New
   // clang-format on
+  [SYS_sched_setpolicy] = sys_sched_setpolicy,
+  [SYS_sched_getpolicy] = sys_sched_getpolicy,
 };
 
 void
