@@ -197,3 +197,17 @@ sys_rt_job_done(void)
   // Điểm trở về user sẽ chờ kỳ tiếp theo sau khi đánh dấu hoàn thành.
   return (uint64)rt_finish_current_job();
 }
+uint64
+sys_sched_setpolicy(void)
+{
+  int policy;
+
+  argint(0, &policy);
+  return rt_set_policy(policy);
+}
+
+uint64
+sys_sched_getpolicy(void)
+{
+  return rt_get_policy();
+}

@@ -25,3 +25,5 @@
 #define SYS_rt_job_done       24
 #define SYS_rt_trace_ctl      25
 #define SYS_rt_trace_read     26
+#define SYS_sched_setpolicy   27
+#define SYS_sched_getpolicy   28
