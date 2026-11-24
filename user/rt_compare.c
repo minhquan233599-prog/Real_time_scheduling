@@ -87,10 +87,11 @@ task_index(int pid)
 
 // Chỉ xuất sự kiện; Thành phân tích vòng đời job và thứ tự EDF/RM từ CSV.
 static int
-dump_trace(int count)
+dump_trace(int count, int *misses)
 {
   printf(
     "CSV,seq,type,cpu,pid,job,tick,release,deadline,next_release,T,C,remaining,kr,aux,misses\n");
+  *misses = 0;
   for (int i = 0; i < count; i++) {
     struct rt_trace_event e;
     if (rt_trace_read(i, &e) != 1)
@@ -99,6 +100,9 @@ dump_trace(int count)
            e.type, e.cpu, e.pid, e.job_id, e.tick, e.release, e.deadline,
            e.next_release, e.period, e.runtime, e.remaining, e.kernel_resume,
            e.aux, e.misses);
+    // Chỉ đếm miss của các worker trong lần chạy hiện tại.
+    if (task_index(e.pid) >= 0 && e.type == RT_EV_MISS)
+      (*misses)++;
   }
   return 1;
 }
@@ -191,11 +195,16 @@ run_workload(int policy, const char *name, struct task *set, int *blocks)
   int lost = rt_trace_ctl(RT_TRACE_LOST);
   printf("TRACE: events=%d lost=%d\n", count, lost);
   // Mất sự kiện hoặc đọc không đủ CSV là lỗi xuất dữ liệu.
-  int exported = count > 0 && lost == 0 && dump_trace(count);
+  int misses = 0;
+  int exported = count > 0 && lost == 0 && dump_trace(count, &misses);
   printf("CHECK trace export: %s\n", exported ? "PASS" : "FAIL");
   for (int i = 0; i < NTASK; i++)
     printf("TASK %c: pid=%d\n", 'A' + i, pids[i]);
-  ok &= exported;
+  // CSV đầy đủ mới cho phép kết luận không có miss.
+  printf("OBSERVED MISSES: %d\n", misses);
+  int deadlines_ok = exported && misses == 0;
+  printf("CHECK no deadline miss: %s\n", deadlines_ok ? "PASS" : "FAIL");
+  ok &= exported && deadlines_ok;
   printf("WORKLOAD RESULT: %s\n", ok ? "PASS" : "FAIL");
   return ok;
 }
@@ -214,11 +223,33 @@ main(int argc, char *argv[])
     exit(1);
   }
   struct task *set = strcmp(argv[1], "safe") == 0 ? safe_set : compare_set;
-  int measured_blocks, maximum_ticks;
-  if (calibrate(&measured_blocks, &maximum_ticks) < 0) {
+  // Đo trên cả hai policy trước khi chọn workload chung cho cặp.
+  int measured_blocks = 0, maximum_ticks = 0;
+  int calibration_ok = 1;
+  for (int policy = SCHED_EDF; policy <= SCHED_RM; policy++) {
+    int sample_blocks = 0, sample_ticks = 0;
+    printf("CAL POLICY: %s\n", policy == SCHED_EDF ? "edf" : "rm");
+    if (sched_setpolicy(policy) != 0 ||
+        calibrate(&sample_blocks, &sample_ticks) < 0 || sample_blocks <= 0 ||
+        sample_ticks <= 0) {
+      calibration_ok = 0;
+      break;
+    }
+    // So sánh tick/block bằng nhân chéo, có tính một tick dự phòng.
+    if (measured_blocks == 0 ||
+        ((uint64)sample_ticks + 1) * (uint64)measured_blocks >
+          ((uint64)maximum_ticks + 1) * (uint64)sample_blocks) {
+      measured_blocks = sample_blocks;
+      maximum_ticks = sample_ticks;
+    }
+  }
+  if (!calibration_ok) {
+    int restored = sched_setpolicy(original) == 0;
+    printf("CHECK restore policy: %s\n", restored ? "PASS" : "FAIL");
     printf("PAIRED WORKLOAD RESULT: FAIL (calibration)\n");
     exit(1);
   }
+  printf("CAL SELECTED: blocks=%d ticks=%d\n", measured_blocks, maximum_ticks);
   int blocks[NTASK];
   for (int i = 0; i < NTASK; i++) {
     // Ước lượng workload theo budget, dự phòng một tick và dùng mức 90%.
@@ -234,7 +265,7 @@ main(int argc, char *argv[])
   }
   printf("WORKLOAD: calibrated fixed blocks; "
          "elapsed-time estimate, not a WCET guarantee\n");
-  // Hiệu chuẩn một lần; hai lượt dùng nguyên cùng mảng blocks.
+  // Cả hai lượt dùng cùng mảng blocks; không hiệu chỉnh giữa hai lượt.
   int edf_ok = run_workload(SCHED_EDF, argv[1], set, blocks);
   int rm_ok = run_workload(SCHED_RM, argv[1], set, blocks);
   int restored = sched_setpolicy(original) == 0;

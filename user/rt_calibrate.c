@@ -4,12 +4,14 @@
 #define CAL_MIN_TICKS  20
 #define CAL_MAX_BLOCKS 1048576
 #define CAL_SAMPLES    3
+#define CAL_ATTEMPTS   3
 
 struct calibration {
   int blocks;
   int minimum;
   int maximum;
   int total;
+  int attempts;
 };
 
 // Vòng lặp dùng chung, không đặt static vì rt_compare.c cần gọi.
@@ -80,16 +82,23 @@ calibrate(int *measured_blocks, int *maximum_ticks)
         exit(2);
       c.blocks *= 2;
     }
-    // Đo ba mẫu cùng lượng công việc; không in giữa các mẫu.
-    for (int i = 0; i < CAL_SAMPLES; i++) {
-      int elapsed = measure_blocks(c.blocks);
-      if (elapsed <= 0)
-        exit(2);
-      if (c.minimum < 0 || elapsed < c.minimum)
-        c.minimum = elapsed;
-      if (elapsed > c.maximum)
-        c.maximum = elapsed;
-      c.total += elapsed;
+    // Thử lại cửa sổ đo nếu dao động; tối đa ba cửa sổ, không nới ngưỡng.
+    for (c.attempts = 1; c.attempts <= CAL_ATTEMPTS; c.attempts++) {
+      c.minimum = -1;
+      c.maximum = 0;
+      c.total = 0;
+      for (int i = 0; i < CAL_SAMPLES; i++) {
+        int elapsed = measure_blocks(c.blocks);
+        if (elapsed <= 0)
+          exit(2);
+        if (c.minimum < 0 || elapsed < c.minimum)
+          c.minimum = elapsed;
+        if (elapsed > c.maximum)
+          c.maximum = elapsed;
+        c.total += elapsed;
+      }
+      if (c.maximum - c.minimum <= 2 || c.attempts == CAL_ATTEMPTS)
+        break;
     }
     int sent = write(channel[1], &c, sizeof(c));
     close(channel[1]);
@@ -108,6 +117,7 @@ calibrate(int *measured_blocks, int *maximum_ticks)
     return -1;
   printf("CAL: blocks=%d samples=%d total_ticks=%d min=%d max=%d\n", c.blocks,
          CAL_SAMPLES, c.total, c.minimum, c.maximum);
+  printf("CAL ATTEMPTS: %d/%d\n", c.attempts, CAL_ATTEMPTS);
   if (c.maximum - c.minimum > 2) {
     printf("CALIBRATION: FAIL (unstable measurements)\n");
     return -1;
