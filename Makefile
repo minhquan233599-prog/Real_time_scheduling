@@ -105,6 +105,10 @@ tags: $(OBJS)
 	etags kernel/*.S kernel/*.c
 
 ULIB = $U/ulib.o $U/usys.o $U/printf.o $U/umalloc.o
+$U/_rt_compare: $U/rt_compare.o $U/rt_calibrate.o $(ULIB) $U/user.ld
+	$(LD) $(LDFLAGS) -T $U/user.ld -o $@ $U/rt_compare.o $U/rt_calibrate.o $(ULIB)
+	$(OBJDUMP) -S $@ > $U/rt_compare.asm
+	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $U/rt_compare.sym
 
 _%: %.o $(ULIB) $U/user.ld
 	$(LD) $(LDFLAGS) -T $U/user.ld -o $@ $< $(ULIB)
@@ -159,6 +163,8 @@ UPROGS=\
 	$U/_rt_w4test\
     $U/_rt_edftest\
 	$U/_rt_policytest\
+	$U/_rt_compare\
+	$U/_rt_rmtest\
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)

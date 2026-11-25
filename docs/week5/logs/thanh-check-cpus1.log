@@ -1,0 +1,29 @@
+
+PAIR 1: SAFE
+EDF TASK A: release=4 complete=3 tick=25 miss=0 refill=0
+EDF TASK B: release=4 complete=3 tick=51 miss=0 refill=0
+EDF TASK C: release=4 complete=3 tick=25 miss=0 refill=0
+CHECK EDF trace lifecycle: PASS
+CHECK EDF no deadline miss: PASS
+RM TASK A: release=4 complete=3 tick=25 miss=0 refill=0
+RM TASK B: release=4 complete=3 tick=51 miss=0 refill=0
+RM TASK C: release=4 complete=3 tick=25 miss=0 refill=0
+CHECK RM trace lifecycle: PASS
+CHECK RM no deadline miss: PASS
+SAFE TRACE: PASS
+
+PAIR 2: COMPARE
+EDF TASK A: release=4 complete=3 tick=25 miss=0 refill=0
+EDF TASK B: release=4 complete=3 tick=26 miss=0 refill=0
+EDF TASK C: release=4 complete=3 tick=51 miss=0 refill=0
+CHECK EDF trace lifecycle: PASS
+CHECK EDF no deadline miss: PASS
+RM TASK A: release=4 complete=3 tick=25 miss=0 refill=0
+RM TASK B: release=4 complete=3 tick=24 miss=0 refill=0
+RM TASK C: release=4 complete=3 tick=52 miss=0 refill=0
+CHECK RM trace lifecycle: PASS
+CHECK RM no deadline miss: PASS
+EDF ORDER: t=40 chọn C1; dB=80 dC=70 [PASS]
+RM ORDER: t=40 chọn B2; dB=80 dC=70 [PASS]
+
+ORDER COMPARISON: 1 compare pair(s) PASS

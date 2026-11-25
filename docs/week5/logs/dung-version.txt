@@ -1,0 +1,18 @@
+]633;E;git rev-parse HEAD;6246b7a6-5781-4a98-9b27-3eb7d67fc1d0]633;Cdb2584f6eaca31db98ae2f854c8929f43576e1d2
+ M Makefile
+A  docs/week5/Huong_dan_Dung_Tuan_5.md
+A  docs/week5/Huong_dan_Quan_Tuan_5.md
+A  docs/week5/Thong_nhat_pham_vi_Tuan_5.md
+?? docs/week5/logs/dung-build.log
+?? docs/week5/logs/dung-version.txt
+?? user/rt_calibrate.c
+?? user/rt_compare.c
+ Makefile | 5 +++++
+ 1 file changed, 5 insertions(+)
+QEMU emulator version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)
+Copyright (c) 2003-2023 Fabrice Bellard and the QEMU Project developers
+riscv64-unknown-elf-gcc (13.2.0-11ubuntu1+12) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

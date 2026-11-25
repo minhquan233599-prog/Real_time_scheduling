@@ -1,0 +1,1487 @@
+Script started on 2026-11-22 22:27:25+07:00 [COMMAND="make qemu CPUS=1" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="141" LINES="20"]
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 1 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+init: starting sh
+$ rt_policytest 10
+rt_job_smoke
+rttest
+rt_compare safe
+rt_compare compare
+POLICY RUN 1/10
+POLICY=EDF
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=0 actual=0 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=0 actual=0 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=0 actual=0 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=4 actual=4 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=1 actual=1 [PASS]
+POLICY=RM
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=1 actual=1 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=1 actual=1 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=1 actual=1 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=5 actual=5 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=0 actual=0 [PASS]
+POLICY RUN 1: PASS
+
+POLICY RUN 2/10
+POLICY=EDF
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=0 actual=0 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=0 actual=0 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=0 actual=0 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=6 actual=6 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=1 actual=1 [PASS]
+POLICY=RM
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=1 actual=1 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=1 actual=1 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=1 actual=1 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=7 actual=7 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=0 actual=0 [PASS]
+POLICY RUN 2: PASS
+
+POLICY RUN 3/10
+POLICY=EDF
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=0 actual=0 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=0 actual=0 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=0 actual=0 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=8 actual=8 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=1 actual=1 [PASS]
+POLICY=RM
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=1 actual=1 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=1 actual=1 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=1 actual=1 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=9 actual=9 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=0 actual=0 [PASS]
+POLICY RUN 3: PASS
+
+POLICY RUN 4/10
+POLICY=EDF
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=0 actual=0 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=0 actual=0 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=0 actual=0 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=10 actual=10 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=1 actual=1 [PASS]
+POLICY=RM
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=1 actual=1 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=1 actual=1 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=1 actual=1 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=11 actual=11 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=0 actual=0 [PASS]
+POLICY RUN 4: PASS
+
+POLICY RUN 5/10
+POLICY=EDF
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=0 actual=0 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=0 actual=0 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=0 actual=0 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=12 actual=12 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=1 actual=1 [PASS]
+POLICY=RM
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=1 actual=1 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=1 actual=1 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=1 actual=1 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=13 actual=13 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=0 actual=0 [PASS]
+POLICY RUN 5: PASS
+
+POLICY RUN 6/10
+POLICY=EDF
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=0 actual=0 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=0 actual=0 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=0 actual=0 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=14 actual=14 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=1 actual=1 [PASS]
+POLICY=RM
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=1 actual=1 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=1 actual=1 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=1 actual=1 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=15 actual=15 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=0 actual=0 [PASS]
+POLICY RUN 6: PASS
+
+POLICY RUN 7/10
+POLICY=EDF
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=0 actual=0 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=0 actual=0 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=0 actual=0 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=16 actual=16 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=1 actual=1 [PASS]
+POLICY=RM
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=1 actual=1 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=1 actual=1 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=1 actual=1 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=17 actual=17 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=0 actual=0 [PASS]
+POLICY RUN 7: PASS
+
+POLICY RUN 8/10
+POLICY=EDF
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=0 actual=0 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=0 actual=0 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=0 actual=0 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=18 actual=18 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=1 actual=1 [PASS]
+POLICY=RM
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=1 actual=1 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=1 actual=1 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=1 actual=1 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=19 actual=19 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=0 actual=0 [PASS]
+POLICY RUN 8: PASS
+
+POLICY RUN 9/10
+POLICY=EDF
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=0 actual=0 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=0 actual=0 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=0 actual=0 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=20 actual=20 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=1 actual=1 [PASS]
+POLICY=RM
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=1 actual=1 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=1 actual=1 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=1 actual=1 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=21 actual=21 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=0 actual=0 [PASS]
+POLICY RUN 9: PASS
+
+POLICY RUN 10/10
+POLICY=EDF
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=0 actual=0 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=0 actual=0 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=0 actual=0 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=22 actual=22 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=1 actual=1 [PASS]
+POLICY=RM
+select policy: expected=0 actual=0 [PASS]
+get policy: expected=1 actual=1 [PASS]
+negative policy: expected=-1 actual=-1 [PASS]
+unknown policy: expected=-1 actual=-1 [PASS]
+unchanged after invalid: expected=1 actual=1 [PASS]
+child registration: expected=1 actual=1 [PASS]
+same policy while RT exists: expected=0 actual=0 [PASS]
+reject change while RT exists: expected=-2 actual=-2 [PASS]
+policy unchanged: expected=1 actual=1 [PASS]
+invalid while RT exists: expected=-1 actual=-1 [PASS]
+release child: expected=1 actual=1 [PASS]
+wait child: expected=23 actual=23 [PASS]
+child status: expected=0 actual=0 [PASS]
+change after child exits: expected=0 actual=0 [PASS]
+get after change: expected=0 actual=0 [PASS]
+POLICY RUN 10: PASS
+restore original policy: expected=0 actual=0 [PASS]
+POLICY RESULT: 10/10 PASS
+$ done before registration: expected=-1 actual=-1 [PASS]
+negative period: expected=-1 actual=-1 [PASS]
+negative runtime: expected=-1 actual=-1 [PASS]
+register: expected=0 actual=0 [PASS]
+same parameters: expected=0 actual=0 [PASS]
+change active parameters: expected=-3 actual=-3 [PASS]
+job done and next release: expected=0 actual=0 [PASS]
+job done and next release: expected=0 actual=0 [PASS]
+job done and next release: expected=0 actual=0 [PASS]
+RT JOB SMOKE: PASS
+$ RT syscall tests - Sprint 3
+
+CASE 1: valid registration
+  valid: T=5 C=2 expected=0 actual=0 [PASS]
+CASE 1: PASS
+
+CASE 2: zero arguments
+  zero period: T=0 C=1 expected=-1 actual=-1 [PASS]
+  zero runtime: T=5 C=0 expected=-1 actual=-1 [PASS]
+CASE 2: PASS
+
+CASE 3: runtime exceeds period
+  runtime > period: T=5 C=6 expected=-1 actual=-1 [PASS]
+CASE 3: PASS
+
+CASE 4: utilization equals one
+  full utilization: T=5 C=5 expected=0 actual=0 [PASS]
+CASE 4: PASS
+
+CASE 5: overload and retry
+  A registers: T=5 C=3 expected=0 actual=0 [PASS]
+  B overload: T=5 C=3 expected=-2 actual=-2 [PASS]
+  B retry: T=5 C=2 expected=0 actual=0 [PASS]
+CASE 5: PASS
+
+CASE 6: release after exit
+  A before exit: T=5 C=5 expected=0 actual=0 [PASS]
+  B after A exit: T=5 C=5 expected=0 actual=0 [PASS]
+CASE 6: PASS
+
+RESULT: 6/6 PASS
+FREE PAGES: before=32380 after=32380 [PASS]
+$ CAL: blocks=65536 samples=3 total_ticks=63 min=21 max=21
+CALIBRATION: PASS
+WORKLOAD: calibrated fixed blocks; elapsed-time estimate, not a WCET guarantee
+
+SOURCE=XV6 policy=edf set=safe jobs=3 time_scale=10 input_hash=5A895983
+INPUT A: C=10 T=40 blocks=26810
+INPUT B: C=20 T=50 blocks=53620
+INPUT C: C=10 T=100 blocks=26810
+CHECK workers: PASS
+TRACE: events=255 lost=0
+CSV,seq,type,cpu,pid,job,tick,release,deadline,next_release,T,C,remaining,kr,aux,misses
+CSV,0,8,0,36,0,300,0,0,0,0,0,0,0,0,0
+CSV,1,1,0,36,1,300,300,340,340,40,10,10,1,0,0
+CSV,2,2,0,36,1,300,300,340,340,40,10,10,0,1,0
+CSV,3,2,0,36,1,300,300,340,340,40,10,10,0,1,0
+CSV,4,2,0,36,1,300,300,340,340,40,10,10,0,1,0
+CSV,5,8,0,37,0,300,0,0,0,0,0,0,0,0,0
+CSV,6,1,0,37,1,300,300,350,350,50,20,20,1,0,0
+CSV,7,2,0,37,1,300,300,350,350,50,20,20,0,1,0
+CSV,8,2,0,37,1,300,300,350,350,50,20,20,0,1,0
+CSV,9,2,0,37,1,300,300,350,350,50,20,20,0,1,0
+CSV,10,8,0,38,0,300,0,0,0,0,0,0,0,0,0
+CSV,11,1,0,38,1,300,300,400,400,100,10,10,1,0,0
+CSV,12,2,0,38,1,300,300,400,400,100,10,10,0,1,0
+CSV,13,2,0,38,1,300,300,400,400,100,10,10,0,1,0
+CSV,14,2,0,38,1,300,300,400,400,100,10,10,0,1,0
+CSV,15,8,0,34,0,300,0,0,0,0,0,0,1,0,0
+CSV,16,2,0,36,1,300,300,340,340,40,10,10,1,0,0
+CSV,17,2,0,37,1,300,300,350,350,50,20,20,1,0,0
+CSV,18,2,0,38,1,300,300,400,400,100,10,10,1,0,0
+CSV,19,2,0,36,1,300,300,340,340,40,10,10,0,1,0
+CSV,20,2,0,36,1,300,300,340,340,40,10,10,0,1,0
+CSV,21,3,0,36,1,301,300,340,340,40,10,9,1,10,0
+CSV,22,2,0,36,1,301,300,340,340,40,10,9,0,1,0
+CSV,23,3,0,36,1,302,300,340,340,40,10,8,1,9,0
+CSV,24,2,0,36,1,302,300,340,340,40,10,8,0,1,0
+CSV,25,3,0,36,1,303,300,340,340,40,10,7,1,8,0
+CSV,26,2,0,36,1,303,300,340,340,40,10,7,0,1,0
+CSV,27,3,0,36,1,304,300,340,340,40,10,6,1,7,0
+CSV,28,2,0,36,1,304,300,340,340,40,10,6,0,1,0
+CSV,29,3,0,36,1,305,300,340,340,40,10,5,1,6,0
+CSV,30,2,0,36,1,305,300,340,340,40,10,5,0,1,0
+CSV,31,3,0,36,1,306,300,340,340,40,10,4,1,5,0
+CSV,32,2,0,36,1,306,300,340,340,40,10,4,0,1,0
+CSV,33,3,0,36,1,307,300,340,340,40,10,3,1,4,0
+CSV,34,2,0,36,1,307,300,340,340,40,10,3,0,1,0
+CSV,35,3,0,36,1,308,300,340,340,40,10,2,1,3,0
+CSV,36,2,0,36,1,308,300,340,340,40,10,2,0,1,0
+CSV,37,5,0,36,1,308,300,340,340,40,10,0,1,0,0
+CSV,38,2,0,37,1,308,300,350,350,50,20,20,0,1,0
+CSV,39,2,0,37,1,308,300,350,350,50,20,20,0,1,0
+CSV,40,3,0,37,1,309,300,350,350,50,20,19,1,20,0
+CSV,41,2,0,37,1,309,300,350,350,50,20,19,0,1,0
+CSV,42,3,0,37,1,310,300,350,350,50,20,18,1,19,0
+CSV,43,2,0,37,1,310,300,350,350,50,20,18,0,1,0
+CSV,44,3,0,37,1,311,300,350,350,50,20,17,1,18,0
+CSV,45,2,0,37,1,311,300,350,350,50,20,17,0,1,0
+CSV,46,3,0,37,1,312,300,350,350,50,20,16,1,17,0
+CSV,47,2,0,37,1,312,300,350,350,50,20,16,0,1,0
+CSV,48,3,0,37,1,313,300,350,350,50,20,15,1,16,0
+CSV,49,2,0,37,1,313,300,350,350,50,20,15,0,1,0
+CSV,50,3,0,37,1,314,300,350,350,50,20,14,1,15,0
+CSV,51,2,0,37,1,314,300,350,350,50,20,14,0,1,0
+CSV,52,3,0,37,1,315,300,350,350,50,20,13,1,14,0
+CSV,53,2,0,37,1,315,300,350,350,50,20,13,0,1,0
+CSV,54,3,0,37,1,316,300,350,350,50,20,12,1,13,0
+CSV,55,2,0,37,1,316,300,350,350,50,20,12,0,1,0
+CSV,56,3,0,37,1,317,300,350,350,50,20,11,1,12,0
+CSV,57,2,0,37,1,317,300,350,350,50,20,11,0,1,0
+CSV,58,3,0,37,1,318,300,350,350,50,20,10,1,11,0
+CSV,59,2,0,37,1,318,300,350,350,50,20,10,0,1,0
+CSV,60,3,0,37,1,319,300,350,350,50,20,9,1,10,0
+CSV,61,2,0,37,1,319,300,350,350,50,20,9,0,1,0
+CSV,62,3,0,37,1,320,300,350,350,50,20,8,1,9,0
+CSV,63,2,0,37,1,320,300,350,350,50,20,8,0,1,0
+CSV,64,3,0,37,1,321,300,350,350,50,20,7,1,8,0
+CSV,65,2,0,37,1,321,300,350,350,50,20,7,0,1,0
+CSV,66,3,0,37,1,322,300,350,350,50,20,6,1,7,0
+CSV,67,2,0,37,1,322,300,350,350,50,20,6,0,1,0
+CSV,68,3,0,37,1,323,300,350,350,50,20,5,1,6,0
+CSV,69,2,0,37,1,323,300,350,350,50,20,5,0,1,0
+CSV,70,3,0,37,1,324,300,350,350,50,20,4,1,5,0
+CSV,71,2,0,37,1,324,300,350,350,50,20,4,0,1,0
+CSV,72,3,0,37,1,325,300,350,350,50,20,3,1,4,0
+CSV,73,2,0,37,1,325,300,350,350,50,20,3,0,1,0
+CSV,74,3,0,37,1,326,300,350,350,50,20,2,1,3,0
+CSV,75,2,0,37,1,326,300,350,350,50,20,2,0,1,0
+CSV,76,5,0,37,1,326,300,350,350,50,20,0,1,0,0
+CSV,77,2,0,38,1,326,300,400,400,100,10,10,0,1,0
+CSV,78,2,0,38,1,326,300,400,400,100,10,10,0,1,0
+CSV,79,3,0,38,1,327,300,400,400,100,10,9,1,10,0
+CSV,80,2,0,38,1,327,300,400,400,100,10,9,0,1,0
+CSV,81,3,0,38,1,328,300,400,400,100,10,8,1,9,0
+CSV,82,2,0,38,1,328,300,400,400,100,10,8,0,1,0
+CSV,83,3,0,38,1,329,300,400,400,100,10,7,1,8,0
+CSV,84,2,0,38,1,329,300,400,400,100,10,7,0,1,0
+CSV,85,3,0,38,1,330,300,400,400,100,10,6,1,7,0
+CSV,86,2,0,38,1,330,300,400,400,100,10,6,0,1,0
+CSV,87,3,0,38,1,331,300,400,400,100,10,5,1,6,0
+CSV,88,2,0,38,1,331,300,400,400,100,10,5,0,1,0
+CSV,89,3,0,38,1,332,300,400,400,100,10,4,1,5,0
+CSV,90,2,0,38,1,332,300,400,400,100,10,4,0,1,0
+CSV,91,3,0,38,1,333,300,400,400,100,10,3,1,4,0
+CSV,92,2,0,38,1,333,300,400,400,100,10,3,0,1,0
+CSV,93,3,0,38,1,334,300,400,400,100,10,2,1,3,0
+CSV,94,2,0,38,1,334,300,400,400,100,10,2,0,1,0
+CSV,95,5,0,38,1,334,300,400,400,100,10,0,1,0,0
+CSV,96,1,0,36,2,340,340,380,380,40,10,10,0,0,0
+CSV,97,2,0,36,2,340,340,380,380,40,10,10,0,1,0
+CSV,98,3,0,36,2,341,340,380,380,40,10,9,1,10,0
+CSV,99,2,0,36,2,341,340,380,380,40,10,9,0,1,0
+CSV,100,3,0,36,2,342,340,380,380,40,10,8,1,9,0
+CSV,101,2,0,36,2,342,340,380,380,40,10,8,0,1,0
+CSV,102,3,0,36,2,343,340,380,380,40,10,7,1,8,0
+CSV,103,2,0,36,2,343,340,380,380,40,10,7,0,1,0
+CSV,104,3,0,36,2,344,340,380,380,40,10,6,1,7,0
+CSV,105,2,0,36,2,344,340,380,380,40,10,6,0,1,0
+CSV,106,3,0,36,2,345,340,380,380,40,10,5,1,6,0
+CSV,107,2,0,36,2,345,340,380,380,40,10,5,0,1,0
+CSV,108,3,0,36,2,346,340,380,380,40,10,4,1,5,0
+CSV,109,2,0,36,2,346,340,380,380,40,10,4,0,1,0
+CSV,110,3,0,36,2,347,340,380,380,40,10,3,1,4,0
+CSV,111,2,0,36,2,347,340,380,380,40,10,3,0,1,0
+CSV,112,3,0,36,2,348,340,380,380,40,10,2,1,3,0
+CSV,113,2,0,36,2,348,340,380,380,40,10,2,0,1,0
+CSV,114,5,0,36,2,348,340,380,380,40,10,0,1,0,0
+CSV,115,1,0,37,2,350,350,400,400,50,20,20,0,0,0
+CSV,116,2,0,37,2,350,350,400,400,50,20,20,0,1,0
+CSV,117,3,0,37,2,351,350,400,400,50,20,19,1,20,0
+CSV,118,2,0,37,2,351,350,400,400,50,20,19,0,1,0
+CSV,119,3,0,37,2,352,350,400,400,50,20,18,1,19,0
+CSV,120,2,0,37,2,352,350,400,400,50,20,18,0,1,0
+CSV,121,3,0,37,2,353,350,400,400,50,20,17,1,18,0
+CSV,122,2,0,37,2,353,350,400,400,50,20,17,0,1,0
+CSV,123,3,0,37,2,354,350,400,400,50,20,16,1,17,0
+CSV,124,2,0,37,2,354,350,400,400,50,20,16,0,1,0
+CSV,125,3,0,37,2,355,350,400,400,50,20,15,1,16,0
+CSV,126,2,0,37,2,355,350,400,400,50,20,15,0,1,0
+CSV,127,3,0,37,2,356,350,400,400,50,20,14,1,15,0
+CSV,128,2,0,37,2,356,350,400,400,50,20,14,0,1,0
+CSV,129,3,0,37,2,357,350,400,400,50,20,13,1,14,0
+CSV,130,2,0,37,2,357,350,400,400,50,20,13,0,1,0
+CSV,131,3,0,37,2,358,350,400,400,50,20,12,1,13,0
+CSV,132,2,0,37,2,358,350,400,400,50,20,12,0,1,0
+CSV,133,3,0,37,2,359,350,400,400,50,20,11,1,12,0
+CSV,134,2,0,37,2,359,350,400,400,50,20,11,0,1,0
+CSV,135,3,0,37,2,360,350,400,400,50,20,10,1,11,0
+CSV,136,2,0,37,2,360,350,400,400,50,20,10,0,1,0
+CSV,137,3,0,37,2,361,350,400,400,50,20,9,1,10,0
+CSV,138,2,0,37,2,361,350,400,400,50,20,9,0,1,0
+CSV,139,3,0,37,2,362,350,400,400,50,20,8,1,9,0
+CSV,140,2,0,37,2,362,350,400,400,50,20,8,0,1,0
+CSV,141,3,0,37,2,363,350,400,400,50,20,7,1,8,0
+CSV,142,2,0,37,2,363,350,400,400,50,20,7,0,1,0
+CSV,143,3,0,37,2,364,350,400,400,50,20,6,1,7,0
+CSV,144,2,0,37,2,364,350,400,400,50,20,6,0,1,0
+CSV,145,3,0,37,2,365,350,400,400,50,20,5,1,6,0
+CSV,146,2,0,37,2,365,350,400,400,50,20,5,0,1,0
+CSV,147,3,0,37,2,366,350,400,400,50,20,4,1,5,0
+CSV,148,2,0,37,2,366,350,400,400,50,20,4,0,1,0
+CSV,149,3,0,37,2,367,350,400,400,50,20,3,1,4,0
+CSV,150,2,0,37,2,367,350,400,400,50,20,3,0,1,0
+CSV,151,5,0,37,2,367,350,400,400,50,20,0,1,0,0
+CSV,152,1,0,36,3,380,380,420,420,40,10,10,0,0,0
+CSV,153,2,0,36,3,380,380,420,420,40,10,10,0,1,0
+CSV,154,3,0,36,3,381,380,420,420,40,10,9,1,10,0
+CSV,155,2,0,36,3,381,380,420,420,40,10,9,0,1,0
+CSV,156,3,0,36,3,382,380,420,420,40,10,8,1,9,0
+CSV,157,2,0,36,3,382,380,420,420,40,10,8,0,1,0
+CSV,158,3,0,36,3,383,380,420,420,40,10,7,1,8,0
+CSV,159,2,0,36,3,383,380,420,420,40,10,7,0,1,0
+CSV,160,3,0,36,3,384,380,420,420,40,10,6,1,7,0
+CSV,161,2,0,36,3,384,380,420,420,40,10,6,0,1,0
+CSV,162,3,0,36,3,385,380,420,420,40,10,5,1,6,0
+CSV,163,2,0,36,3,385,380,420,420,40,10,5,0,1,0
+CSV,164,3,0,36,3,386,380,420,420,40,10,4,1,5,0
+CSV,165,2,0,36,3,386,380,420,420,40,10,4,0,1,0
+CSV,166,3,0,36,3,387,380,420,420,40,10,3,1,4,0
+CSV,167,2,0,36,3,387,380,420,420,40,10,3,0,1,0
+CSV,168,3,0,36,3,388,380,420,420,40,10,2,1,3,0
+CSV,169,2,0,36,3,388,380,420,420,40,10,2,0,1,0
+CSV,170,5,0,36,3,388,380,420,420,40,10,0,1,0,0
+CSV,171,1,0,37,3,400,400,450,450,50,20,20,0,0,0
+CSV,172,1,0,38,2,400,400,500,500,100,10,10,0,0,0
+CSV,173,2,0,37,3,400,400,450,450,50,20,20,0,1,0
+CSV,174,3,0,37,3,401,400,450,450,50,20,19,1,20,0
+CSV,175,2,0,37,3,401,400,450,450,50,20,19,0,1,0
+CSV,176,3,0,37,3,402,400,450,450,50,20,18,1,19,0
+CSV,177,2,0,37,3,402,400,450,450,50,20,18,0,1,0
+CSV,178,3,0,37,3,403,400,450,450,50,20,17,1,18,0
+CSV,179,2,0,37,3,403,400,450,450,50,20,17,0,1,0
+CSV,180,3,0,37,3,404,400,450,450,50,20,16,1,17,0
+CSV,181,2,0,37,3,404,400,450,450,50,20,16,0,1,0
+CSV,182,3,0,37,3,405,400,450,450,50,20,15,1,16,0
+CSV,183,2,0,37,3,405,400,450,450,50,20,15,0,1,0
+CSV,184,3,0,37,3,406,400,450,450,50,20,14,1,15,0
+CSV,185,2,0,37,3,406,400,450,450,50,20,14,0,1,0
+CSV,186,3,0,37,3,407,400,450,450,50,20,13,1,14,0
+CSV,187,2,0,37,3,407,400,450,450,50,20,13,0,1,0
+CSV,188,3,0,37,3,408,400,450,450,50,20,12,1,13,0
+CSV,189,2,0,37,3,408,400,450,450,50,20,12,0,1,0
+CSV,190,3,0,37,3,409,400,450,450,50,20,11,1,12,0
+CSV,191,2,0,37,3,409,400,450,450,50,20,11,0,1,0
+CSV,192,3,0,37,3,410,400,450,450,50,20,10,1,11,0
+CSV,193,2,0,37,3,410,400,450,450,50,20,10,0,1,0
+CSV,194,3,0,37,3,411,400,450,450,50,20,9,1,10,0
+CSV,195,2,0,37,3,411,400,450,450,50,20,9,0,1,0
+CSV,196,3,0,37,3,412,400,450,450,50,20,8,1,9,0
+CSV,197,2,0,37,3,412,400,450,450,50,20,8,0,1,0
+CSV,198,3,0,37,3,413,400,450,450,50,20,7,1,8,0
+CSV,199,2,0,37,3,413,400,450,450,50,20,7,0,1,0
+CSV,200,3,0,37,3,414,400,450,450,50,20,6,1,7,0
+CSV,201,2,0,37,3,414,400,450,450,50,20,6,0,1,0
+CSV,202,3,0,37,3,415,400,450,450,50,20,5,1,6,0
+CSV,203,2,0,37,3,415,400,450,450,50,20,5,0,1,0
+CSV,204,3,0,37,3,416,400,450,450,50,20,4,1,5,0
+CSV,205,2,0,37,3,416,400,450,450,50,20,4,0,1,0
+CSV,206,3,0,37,3,417,400,450,450,50,20,3,1,4,0
+CSV,207,2,0,37,3,417,400,450,450,50,20,3,0,1,0
+CSV,208,5,0,37,3,417,400,450,450,50,20,0,1,0,0
+CSV,209,2,0,38,2,417,400,500,500,100,10,10,0,1,0
+CSV,210,3,0,38,2,418,400,500,500,100,10,9,1,10,0
+CSV,211,2,0,38,2,418,400,500,500,100,10,9,0,1,0
+CSV,212,3,0,38,2,419,400,500,500,100,10,8,1,9,0
+CSV,213,2,0,38,2,419,400,500,500,100,10,8,0,1,0
+CSV,214,3,0,38,2,420,400,500,500,100,10,7,1,8,0
+CSV,215,1,0,36,4,420,420,460,460,40,10,10,0,0,0
+CSV,216,2,0,36,4,420,420,460,460,40,10,10,0,1,0
+CSV,217,2,0,38,2,420,400,500,500,100,10,7,0,1,0
+CSV,218,3,0,38,2,421,400,500,500,100,10,6,1,7,0
+CSV,219,2,0,38,2,421,400,500,500,100,10,6,0,1,0
+CSV,220,3,0,38,2,422,400,500,500,100,10,5,1,6,0
+CSV,221,2,0,38,2,422,400,500,500,100,10,5,0,1,0
+CSV,222,3,0,38,2,423,400,500,500,100,10,4,1,5,0
+CSV,223,2,0,38,2,423,400,500,500,100,10,4,0,1,0
+CSV,224,3,0,38,2,424,400,500,500,100,10,3,1,4,0
+CSV,225,2,0,38,2,424,400,500,500,100,10,3,0,1,0
+CSV,226,3,0,38,2,425,400,500,500,100,10,2,1,3,0
+CSV,227,2,0,38,2,425,400,500,500,100,10,2,0,1,0
+CSV,228,5,0,38,2,425,400,500,500,100,10,0,1,0,0
+CSV,229,8,0,34,0,425,0,0,0,0,0,0,1,0,0
+CSV,230,1,0,37,4,450,450,500,500,50,20,20,0,0,0
+CSV,231,2,0,37,4,450,450,500,500,50,20,20,0,1,0
+CSV,232,8,0,34,0,450,0,0,0,0,0,0,1,0,0
+CSV,233,1,0,38,3,500,500,600,600,100,10,10,0,0,0
+CSV,234,2,0,38,3,500,500,600,600,100,10,10,0,1,0
+CSV,235,3,0,38,3,501,500,600,600,100,10,9,1,10,0
+CSV,236,2,0,38,3,501,500,600,600,100,10,9,0,1,0
+CSV,237,3,0,38,3,502,500,600,600,100,10,8,1,9,0
+CSV,238,2,0,38,3,502,500,600,600,100,10,8,0,1,0
+CSV,239,3,0,38,3,503,500,600,600,100,10,7,1,8,0
+CSV,240,2,0,38,3,503,500,600,600,100,10,7,0,1,0
+CSV,241,3,0,38,3,504,500,600,600,100,10,6,1,7,0
+CSV,242,2,0,38,3,504,500,600,600,100,10,6,0,1,0
+CSV,243,3,0,38,3,505,500,600,600,100,10,5,1,6,0
+CSV,244,2,0,38,3,505,500,600,600,100,10,5,0,1,0
+CSV,245,3,0,38,3,506,500,600,600,100,10,4,1,5,0
+CSV,246,2,0,38,3,506,500,600,600,100,10,4,0,1,0
+CSV,247,3,0,38,3,507,500,600,600,100,10,3,1,4,0
+CSV,248,2,0,38,3,507,500,600,600,100,10,3,0,1,0
+CSV,249,3,0,38,3,508,500,600,600,100,10,2,1,3,0
+CSV,250,2,0,38,3,508,500,600,600,100,10,2,0,1,0
+CSV,251,5,0,38,3,508,500,600,600,100,10,0,1,0,0
+CSV,252,1,0,38,4,600,600,700,700,100,10,10,0,0,0
+CSV,253,2,0,38,4,600,600,700,700,100,10,10,0,1,0
+CSV,254,8,0,34,0,600,0,0,0,0,0,0,1,0,0
+CHECK trace export: PASS
+TASK A: pid=36
+TASK B: pid=37
+TASK C: pid=38
+WORKLOAD RESULT: PASS
+
+SOURCE=XV6 policy=rm set=safe jobs=3 time_scale=10 input_hash=5A895983
+INPUT A: C=10 T=40 blocks=26810
+INPUT B: C=20 T=50 blocks=53620
+INPUT C: C=10 T=100 blocks=26810
+CHECK workers: PASS
+TRACE: events=255 lost=0
+CSV,seq,type,cpu,pid,job,tick,release,deadline,next_release,T,C,remaining,kr,aux,misses
+CSV,0,8,0,39,0,610,0,0,0,0,0,0,0,0,0
+CSV,1,1,0,39,1,610,610,650,650,40,10,10,1,0,0
+CSV,2,2,0,39,1,610,610,650,650,40,10,10,0,2,0
+CSV,3,2,0,39,1,610,610,650,650,40,10,10,0,2,0
+CSV,4,2,0,39,1,610,610,650,650,40,10,10,0,2,0
+CSV,5,8,0,40,0,610,0,0,0,0,0,0,0,0,0
+CSV,6,1,0,40,1,610,610,660,660,50,20,20,1,0,0
+CSV,7,2,0,40,1,610,610,660,660,50,20,20,0,2,0
+CSV,8,2,0,40,1,610,610,660,660,50,20,20,0,2,0
+CSV,9,2,0,40,1,610,610,660,660,50,20,20,0,2,0
+CSV,10,8,0,41,0,610,0,0,0,0,0,0,0,0,0
+CSV,11,1,0,41,1,610,610,710,710,100,10,10,1,0,0
+CSV,12,2,0,41,1,610,610,710,710,100,10,10,0,2,0
+CSV,13,2,0,41,1,610,610,710,710,100,10,10,0,2,0
+CSV,14,2,0,41,1,610,610,710,710,100,10,10,0,2,0
+CSV,15,8,0,34,0,610,0,0,0,0,0,0,1,0,0
+CSV,16,2,0,39,1,610,610,650,650,40,10,10,1,0,0
+CSV,17,2,0,40,1,610,610,660,660,50,20,20,1,0,0
+CSV,18,2,0,41,1,610,610,710,710,100,10,10,1,0,0
+CSV,19,2,0,39,1,610,610,650,650,40,10,10,0,2,0
+CSV,20,2,0,39,1,610,610,650,650,40,10,10,0,2,0
+CSV,21,3,0,39,1,611,610,650,650,40,10,9,1,10,0
+CSV,22,2,0,39,1,611,610,650,650,40,10,9,0,2,0
+CSV,23,3,0,39,1,612,610,650,650,40,10,8,1,9,0
+CSV,24,2,0,39,1,612,610,650,650,40,10,8,0,2,0
+CSV,25,3,0,39,1,613,610,650,650,40,10,7,1,8,0
+CSV,26,2,0,39,1,613,610,650,650,40,10,7,0,2,0
+CSV,27,3,0,39,1,614,610,650,650,40,10,6,1,7,0
+CSV,28,2,0,39,1,614,610,650,650,40,10,6,0,2,0
+CSV,29,3,0,39,1,615,610,650,650,40,10,5,1,6,0
+CSV,30,2,0,39,1,615,610,650,650,40,10,5,0,2,0
+CSV,31,3,0,39,1,616,610,650,650,40,10,4,1,5,0
+CSV,32,2,0,39,1,616,610,650,650,40,10,4,0,2,0
+CSV,33,3,0,39,1,617,610,650,650,40,10,3,1,4,0
+CSV,34,2,0,39,1,617,610,650,650,40,10,3,0,2,0
+CSV,35,3,0,39,1,618,610,650,650,40,10,2,1,3,0
+CSV,36,2,0,39,1,618,610,650,650,40,10,2,0,2,0
+CSV,37,5,0,39,1,618,610,650,650,40,10,0,1,0,0
+CSV,38,2,0,40,1,618,610,660,660,50,20,20,0,2,0
+CSV,39,2,0,40,1,618,610,660,660,50,20,20,0,2,0
+CSV,40,3,0,40,1,619,610,660,660,50,20,19,1,20,0
+CSV,41,2,0,40,1,619,610,660,660,50,20,19,0,2,0
+CSV,42,3,0,40,1,620,610,660,660,50,20,18,1,19,0
+CSV,43,2,0,40,1,620,610,660,660,50,20,18,0,2,0
+CSV,44,3,0,40,1,621,610,660,660,50,20,17,1,18,0
+CSV,45,2,0,40,1,621,610,660,660,50,20,17,0,2,0
+CSV,46,3,0,40,1,622,610,660,660,50,20,16,1,17,0
+CSV,47,2,0,40,1,622,610,660,660,50,20,16,0,2,0
+CSV,48,3,0,40,1,623,610,660,660,50,20,15,1,16,0
+CSV,49,2,0,40,1,623,610,660,660,50,20,15,0,2,0
+CSV,50,3,0,40,1,624,610,660,660,50,20,14,1,15,0
+CSV,51,2,0,40,1,624,610,660,660,50,20,14,0,2,0
+CSV,52,3,0,40,1,625,610,660,660,50,20,13,1,14,0
+CSV,53,2,0,40,1,625,610,660,660,50,20,13,0,2,0
+CSV,54,3,0,40,1,626,610,660,660,50,20,12,1,13,0
+CSV,55,2,0,40,1,626,610,660,660,50,20,12,0,2,0
+CSV,56,3,0,40,1,627,610,660,660,50,20,11,1,12,0
+CSV,57,2,0,40,1,627,610,660,660,50,20,11,0,2,0
+CSV,58,3,0,40,1,628,610,660,660,50,20,10,1,11,0
+CSV,59,2,0,40,1,628,610,660,660,50,20,10,0,2,0
+CSV,60,3,0,40,1,629,610,660,660,50,20,9,1,10,0
+CSV,61,2,0,40,1,629,610,660,660,50,20,9,0,2,0
+CSV,62,3,0,40,1,630,610,660,660,50,20,8,1,9,0
+CSV,63,2,0,40,1,630,610,660,660,50,20,8,0,2,0
+CSV,64,3,0,40,1,631,610,660,660,50,20,7,1,8,0
+CSV,65,2,0,40,1,631,610,660,660,50,20,7,0,2,0
+CSV,66,3,0,40,1,632,610,660,660,50,20,6,1,7,0
+CSV,67,2,0,40,1,632,610,660,660,50,20,6,0,2,0
+CSV,68,3,0,40,1,633,610,660,660,50,20,5,1,6,0
+CSV,69,2,0,40,1,633,610,660,660,50,20,5,0,2,0
+CSV,70,3,0,40,1,634,610,660,660,50,20,4,1,5,0
+CSV,71,2,0,40,1,634,610,660,660,50,20,4,0,2,0
+CSV,72,3,0,40,1,635,610,660,660,50,20,3,1,4,0
+CSV,73,2,0,40,1,635,610,660,660,50,20,3,0,2,0
+CSV,74,3,0,40,1,636,610,660,660,50,20,2,1,3,0
+CSV,75,2,0,40,1,636,610,660,660,50,20,2,0,2,0
+CSV,76,5,0,40,1,636,610,660,660,50,20,0,1,0,0
+CSV,77,2,0,41,1,636,610,710,710,100,10,10,0,2,0
+CSV,78,2,0,41,1,636,610,710,710,100,10,10,0,2,0
+CSV,79,3,0,41,1,637,610,710,710,100,10,9,1,10,0
+CSV,80,2,0,41,1,637,610,710,710,100,10,9,0,2,0
+CSV,81,3,0,41,1,638,610,710,710,100,10,8,1,9,0
+CSV,82,2,0,41,1,638,610,710,710,100,10,8,0,2,0
+CSV,83,3,0,41,1,639,610,710,710,100,10,7,1,8,0
+CSV,84,2,0,41,1,639,610,710,710,100,10,7,0,2,0
+CSV,85,3,0,41,1,640,610,710,710,100,10,6,1,7,0
+CSV,86,2,0,41,1,640,610,710,710,100,10,6,0,2,0
+CSV,87,3,0,41,1,641,610,710,710,100,10,5,1,6,0
+CSV,88,2,0,41,1,641,610,710,710,100,10,5,0,2,0
+CSV,89,3,0,41,1,642,610,710,710,100,10,4,1,5,0
+CSV,90,2,0,41,1,642,610,710,710,100,10,4,0,2,0
+CSV,91,3,0,41,1,643,610,710,710,100,10,3,1,4,0
+CSV,92,2,0,41,1,643,610,710,710,100,10,3,0,2,0
+CSV,93,3,0,41,1,644,610,710,710,100,10,2,1,3,0
+CSV,94,2,0,41,1,644,610,710,710,100,10,2,0,2,0
+CSV,95,5,0,41,1,644,610,710,710,100,10,0,1,0,0
+CSV,96,1,0,39,2,650,650,690,690,40,10,10,0,0,0
+CSV,97,2,0,39,2,650,650,690,690,40,10,10,0,2,0
+CSV,98,3,0,39,2,651,650,690,690,40,10,9,1,10,0
+CSV,99,2,0,39,2,651,650,690,690,40,10,9,0,2,0
+CSV,100,3,0,39,2,652,650,690,690,40,10,8,1,9,0
+CSV,101,2,0,39,2,652,650,690,690,40,10,8,0,2,0
+CSV,102,3,0,39,2,653,650,690,690,40,10,7,1,8,0
+CSV,103,2,0,39,2,653,650,690,690,40,10,7,0,2,0
+CSV,104,3,0,39,2,654,650,690,690,40,10,6,1,7,0
+CSV,105,2,0,39,2,654,650,690,690,40,10,6,0,2,0
+CSV,106,3,0,39,2,655,650,690,690,40,10,5,1,6,0
+CSV,107,2,0,39,2,655,650,690,690,40,10,5,0,2,0
+CSV,108,3,0,39,2,656,650,690,690,40,10,4,1,5,0
+CSV,109,2,0,39,2,656,650,690,690,40,10,4,0,2,0
+CSV,110,3,0,39,2,657,650,690,690,40,10,3,1,4,0
+CSV,111,2,0,39,2,657,650,690,690,40,10,3,0,2,0
+CSV,112,3,0,39,2,658,650,690,690,40,10,2,1,3,0
+CSV,113,2,0,39,2,658,650,690,690,40,10,2,0,2,0
+CSV,114,5,0,39,2,658,650,690,690,40,10,0,1,0,0
+CSV,115,1,0,40,2,660,660,710,710,50,20,20,0,0,0
+CSV,116,2,0,40,2,660,660,710,710,50,20,20,0,2,0
+CSV,117,3,0,40,2,661,660,710,710,50,20,19,1,20,0
+CSV,118,2,0,40,2,661,660,710,710,50,20,19,0,2,0
+CSV,119,3,0,40,2,662,660,710,710,50,20,18,1,19,0
+CSV,120,2,0,40,2,662,660,710,710,50,20,18,0,2,0
+CSV,121,3,0,40,2,663,660,710,710,50,20,17,1,18,0
+CSV,122,2,0,40,2,663,660,710,710,50,20,17,0,2,0
+CSV,123,3,0,40,2,664,660,710,710,50,20,16,1,17,0
+CSV,124,2,0,40,2,664,660,710,710,50,20,16,0,2,0
+CSV,125,3,0,40,2,665,660,710,710,50,20,15,1,16,0
+CSV,126,2,0,40,2,665,660,710,710,50,20,15,0,2,0
+CSV,127,3,0,40,2,666,660,710,710,50,20,14,1,15,0
+CSV,128,2,0,40,2,666,660,710,710,50,20,14,0,2,0
+CSV,129,3,0,40,2,667,660,710,710,50,20,13,1,14,0
+CSV,130,2,0,40,2,667,660,710,710,50,20,13,0,2,0
+CSV,131,3,0,40,2,668,660,710,710,50,20,12,1,13,0
+CSV,132,2,0,40,2,668,660,710,710,50,20,12,0,2,0
+CSV,133,3,0,40,2,669,660,710,710,50,20,11,1,12,0
+CSV,134,2,0,40,2,669,660,710,710,50,20,11,0,2,0
+CSV,135,3,0,40,2,670,660,710,710,50,20,10,1,11,0
+CSV,136,2,0,40,2,670,660,710,710,50,20,10,0,2,0
+CSV,137,3,0,40,2,671,660,710,710,50,20,9,1,10,0
+CSV,138,2,0,40,2,671,660,710,710,50,20,9,0,2,0
+CSV,139,3,0,40,2,672,660,710,710,50,20,8,1,9,0
+CSV,140,2,0,40,2,672,660,710,710,50,20,8,0,2,0
+CSV,141,3,0,40,2,673,660,710,710,50,20,7,1,8,0
+CSV,142,2,0,40,2,673,660,710,710,50,20,7,0,2,0
+CSV,143,3,0,40,2,674,660,710,710,50,20,6,1,7,0
+CSV,144,2,0,40,2,674,660,710,710,50,20,6,0,2,0
+CSV,145,3,0,40,2,675,660,710,710,50,20,5,1,6,0
+CSV,146,2,0,40,2,675,660,710,710,50,20,5,0,2,0
+CSV,147,3,0,40,2,676,660,710,710,50,20,4,1,5,0
+CSV,148,2,0,40,2,676,660,710,710,50,20,4,0,2,0
+CSV,149,3,0,40,2,677,660,710,710,50,20,3,1,4,0
+CSV,150,2,0,40,2,677,660,710,710,50,20,3,0,2,0
+CSV,151,5,0,40,2,677,660,710,710,50,20,0,1,0,0
+CSV,152,1,0,39,3,690,690,730,730,40,10,10,0,0,0
+CSV,153,2,0,39,3,690,690,730,730,40,10,10,0,2,0
+CSV,154,3,0,39,3,691,690,730,730,40,10,9,1,10,0
+CSV,155,2,0,39,3,691,690,730,730,40,10,9,0,2,0
+CSV,156,3,0,39,3,692,690,730,730,40,10,8,1,9,0
+CSV,157,2,0,39,3,692,690,730,730,40,10,8,0,2,0
+CSV,158,3,0,39,3,693,690,730,730,40,10,7,1,8,0
+CSV,159,2,0,39,3,693,690,730,730,40,10,7,0,2,0
+CSV,160,3,0,39,3,694,690,730,730,40,10,6,1,7,0
+CSV,161,2,0,39,3,694,690,730,730,40,10,6,0,2,0
+CSV,162,3,0,39,3,695,690,730,730,40,10,5,1,6,0
+CSV,163,2,0,39,3,695,690,730,730,40,10,5,0,2,0
+CSV,164,3,0,39,3,696,690,730,730,40,10,4,1,5,0
+CSV,165,2,0,39,3,696,690,730,730,40,10,4,0,2,0
+CSV,166,3,0,39,3,697,690,730,730,40,10,3,1,4,0
+CSV,167,2,0,39,3,697,690,730,730,40,10,3,0,2,0
+CSV,168,3,0,39,3,698,690,730,730,40,10,2,1,3,0
+CSV,169,2,0,39,3,698,690,730,730,40,10,2,0,2,0
+CSV,170,5,0,39,3,698,690,730,730,40,10,0,1,0,0
+CSV,171,1,0,40,3,710,710,760,760,50,20,20,0,0,0
+CSV,172,1,0,41,2,710,710,810,810,100,10,10,0,0,0
+CSV,173,2,0,40,3,710,710,760,760,50,20,20,0,2,0
+CSV,174,3,0,40,3,711,710,760,760,50,20,19,1,20,0
+CSV,175,2,0,40,3,711,710,760,760,50,20,19,0,2,0
+CSV,176,3,0,40,3,712,710,760,760,50,20,18,1,19,0
+CSV,177,2,0,40,3,712,710,760,760,50,20,18,0,2,0
+CSV,178,3,0,40,3,713,710,760,760,50,20,17,1,18,0
+CSV,179,2,0,40,3,713,710,760,760,50,20,17,0,2,0
+CSV,180,3,0,40,3,714,710,760,760,50,20,16,1,17,0
+CSV,181,2,0,40,3,714,710,760,760,50,20,16,0,2,0
+CSV,182,3,0,40,3,715,710,760,760,50,20,15,1,16,0
+CSV,183,2,0,40,3,715,710,760,760,50,20,15,0,2,0
+CSV,184,3,0,40,3,716,710,760,760,50,20,14,1,15,0
+CSV,185,2,0,40,3,716,710,760,760,50,20,14,0,2,0
+CSV,186,3,0,40,3,717,710,760,760,50,20,13,1,14,0
+CSV,187,2,0,40,3,717,710,760,760,50,20,13,0,2,0
+CSV,188,3,0,40,3,718,710,760,760,50,20,12,1,13,0
+CSV,189,2,0,40,3,718,710,760,760,50,20,12,0,2,0
+CSV,190,3,0,40,3,719,710,760,760,50,20,11,1,12,0
+CSV,191,2,0,40,3,719,710,760,760,50,20,11,0,2,0
+CSV,192,3,0,40,3,720,710,760,760,50,20,10,1,11,0
+CSV,193,2,0,40,3,720,710,760,760,50,20,10,0,2,0
+CSV,194,3,0,40,3,721,710,760,760,50,20,9,1,10,0
+CSV,195,2,0,40,3,721,710,760,760,50,20,9,0,2,0
+CSV,196,3,0,40,3,722,710,760,760,50,20,8,1,9,0
+CSV,197,2,0,40,3,722,710,760,760,50,20,8,0,2,0
+CSV,198,3,0,40,3,723,710,760,760,50,20,7,1,8,0
+CSV,199,2,0,40,3,723,710,760,760,50,20,7,0,2,0
+CSV,200,3,0,40,3,724,710,760,760,50,20,6,1,7,0
+CSV,201,2,0,40,3,724,710,760,760,50,20,6,0,2,0
+CSV,202,3,0,40,3,725,710,760,760,50,20,5,1,6,0
+CSV,203,2,0,40,3,725,710,760,760,50,20,5,0,2,0
+CSV,204,3,0,40,3,726,710,760,760,50,20,4,1,5,0
+CSV,205,2,0,40,3,726,710,760,760,50,20,4,0,2,0
+CSV,206,3,0,40,3,727,710,760,760,50,20,3,1,4,0
+CSV,207,2,0,40,3,727,710,760,760,50,20,3,0,2,0
+CSV,208,5,0,40,3,727,710,760,760,50,20,0,1,0,0
+CSV,209,2,0,41,2,727,710,810,810,100,10,10,0,2,0
+CSV,210,3,0,41,2,728,710,810,810,100,10,9,1,10,0
+CSV,211,2,0,41,2,728,710,810,810,100,10,9,0,2,0
+CSV,212,3,0,41,2,729,710,810,810,100,10,8,1,9,0
+CSV,213,2,0,41,2,729,710,810,810,100,10,8,0,2,0
+CSV,214,3,0,41,2,730,710,810,810,100,10,7,1,8,0
+CSV,215,1,0,39,4,730,730,770,770,40,10,10,0,0,0
+CSV,216,2,0,39,4,730,730,770,770,40,10,10,0,2,0
+CSV,217,2,0,41,2,730,710,810,810,100,10,7,0,2,0
+CSV,218,3,0,41,2,731,710,810,810,100,10,6,1,7,0
+CSV,219,2,0,41,2,731,710,810,810,100,10,6,0,2,0
+CSV,220,3,0,41,2,732,710,810,810,100,10,5,1,6,0
+CSV,221,2,0,41,2,732,710,810,810,100,10,5,0,2,0
+CSV,222,3,0,41,2,733,710,810,810,100,10,4,1,5,0
+CSV,223,2,0,41,2,733,710,810,810,100,10,4,0,2,0
+CSV,224,3,0,41,2,734,710,810,810,100,10,3,1,4,0
+CSV,225,2,0,41,2,734,710,810,810,100,10,3,0,2,0
+CSV,226,3,0,41,2,735,710,810,810,100,10,2,1,3,0
+CSV,227,2,0,41,2,735,710,810,810,100,10,2,0,2,0
+CSV,228,5,0,41,2,735,710,810,810,100,10,0,1,0,0
+CSV,229,8,0,34,0,735,0,0,0,0,0,0,1,0,0
+CSV,230,1,0,40,4,760,760,810,810,50,20,20,0,0,0
+CSV,231,2,0,40,4,760,760,810,810,50,20,20,0,2,0
+CSV,232,8,0,34,0,760,0,0,0,0,0,0,1,0,0
+CSV,233,1,0,41,3,810,810,910,910,100,10,10,0,0,0
+CSV,234,2,0,41,3,810,810,910,910,100,10,10,0,2,0
+CSV,235,3,0,41,3,811,810,910,910,100,10,9,1,10,0
+CSV,236,2,0,41,3,811,810,910,910,100,10,9,0,2,0
+CSV,237,3,0,41,3,812,810,910,910,100,10,8,1,9,0
+CSV,238,2,0,41,3,812,810,910,910,100,10,8,0,2,0
+CSV,239,3,0,41,3,813,810,910,910,100,10,7,1,8,0
+CSV,240,2,0,41,3,813,810,910,910,100,10,7,0,2,0
+CSV,241,3,0,41,3,814,810,910,910,100,10,6,1,7,0
+CSV,242,2,0,41,3,814,810,910,910,100,10,6,0,2,0
+CSV,243,3,0,41,3,815,810,910,910,100,10,5,1,6,0
+CSV,244,2,0,41,3,815,810,910,910,100,10,5,0,2,0
+CSV,245,3,0,41,3,816,810,910,910,100,10,4,1,5,0
+CSV,246,2,0,41,3,816,810,910,910,100,10,4,0,2,0
+CSV,247,3,0,41,3,817,810,910,910,100,10,3,1,4,0
+CSV,248,2,0,41,3,817,810,910,910,100,10,3,0,2,0
+CSV,249,3,0,41,3,818,810,910,910,100,10,2,1,3,0
+CSV,250,2,0,41,3,818,810,910,910,100,10,2,0,2,0
+CSV,251,5,0,41,3,818,810,910,910,100,10,0,1,0,0
+CSV,252,1,0,41,4,910,910,1010,1010,100,10,10,0,0,0
+CSV,253,2,0,41,4,910,910,1010,1010,100,10,10,0,2,0
+CSV,254,8,0,34,0,910,0,0,0,0,0,0,1,0,0
+CHECK trace export: PASS
+TASK A: pid=39
+TASK B: pid=40
+TASK C: pid=41
+WORKLOAD RESULT: PASS
+
+CHECK restore policy: PASS
+PAIRED WORKLOAD RESULT: PASS
+TRACE VALIDATION: requires Thanh's checker
+ORDER COMPARISON: requires separate trace validation
+$ 
+
+CAL: blocks=65536 samples=3 total_ticks=64 min=21 max=22
+CALIBRATION: PASS
+WORKLOAD: calibrated fixed blocks; elapsed-time estimate, not a WCET guarantee
+
+SOURCE=XV6 policy=edf set=compare jobs=3 time_scale=10 input_hash=2C6A6CB
+INPUT A: C=10 T=30 blocks=25644
+INPUT B: C=10 T=40 blocks=25644
+INPUT C: C=20 T=70 blocks=51289
+CHECK workers: PASS
+TRACE: events=251 lost=0
+CSV,seq,type,cpu,pid,job,tick,release,deadline,next_release,T,C,remaining,kr,aux,misses
+CSV,0,8,0,44,0,1794,0,0,0,0,0,0,0,0,0
+CSV,1,1,0,44,1,1794,1794,1824,1824,30,10,10,1,0,0
+CSV,2,2,0,44,1,1794,1794,1824,1824,30,10,10,0,1,0
+CSV,3,2,0,44,1,1794,1794,1824,1824,30,10,10,0,1,0
+CSV,4,2,0,44,1,1794,1794,1824,1824,30,10,10,0,1,0
+CSV,5,8,0,45,0,1794,0,0,0,0,0,0,0,0,0
+CSV,6,1,0,45,1,1794,1794,1834,1834,40,10,10,1,0,0
+CSV,7,2,0,45,1,1794,1794,1834,1834,40,10,10,0,1,0
+CSV,8,2,0,45,1,1794,1794,1834,1834,40,10,10,0,1,0
+CSV,9,2,0,45,1,1794,1794,1834,1834,40,10,10,0,1,0
+CSV,10,8,0,46,0,1794,0,0,0,0,0,0,0,0,0
+CSV,11,1,0,46,1,1794,1794,1864,1864,70,20,20,1,0,0
+CSV,12,2,0,46,1,1794,1794,1864,1864,70,20,20,0,1,0
+CSV,13,2,0,46,1,1794,1794,1864,1864,70,20,20,0,1,0
+CSV,14,2,0,46,1,1794,1794,1864,1864,70,20,20,0,1,0
+CSV,15,8,0,42,0,1794,0,0,0,0,0,0,1,0,0
+CSV,16,2,0,44,1,1794,1794,1824,1824,30,10,10,1,0,0
+CSV,17,2,0,45,1,1794,1794,1834,1834,40,10,10,1,0,0
+CSV,18,2,0,46,1,1794,1794,1864,1864,70,20,20,1,0,0
+CSV,19,2,0,44,1,1794,1794,1824,1824,30,10,10,0,1,0
+CSV,20,2,0,44,1,1794,1794,1824,1824,30,10,10,0,1,0
+CSV,21,3,0,44,1,1795,1794,1824,1824,30,10,9,1,10,0
+CSV,22,2,0,44,1,1795,1794,1824,1824,30,10,9,0,1,0
+CSV,23,3,0,44,1,1796,1794,1824,1824,30,10,8,1,9,0
+CSV,24,2,0,44,1,1796,1794,1824,1824,30,10,8,0,1,0
+CSV,25,3,0,44,1,1797,1794,1824,1824,30,10,7,1,8,0
+CSV,26,2,0,44,1,1797,1794,1824,1824,30,10,7,0,1,0
+CSV,27,3,0,44,1,1798,1794,1824,1824,30,10,6,1,7,0
+CSV,28,2,0,44,1,1798,1794,1824,1824,30,10,6,0,1,0
+CSV,29,3,0,44,1,1799,1794,1824,1824,30,10,5,1,6,0
+CSV,30,2,0,44,1,1799,1794,1824,1824,30,10,5,0,1,0
+CSV,31,3,0,44,1,1800,1794,1824,1824,30,10,4,1,5,0
+CSV,32,2,0,44,1,1800,1794,1824,1824,30,10,4,0,1,0
+CSV,33,3,0,44,1,1801,1794,1824,1824,30,10,3,1,4,0
+CSV,34,2,0,44,1,1801,1794,1824,1824,30,10,3,0,1,0
+CSV,35,3,0,44,1,1802,1794,1824,1824,30,10,2,1,3,0
+CSV,36,2,0,44,1,1802,1794,1824,1824,30,10,2,0,1,0
+CSV,37,5,0,44,1,1802,1794,1824,1824,30,10,0,1,0,0
+CSV,38,2,0,45,1,1802,1794,1834,1834,40,10,10,0,1,0
+CSV,39,2,0,45,1,1802,1794,1834,1834,40,10,10,0,1,0
+CSV,40,3,0,45,1,1803,1794,1834,1834,40,10,9,1,10,0
+CSV,41,2,0,45,1,1803,1794,1834,1834,40,10,9,0,1,0
+CSV,42,3,0,45,1,1804,1794,1834,1834,40,10,8,1,9,0
+CSV,43,2,0,45,1,1804,1794,1834,1834,40,10,8,0,1,0
+CSV,44,3,0,45,1,1805,1794,1834,1834,40,10,7,1,8,0
+CSV,45,2,0,45,1,1805,1794,1834,1834,40,10,7,0,1,0
+CSV,46,3,0,45,1,1806,1794,1834,1834,40,10,6,1,7,0
+CSV,47,2,0,45,1,1806,1794,1834,1834,40,10,6,0,1,0
+CSV,48,3,0,45,1,1807,1794,1834,1834,40,10,5,1,6,0
+CSV,49,2,0,45,1,1807,1794,1834,1834,40,10,5,0,1,0
+CSV,50,3,0,45,1,1808,1794,1834,1834,40,10,4,1,5,0
+CSV,51,2,0,45,1,1808,1794,1834,1834,40,10,4,0,1,0
+CSV,52,3,0,45,1,1809,1794,1834,1834,40,10,3,1,4,0
+CSV,53,2,0,45,1,1809,1794,1834,1834,40,10,3,0,1,0
+CSV,54,3,0,45,1,1810,1794,1834,1834,40,10,2,1,3,0
+CSV,55,2,0,45,1,1810,1794,1834,1834,40,10,2,0,1,0
+CSV,56,3,0,45,1,1811,1794,1834,1834,40,10,1,1,2,0
+CSV,57,2,0,45,1,1811,1794,1834,1834,40,10,1,0,1,0
+CSV,58,5,0,45,1,1811,1794,1834,1834,40,10,0,1,0,0
+CSV,59,2,0,46,1,1811,1794,1864,1864,70,20,20,0,1,0
+CSV,60,2,0,46,1,1811,1794,1864,1864,70,20,20,0,1,0
+CSV,61,3,0,46,1,1812,1794,1864,1864,70,20,19,1,20,0
+CSV,62,2,0,46,1,1812,1794,1864,1864,70,20,19,0,1,0
+CSV,63,3,0,46,1,1813,1794,1864,1864,70,20,18,1,19,0
+CSV,64,2,0,46,1,1813,1794,1864,1864,70,20,18,0,1,0
+CSV,65,3,0,46,1,1814,1794,1864,1864,70,20,17,1,18,0
+CSV,66,2,0,46,1,1814,1794,1864,1864,70,20,17,0,1,0
+CSV,67,3,0,46,1,1815,1794,1864,1864,70,20,16,1,17,0
+CSV,68,2,0,46,1,1815,1794,1864,1864,70,20,16,0,1,0
+CSV,69,3,0,46,1,1816,1794,1864,1864,70,20,15,1,16,0
+CSV,70,2,0,46,1,1816,1794,1864,1864,70,20,15,0,1,0
+CSV,71,3,0,46,1,1817,1794,1864,1864,70,20,14,1,15,0
+CSV,72,2,0,46,1,1817,1794,1864,1864,70,20,14,0,1,0
+CSV,73,3,0,46,1,1818,1794,1864,1864,70,20,13,1,14,0
+CSV,74,2,0,46,1,1818,1794,1864,1864,70,20,13,0,1,0
+CSV,75,3,0,46,1,1819,1794,1864,1864,70,20,12,1,13,0
+CSV,76,2,0,46,1,1819,1794,1864,1864,70,20,12,0,1,0
+CSV,77,3,0,46,1,1820,1794,1864,1864,70,20,11,1,12,0
+CSV,78,2,0,46,1,1820,1794,1864,1864,70,20,11,0,1,0
+CSV,79,3,0,46,1,1821,1794,1864,1864,70,20,10,1,11,0
+CSV,80,2,0,46,1,1821,1794,1864,1864,70,20,10,0,1,0
+CSV,81,3,0,46,1,1822,1794,1864,1864,70,20,9,1,10,0
+CSV,82,2,0,46,1,1822,1794,1864,1864,70,20,9,0,1,0
+CSV,83,3,0,46,1,1823,1794,1864,1864,70,20,8,1,9,0
+CSV,84,2,0,46,1,1823,1794,1864,1864,70,20,8,0,1,0
+CSV,85,3,0,46,1,1824,1794,1864,1864,70,20,7,1,8,0
+CSV,86,1,0,44,2,1824,1824,1854,1854,30,10,10,0,0,0
+CSV,87,2,0,44,2,1824,1824,1854,1854,30,10,10,0,1,0
+CSV,88,3,0,44,2,1825,1824,1854,1854,30,10,9,1,10,0
+CSV,89,2,0,44,2,1825,1824,1854,1854,30,10,9,0,1,0
+CSV,90,3,0,44,2,1826,1824,1854,1854,30,10,8,1,9,0
+CSV,91,2,0,44,2,1826,1824,1854,1854,30,10,8,0,1,0
+CSV,92,3,0,44,2,1827,1824,1854,1854,30,10,7,1,8,0
+CSV,93,2,0,44,2,1827,1824,1854,1854,30,10,7,0,1,0
+CSV,94,3,0,44,2,1828,1824,1854,1854,30,10,6,1,7,0
+CSV,95,2,0,44,2,1828,1824,1854,1854,30,10,6,0,1,0
+CSV,96,3,0,44,2,1829,1824,1854,1854,30,10,5,1,6,0
+CSV,97,2,0,44,2,1829,1824,1854,1854,30,10,5,0,1,0
+CSV,98,3,0,44,2,1830,1824,1854,1854,30,10,4,1,5,0
+CSV,99,2,0,44,2,1830,1824,1854,1854,30,10,4,0,1,0
+CSV,100,3,0,44,2,1831,1824,1854,1854,30,10,3,1,4,0
+CSV,101,2,0,44,2,1831,1824,1854,1854,30,10,3,0,1,0
+CSV,102,3,0,44,2,1832,1824,1854,1854,30,10,2,1,3,0
+CSV,103,2,0,44,2,1832,1824,1854,1854,30,10,2,0,1,0
+CSV,104,5,0,44,2,1832,1824,1854,1854,30,10,0,1,0,0
+CSV,105,2,0,46,1,1832,1794,1864,1864,70,20,7,0,1,0
+CSV,106,3,0,46,1,1833,1794,1864,1864,70,20,6,1,7,0
+CSV,107,2,0,46,1,1833,1794,1864,1864,70,20,6,0,1,0
+CSV,108,3,0,46,1,1834,1794,1864,1864,70,20,5,1,6,0
+CSV,109,1,0,45,2,1834,1834,1874,1874,40,10,10,0,0,0
+CSV,110,2,0,46,1,1834,1794,1864,1864,70,20,5,0,1,0
+CSV,111,3,0,46,1,1835,1794,1864,1864,70,20,4,1,5,0
+CSV,112,2,0,46,1,1835,1794,1864,1864,70,20,4,0,1,0
+CSV,113,5,0,46,1,1835,1794,1864,1864,70,20,0,1,0,0
+CSV,114,2,0,45,2,1835,1834,1874,1874,40,10,10,0,1,0
+CSV,115,3,0,45,2,1836,1834,1874,1874,40,10,9,1,10,0
+CSV,116,2,0,45,2,1836,1834,1874,1874,40,10,9,0,1,0
+CSV,117,3,0,45,2,1837,1834,1874,1874,40,10,8,1,9,0
+CSV,118,2,0,45,2,1837,1834,1874,1874,40,10,8,0,1,0
+CSV,119,3,0,45,2,1838,1834,1874,1874,40,10,7,1,8,0
+CSV,120,2,0,45,2,1838,1834,1874,1874,40,10,7,0,1,0
+CSV,121,3,0,45,2,1839,1834,1874,1874,40,10,6,1,7,0
+CSV,122,2,0,45,2,1839,1834,1874,1874,40,10,6,0,1,0
+CSV,123,3,0,45,2,1840,1834,1874,1874,40,10,5,1,6,0
+CSV,124,2,0,45,2,1840,1834,1874,1874,40,10,5,0,1,0
+CSV,125,3,0,45,2,1841,1834,1874,1874,40,10,4,1,5,0
+CSV,126,2,0,45,2,1841,1834,1874,1874,40,10,4,0,1,0
+CSV,127,3,0,45,2,1842,1834,1874,1874,40,10,3,1,4,0
+CSV,128,2,0,45,2,1842,1834,1874,1874,40,10,3,0,1,0
+CSV,129,3,0,45,2,1843,1834,1874,1874,40,10,2,1,3,0
+CSV,130,2,0,45,2,1843,1834,1874,1874,40,10,2,0,1,0
+CSV,131,3,0,45,2,1844,1834,1874,1874,40,10,1,1,2,0
+CSV,132,2,0,45,2,1844,1834,1874,1874,40,10,1,0,1,0
+CSV,133,5,0,45,2,1844,1834,1874,1874,40,10,0,1,0,0
+CSV,134,1,0,44,3,1854,1854,1884,1884,30,10,10,0,0,0
+CSV,135,2,0,44,3,1854,1854,1884,1884,30,10,10,0,1,0
+CSV,136,3,0,44,3,1855,1854,1884,1884,30,10,9,1,10,0
+CSV,137,2,0,44,3,1855,1854,1884,1884,30,10,9,0,1,0
+CSV,138,3,0,44,3,1856,1854,1884,1884,30,10,8,1,9,0
+CSV,139,2,0,44,3,1856,1854,1884,1884,30,10,8,0,1,0
+CSV,140,3,0,44,3,1857,1854,1884,1884,30,10,7,1,8,0
+CSV,141,2,0,44,3,1857,1854,1884,1884,30,10,7,0,1,0
+CSV,142,3,0,44,3,1858,1854,1884,1884,30,10,6,1,7,0
+CSV,143,2,0,44,3,1858,1854,1884,1884,30,10,6,0,1,0
+CSV,144,3,0,44,3,1859,1854,1884,1884,30,10,5,1,6,0
+CSV,145,2,0,44,3,1859,1854,1884,1884,30,10,5,0,1,0
+CSV,146,3,0,44,3,1860,1854,1884,1884,30,10,4,1,5,0
+CSV,147,2,0,44,3,1860,1854,1884,1884,30,10,4,0,1,0
+CSV,148,3,0,44,3,1861,1854,1884,1884,30,10,3,1,4,0
+CSV,149,2,0,44,3,1861,1854,1884,1884,30,10,3,0,1,0
+CSV,150,3,0,44,3,1862,1854,1884,1884,30,10,2,1,3,0
+CSV,151,2,0,44,3,1862,1854,1884,1884,30,10,2,0,1,0
+CSV,152,5,0,44,3,1862,1854,1884,1884,30,10,0,1,0,0
+CSV,153,1,0,46,2,1864,1864,1934,1934,70,20,20,0,0,0
+CSV,154,2,0,46,2,1864,1864,1934,1934,70,20,20,0,1,0
+CSV,155,3,0,46,2,1865,1864,1934,1934,70,20,19,1,20,0
+CSV,156,2,0,46,2,1865,1864,1934,1934,70,20,19,0,1,0
+CSV,157,3,0,46,2,1866,1864,1934,1934,70,20,18,1,19,0
+CSV,158,2,0,46,2,1866,1864,1934,1934,70,20,18,0,1,0
+CSV,159,3,0,46,2,1867,1864,1934,1934,70,20,17,1,18,0
+CSV,160,2,0,46,2,1867,1864,1934,1934,70,20,17,0,1,0
+CSV,161,3,0,46,2,1868,1864,1934,1934,70,20,16,1,17,0
+CSV,162,2,0,46,2,1868,1864,1934,1934,70,20,16,0,1,0
+CSV,163,3,0,46,2,1869,1864,1934,1934,70,20,15,1,16,0
+CSV,164,2,0,46,2,1869,1864,1934,1934,70,20,15,0,1,0
+CSV,165,3,0,46,2,1870,1864,1934,1934,70,20,14,1,15,0
+CSV,166,2,0,46,2,1870,1864,1934,1934,70,20,14,0,1,0
+CSV,167,3,0,46,2,1871,1864,1934,1934,70,20,13,1,14,0
+CSV,168,2,0,46,2,1871,1864,1934,1934,70,20,13,0,1,0
+CSV,169,3,0,46,2,1872,1864,1934,1934,70,20,12,1,13,0
+CSV,170,2,0,46,2,1872,1864,1934,1934,70,20,12,0,1,0
+CSV,171,3,0,46,2,1873,1864,1934,1934,70,20,11,1,12,0
+CSV,172,2,0,46,2,1873,1864,1934,1934,70,20,11,0,1,0
+CSV,173,3,0,46,2,1874,1864,1934,1934,70,20,10,1,11,0
+CSV,174,1,0,45,3,1874,1874,1914,1914,40,10,10,0,0,0
+CSV,175,2,0,45,3,1874,1874,1914,1914,40,10,10,0,1,0
+CSV,176,3,0,45,3,1875,1874,1914,1914,40,10,9,1,10,0
+CSV,177,2,0,45,3,1875,1874,1914,1914,40,10,9,0,1,0
+CSV,178,3,0,45,3,1876,1874,1914,1914,40,10,8,1,9,0
+CSV,179,2,0,45,3,1876,1874,1914,1914,40,10,8,0,1,0
+CSV,180,3,0,45,3,1877,1874,1914,1914,40,10,7,1,8,0
+CSV,181,2,0,45,3,1877,1874,1914,1914,40,10,7,0,1,0
+CSV,182,3,0,45,3,1878,1874,1914,1914,40,10,6,1,7,0
+CSV,183,2,0,45,3,1878,1874,1914,1914,40,10,6,0,1,0
+CSV,184,3,0,45,3,1879,1874,1914,1914,40,10,5,1,6,0
+CSV,185,2,0,45,3,1879,1874,1914,1914,40,10,5,0,1,0
+CSV,186,3,0,45,3,1880,1874,1914,1914,40,10,4,1,5,0
+CSV,187,2,0,45,3,1880,1874,1914,1914,40,10,4,0,1,0
+CSV,188,3,0,45,3,1881,1874,1914,1914,40,10,3,1,4,0
+CSV,189,2,0,45,3,1881,1874,1914,1914,40,10,3,0,1,0
+CSV,190,3,0,45,3,1882,1874,1914,1914,40,10,2,1,3,0
+CSV,191,2,0,45,3,1882,1874,1914,1914,40,10,2,0,1,0
+CSV,192,5,0,45,3,1882,1874,1914,1914,40,10,0,1,0,0
+CSV,193,2,0,46,2,1882,1864,1934,1934,70,20,10,0,1,0
+CSV,194,3,0,46,2,1883,1864,1934,1934,70,20,9,1,10,0
+CSV,195,2,0,46,2,1883,1864,1934,1934,70,20,9,0,1,0
+CSV,196,3,0,46,2,1884,1864,1934,1934,70,20,8,1,9,0
+CSV,197,1,0,44,4,1884,1884,1914,1914,30,10,10,0,0,0
+CSV,198,2,0,44,4,1884,1884,1914,1914,30,10,10,0,1,0
+CSV,199,2,0,46,2,1884,1864,1934,1934,70,20,8,0,1,0
+CSV,200,3,0,46,2,1885,1864,1934,1934,70,20,7,1,8,0
+CSV,201,2,0,46,2,1885,1864,1934,1934,70,20,7,0,1,0
+CSV,202,3,0,46,2,1886,1864,1934,1934,70,20,6,1,7,0
+CSV,203,2,0,46,2,1886,1864,1934,1934,70,20,6,0,1,0
+CSV,204,3,0,46,2,1887,1864,1934,1934,70,20,5,1,6,0
+CSV,205,2,0,46,2,1887,1864,1934,1934,70,20,5,0,1,0
+CSV,206,3,0,46,2,1888,1864,1934,1934,70,20,4,1,5,0
+CSV,207,2,0,46,2,1888,1864,1934,1934,70,20,4,0,1,0
+CSV,208,5,0,46,2,1888,1864,1934,1934,70,20,0,1,0,0
+CSV,209,8,0,42,0,1888,0,0,0,0,0,0,1,0,0
+CSV,210,1,0,45,4,1914,1914,1954,1954,40,10,10,0,0,0
+CSV,211,2,0,45,4,1914,1914,1954,1954,40,10,10,0,1,0
+CSV,212,8,0,42,0,1914,0,0,0,0,0,0,1,0,0
+CSV,213,1,0,46,3,1934,1934,2004,2004,70,20,20,0,0,0
+CSV,214,2,0,46,3,1934,1934,2004,2004,70,20,20,0,1,0
+CSV,215,3,0,46,3,1935,1934,2004,2004,70,20,19,1,20,0
+CSV,216,2,0,46,3,1935,1934,2004,2004,70,20,19,0,1,0
+CSV,217,3,0,46,3,1936,1934,2004,2004,70,20,18,1,19,0
+CSV,218,2,0,46,3,1936,1934,2004,2004,70,20,18,0,1,0
+CSV,219,3,0,46,3,1937,1934,2004,2004,70,20,17,1,18,0
+CSV,220,2,0,46,3,1937,1934,2004,2004,70,20,17,0,1,0
+CSV,221,3,0,46,3,1938,1934,2004,2004,70,20,16,1,17,0
+CSV,222,2,0,46,3,1938,1934,2004,2004,70,20,16,0,1,0
+CSV,223,3,0,46,3,1939,1934,2004,2004,70,20,15,1,16,0
+CSV,224,2,0,46,3,1939,1934,2004,2004,70,20,15,0,1,0
+CSV,225,3,0,46,3,1940,1934,2004,2004,70,20,14,1,15,0
+CSV,226,2,0,46,3,1940,1934,2004,2004,70,20,14,0,1,0
+CSV,227,3,0,46,3,1941,1934,2004,2004,70,20,13,1,14,0
+CSV,228,2,0,46,3,1941,1934,2004,2004,70,20,13,0,1,0
+CSV,229,3,0,46,3,1942,1934,2004,2004,70,20,12,1,13,0
+CSV,230,2,0,46,3,1942,1934,2004,2004,70,20,12,0,1,0
+CSV,231,3,0,46,3,1943,1934,2004,2004,70,20,11,1,12,0
+CSV,232,2,0,46,3,1943,1934,2004,2004,70,20,11,0,1,0
+CSV,233,3,0,46,3,1944,1934,2004,2004,70,20,10,1,11,0
+CSV,234,2,0,46,3,1944,1934,2004,2004,70,20,10,0,1,0
+CSV,235,3,0,46,3,1945,1934,2004,2004,70,20,9,1,10,0
+CSV,236,2,0,46,3,1945,1934,2004,2004,70,20,9,0,1,0
+CSV,237,3,0,46,3,1946,1934,2004,2004,70,20,8,1,9,0
+CSV,238,2,0,46,3,1946,1934,2004,2004,70,20,8,0,1,0
+CSV,239,3,0,46,3,1947,1934,2004,2004,70,20,7,1,8,0
+CSV,240,2,0,46,3,1947,1934,2004,2004,70,20,7,0,1,0
+CSV,241,3,0,46,3,1948,1934,2004,2004,70,20,6,1,7,0
+CSV,242,2,0,46,3,1948,1934,2004,2004,70,20,6,0,1,0
+CSV,243,3,0,46,3,1949,1934,2004,2004,70,20,5,1,6,0
+CSV,244,2,0,46,3,1949,1934,2004,2004,70,20,5,0,1,0
+CSV,245,3,0,46,3,1950,1934,2004,2004,70,20,4,1,5,0
+CSV,246,2,0,46,3,1950,1934,2004,2004,70,20,4,0,1,0
+CSV,247,5,0,46,3,1950,1934,2004,2004,70,20,0,1,0,0
+CSV,248,1,0,46,4,2004,2004,2074,2074,70,20,20,0,0,0
+CSV,249,2,0,46,4,2004,2004,2074,2074,70,20,20,0,1,0
+CSV,250,8,0,42,0,2004,0,0,0,0,0,0,1,0,0
+CHECK trace export: PASS
+TASK A: pid=44
+TASK B: pid=45
+TASK C: pid=46
+WORKLOAD RESULT: PASS
+
+SOURCE=XV6 policy=rm set=compare jobs=3 time_scale=10 input_hash=2C6A6CB
+INPUT A: C=10 T=30 blocks=25644
+INPUT B: C=10 T=40 blocks=25644
+INPUT C: C=20 T=70 blocks=51289
+CHECK workers: PASS
+TRACE: events=249 lost=0
+CSV,seq,type,cpu,pid,job,tick,release,deadline,next_release,T,C,remaining,kr,aux,misses
+CSV,0,8,0,47,0,2014,0,0,0,0,0,0,0,0,0
+CSV,1,1,0,47,1,2014,2014,2044,2044,30,10,10,1,0,0
+CSV,2,2,0,47,1,2014,2014,2044,2044,30,10,10,0,2,0
+CSV,3,2,0,47,1,2014,2014,2044,2044,30,10,10,0,2,0
+CSV,4,2,0,47,1,2014,2014,2044,2044,30,10,10,0,2,0
+CSV,5,8,0,48,0,2014,0,0,0,0,0,0,0,0,0
+CSV,6,1,0,48,1,2014,2014,2054,2054,40,10,10,1,0,0
+CSV,7,2,0,48,1,2014,2014,2054,2054,40,10,10,0,2,0
+CSV,8,2,0,48,1,2014,2014,2054,2054,40,10,10,0,2,0
+CSV,9,2,0,48,1,2014,2014,2054,2054,40,10,10,0,2,0
+CSV,10,8,0,49,0,2014,0,0,0,0,0,0,0,0,0
+CSV,11,1,0,49,1,2014,2014,2084,2084,70,20,20,1,0,0
+CSV,12,2,0,49,1,2014,2014,2084,2084,70,20,20,0,2,0
+CSV,13,2,0,49,1,2014,2014,2084,2084,70,20,20,0,2,0
+CSV,14,2,0,49,1,2014,2014,2084,2084,70,20,20,0,2,0
+CSV,15,8,0,42,0,2014,0,0,0,0,0,0,1,0,0
+CSV,16,2,0,47,1,2014,2014,2044,2044,30,10,10,1,0,0
+CSV,17,2,0,48,1,2014,2014,2054,2054,40,10,10,1,0,0
+CSV,18,2,0,49,1,2014,2014,2084,2084,70,20,20,1,0,0
+CSV,19,2,0,47,1,2014,2014,2044,2044,30,10,10,0,2,0
+CSV,20,2,0,47,1,2014,2014,2044,2044,30,10,10,0,2,0
+CSV,21,3,0,47,1,2015,2014,2044,2044,30,10,9,1,10,0
+CSV,22,2,0,47,1,2015,2014,2044,2044,30,10,9,0,2,0
+CSV,23,3,0,47,1,2016,2014,2044,2044,30,10,8,1,9,0
+CSV,24,2,0,47,1,2016,2014,2044,2044,30,10,8,0,2,0
+CSV,25,3,0,47,1,2017,2014,2044,2044,30,10,7,1,8,0
+CSV,26,2,0,47,1,2017,2014,2044,2044,30,10,7,0,2,0
+CSV,27,3,0,47,1,2018,2014,2044,2044,30,10,6,1,7,0
+CSV,28,2,0,47,1,2018,2014,2044,2044,30,10,6,0,2,0
+CSV,29,3,0,47,1,2019,2014,2044,2044,30,10,5,1,6,0
+CSV,30,2,0,47,1,2019,2014,2044,2044,30,10,5,0,2,0
+CSV,31,3,0,47,1,2020,2014,2044,2044,30,10,4,1,5,0
+CSV,32,2,0,47,1,2020,2014,2044,2044,30,10,4,0,2,0
+CSV,33,3,0,47,1,2021,2014,2044,2044,30,10,3,1,4,0
+CSV,34,2,0,47,1,2021,2014,2044,2044,30,10,3,0,2,0
+CSV,35,3,0,47,1,2022,2014,2044,2044,30,10,2,1,3,0
+CSV,36,2,0,47,1,2022,2014,2044,2044,30,10,2,0,2,0
+CSV,37,5,0,47,1,2022,2014,2044,2044,30,10,0,1,0,0
+CSV,38,2,0,48,1,2022,2014,2054,2054,40,10,10,0,2,0
+CSV,39,2,0,48,1,2022,2014,2054,2054,40,10,10,0,2,0
+CSV,40,3,0,48,1,2023,2014,2054,2054,40,10,9,1,10,0
+CSV,41,2,0,48,1,2023,2014,2054,2054,40,10,9,0,2,0
+CSV,42,3,0,48,1,2024,2014,2054,2054,40,10,8,1,9,0
+CSV,43,2,0,48,1,2024,2014,2054,2054,40,10,8,0,2,0
+CSV,44,3,0,48,1,2025,2014,2054,2054,40,10,7,1,8,0
+CSV,45,2,0,48,1,2025,2014,2054,2054,40,10,7,0,2,0
+CSV,46,3,0,48,1,2026,2014,2054,2054,40,10,6,1,7,0
+CSV,47,2,0,48,1,2026,2014,2054,2054,40,10,6,0,2,0
+CSV,48,3,0,48,1,2027,2014,2054,2054,40,10,5,1,6,0
+CSV,49,2,0,48,1,2027,2014,2054,2054,40,10,5,0,2,0
+CSV,50,3,0,48,1,2028,2014,2054,2054,40,10,4,1,5,0
+CSV,51,2,0,48,1,2028,2014,2054,2054,40,10,4,0,2,0
+CSV,52,3,0,48,1,2029,2014,2054,2054,40,10,3,1,4,0
+CSV,53,2,0,48,1,2029,2014,2054,2054,40,10,3,0,2,0
+CSV,54,3,0,48,1,2030,2014,2054,2054,40,10,2,1,3,0
+CSV,55,2,0,48,1,2030,2014,2054,2054,40,10,2,0,2,0
+CSV,56,3,0,48,1,2031,2014,2054,2054,40,10,1,1,2,0
+CSV,57,2,0,48,1,2031,2014,2054,2054,40,10,1,0,2,0
+CSV,58,5,0,48,1,2031,2014,2054,2054,40,10,0,1,0,0
+CSV,59,2,0,49,1,2031,2014,2084,2084,70,20,20,0,2,0
+CSV,60,2,0,49,1,2031,2014,2084,2084,70,20,20,0,2,0
+CSV,61,3,0,49,1,2032,2014,2084,2084,70,20,19,1,20,0
+CSV,62,2,0,49,1,2032,2014,2084,2084,70,20,19,0,2,0
+CSV,63,3,0,49,1,2033,2014,2084,2084,70,20,18,1,19,0
+CSV,64,2,0,49,1,2033,2014,2084,2084,70,20,18,0,2,0
+CSV,65,3,0,49,1,2034,2014,2084,2084,70,20,17,1,18,0
+CSV,66,2,0,49,1,2034,2014,2084,2084,70,20,17,0,2,0
+CSV,67,3,0,49,1,2035,2014,2084,2084,70,20,16,1,17,0
+CSV,68,2,0,49,1,2035,2014,2084,2084,70,20,16,0,2,0
+CSV,69,3,0,49,1,2036,2014,2084,2084,70,20,15,1,16,0
+CSV,70,2,0,49,1,2036,2014,2084,2084,70,20,15,0,2,0
+CSV,71,3,0,49,1,2037,2014,2084,2084,70,20,14,1,15,0
+CSV,72,2,0,49,1,2037,2014,2084,2084,70,20,14,0,2,0
+CSV,73,3,0,49,1,2038,2014,2084,2084,70,20,13,1,14,0
+CSV,74,2,0,49,1,2038,2014,2084,2084,70,20,13,0,2,0
+CSV,75,3,0,49,1,2039,2014,2084,2084,70,20,12,1,13,0
+CSV,76,2,0,49,1,2039,2014,2084,2084,70,20,12,0,2,0
+CSV,77,3,0,49,1,2040,2014,2084,2084,70,20,11,1,12,0
+CSV,78,2,0,49,1,2040,2014,2084,2084,70,20,11,0,2,0
+CSV,79,3,0,49,1,2041,2014,2084,2084,70,20,10,1,11,0
+CSV,80,2,0,49,1,2041,2014,2084,2084,70,20,10,0,2,0
+CSV,81,3,0,49,1,2042,2014,2084,2084,70,20,9,1,10,0
+CSV,82,2,0,49,1,2042,2014,2084,2084,70,20,9,0,2,0
+CSV,83,3,0,49,1,2043,2014,2084,2084,70,20,8,1,9,0
+CSV,84,2,0,49,1,2043,2014,2084,2084,70,20,8,0,2,0
+CSV,85,3,0,49,1,2044,2014,2084,2084,70,20,7,1,8,0
+CSV,86,1,0,47,2,2044,2044,2074,2074,30,10,10,0,0,0
+CSV,87,2,0,47,2,2044,2044,2074,2074,30,10,10,0,2,0
+CSV,88,3,0,47,2,2045,2044,2074,2074,30,10,9,1,10,0
+CSV,89,2,0,47,2,2045,2044,2074,2074,30,10,9,0,2,0
+CSV,90,3,0,47,2,2046,2044,2074,2074,30,10,8,1,9,0
+CSV,91,2,0,47,2,2046,2044,2074,2074,30,10,8,0,2,0
+CSV,92,3,0,47,2,2047,2044,2074,2074,30,10,7,1,8,0
+CSV,93,2,0,47,2,2047,2044,2074,2074,30,10,7,0,2,0
+CSV,94,3,0,47,2,2048,2044,2074,2074,30,10,6,1,7,0
+CSV,95,2,0,47,2,2048,2044,2074,2074,30,10,6,0,2,0
+CSV,96,3,0,47,2,2049,2044,2074,2074,30,10,5,1,6,0
+CSV,97,2,0,47,2,2049,2044,2074,2074,30,10,5,0,2,0
+CSV,98,3,0,47,2,2050,2044,2074,2074,30,10,4,1,5,0
+CSV,99,2,0,47,2,2050,2044,2074,2074,30,10,4,0,2,0
+CSV,100,3,0,47,2,2051,2044,2074,2074,30,10,3,1,4,0
+CSV,101,2,0,47,2,2051,2044,2074,2074,30,10,3,0,2,0
+CSV,102,3,0,47,2,2052,2044,2074,2074,30,10,2,1,3,0
+CSV,103,2,0,47,2,2052,2044,2074,2074,30,10,2,0,2,0
+CSV,104,5,0,47,2,2052,2044,2074,2074,30,10,0,1,0,0
+CSV,105,2,0,49,1,2052,2014,2084,2084,70,20,7,0,2,0
+CSV,106,3,0,49,1,2053,2014,2084,2084,70,20,6,1,7,0
+CSV,107,2,0,49,1,2053,2014,2084,2084,70,20,6,0,2,0
+CSV,108,3,0,49,1,2054,2014,2084,2084,70,20,5,1,6,0
+CSV,109,1,0,48,2,2054,2054,2094,2094,40,10,10,0,0,0
+CSV,110,2,0,48,2,2054,2054,2094,2094,40,10,10,0,2,0
+CSV,111,3,0,48,2,2055,2054,2094,2094,40,10,9,1,10,0
+CSV,112,2,0,48,2,2055,2054,2094,2094,40,10,9,0,2,0
+CSV,113,3,0,48,2,2056,2054,2094,2094,40,10,8,1,9,0
+CSV,114,2,0,48,2,2056,2054,2094,2094,40,10,8,0,2,0
+CSV,115,3,0,48,2,2057,2054,2094,2094,40,10,7,1,8,0
+CSV,116,2,0,48,2,2057,2054,2094,2094,40,10,7,0,2,0
+CSV,117,3,0,48,2,2058,2054,2094,2094,40,10,6,1,7,0
+CSV,118,2,0,48,2,2058,2054,2094,2094,40,10,6,0,2,0
+CSV,119,3,0,48,2,2059,2054,2094,2094,40,10,5,1,6,0
+CSV,120,2,0,48,2,2059,2054,2094,2094,40,10,5,0,2,0
+CSV,121,3,0,48,2,2060,2054,2094,2094,40,10,4,1,5,0
+CSV,122,2,0,48,2,2060,2054,2094,2094,40,10,4,0,2,0
+CSV,123,3,0,48,2,2061,2054,2094,2094,40,10,3,1,4,0
+CSV,124,2,0,48,2,2061,2054,2094,2094,40,10,3,0,2,0
+CSV,125,3,0,48,2,2062,2054,2094,2094,40,10,2,1,3,0
+CSV,126,2,0,48,2,2062,2054,2094,2094,40,10,2,0,2,0
+CSV,127,5,0,48,2,2062,2054,2094,2094,40,10,0,1,0,0
+CSV,128,2,0,49,1,2062,2014,2084,2084,70,20,5,0,2,0
+CSV,129,3,0,49,1,2063,2014,2084,2084,70,20,4,1,5,0
+CSV,130,2,0,49,1,2063,2014,2084,2084,70,20,4,0,2,0
+CSV,131,5,0,49,1,2063,2014,2084,2084,70,20,0,1,0,0
+CSV,132,1,0,47,3,2074,2074,2104,2104,30,10,10,0,0,0
+CSV,133,2,0,47,3,2074,2074,2104,2104,30,10,10,0,2,0
+CSV,134,3,0,47,3,2075,2074,2104,2104,30,10,9,1,10,0
+CSV,135,2,0,47,3,2075,2074,2104,2104,30,10,9,0,2,0
+CSV,136,3,0,47,3,2076,2074,2104,2104,30,10,8,1,9,0
+CSV,137,2,0,47,3,2076,2074,2104,2104,30,10,8,0,2,0
+CSV,138,3,0,47,3,2077,2074,2104,2104,30,10,7,1,8,0
+CSV,139,2,0,47,3,2077,2074,2104,2104,30,10,7,0,2,0
+CSV,140,3,0,47,3,2078,2074,2104,2104,30,10,6,1,7,0
+CSV,141,2,0,47,3,2078,2074,2104,2104,30,10,6,0,2,0
+CSV,142,3,0,47,3,2079,2074,2104,2104,30,10,5,1,6,0
+CSV,143,2,0,47,3,2079,2074,2104,2104,30,10,5,0,2,0
+CSV,144,3,0,47,3,2080,2074,2104,2104,30,10,4,1,5,0
+CSV,145,2,0,47,3,2080,2074,2104,2104,30,10,4,0,2,0
+CSV,146,3,0,47,3,2081,2074,2104,2104,30,10,3,1,4,0
+CSV,147,2,0,47,3,2081,2074,2104,2104,30,10,3,0,2,0
+CSV,148,3,0,47,3,2082,2074,2104,2104,30,10,2,1,3,0
+CSV,149,2,0,47,3,2082,2074,2104,2104,30,10,2,0,2,0
+CSV,150,5,0,47,3,2082,2074,2104,2104,30,10,0,1,0,0
+CSV,151,1,0,49,2,2084,2084,2154,2154,70,20,20,0,0,0
+CSV,152,2,0,49,2,2084,2084,2154,2154,70,20,20,0,2,0
+CSV,153,3,0,49,2,2085,2084,2154,2154,70,20,19,1,20,0
+CSV,154,2,0,49,2,2085,2084,2154,2154,70,20,19,0,2,0
+CSV,155,3,0,49,2,2086,2084,2154,2154,70,20,18,1,19,0
+CSV,156,2,0,49,2,2086,2084,2154,2154,70,20,18,0,2,0
+CSV,157,3,0,49,2,2087,2084,2154,2154,70,20,17,1,18,0
+CSV,158,2,0,49,2,2087,2084,2154,2154,70,20,17,0,2,0
+CSV,159,3,0,49,2,2088,2084,2154,2154,70,20,16,1,17,0
+CSV,160,2,0,49,2,2088,2084,2154,2154,70,20,16,0,2,0
+CSV,161,3,0,49,2,2089,2084,2154,2154,70,20,15,1,16,0
+CSV,162,2,0,49,2,2089,2084,2154,2154,70,20,15,0,2,0
+CSV,163,3,0,49,2,2090,2084,2154,2154,70,20,14,1,15,0
+CSV,164,2,0,49,2,2090,2084,2154,2154,70,20,14,0,2,0
+CSV,165,3,0,49,2,2091,2084,2154,2154,70,20,13,1,14,0
+CSV,166,2,0,49,2,2091,2084,2154,2154,70,20,13,0,2,0
+CSV,167,3,0,49,2,2092,2084,2154,2154,70,20,12,1,13,0
+CSV,168,2,0,49,2,2092,2084,2154,2154,70,20,12,0,2,0
+CSV,169,3,0,49,2,2093,2084,2154,2154,70,20,11,1,12,0
+CSV,170,2,0,49,2,2093,2084,2154,2154,70,20,11,0,2,0
+CSV,171,3,0,49,2,2094,2084,2154,2154,70,20,10,1,11,0
+CSV,172,1,0,48,3,2094,2094,2134,2134,40,10,10,0,0,0
+CSV,173,2,0,48,3,2094,2094,2134,2134,40,10,10,0,2,0
+CSV,174,3,0,48,3,2095,2094,2134,2134,40,10,9,1,10,0
+CSV,175,2,0,48,3,2095,2094,2134,2134,40,10,9,0,2,0
+CSV,176,3,0,48,3,2096,2094,2134,2134,40,10,8,1,9,0
+CSV,177,2,0,48,3,2096,2094,2134,2134,40,10,8,0,2,0
+CSV,178,3,0,48,3,2097,2094,2134,2134,40,10,7,1,8,0
+CSV,179,2,0,48,3,2097,2094,2134,2134,40,10,7,0,2,0
+CSV,180,3,0,48,3,2098,2094,2134,2134,40,10,6,1,7,0
+CSV,181,2,0,48,3,2098,2094,2134,2134,40,10,6,0,2,0
+CSV,182,3,0,48,3,2099,2094,2134,2134,40,10,5,1,6,0
+CSV,183,2,0,48,3,2099,2094,2134,2134,40,10,5,0,2,0
+CSV,184,3,0,48,3,2100,2094,2134,2134,40,10,4,1,5,0
+CSV,185,2,0,48,3,2100,2094,2134,2134,40,10,4,0,2,0
+CSV,186,3,0,48,3,2101,2094,2134,2134,40,10,3,1,4,0
+CSV,187,2,0,48,3,2101,2094,2134,2134,40,10,3,0,2,0
+CSV,188,3,0,48,3,2102,2094,2134,2134,40,10,2,1,3,0
+CSV,189,2,0,48,3,2102,2094,2134,2134,40,10,2,0,2,0
+CSV,190,5,0,48,3,2102,2094,2134,2134,40,10,0,1,0,0
+CSV,191,2,0,49,2,2102,2084,2154,2154,70,20,10,0,2,0
+CSV,192,3,0,49,2,2103,2084,2154,2154,70,20,9,1,10,0
+CSV,193,2,0,49,2,2103,2084,2154,2154,70,20,9,0,2,0
+CSV,194,3,0,49,2,2104,2084,2154,2154,70,20,8,1,9,0
+CSV,195,1,0,47,4,2104,2104,2134,2134,30,10,10,0,0,0
+CSV,196,2,0,47,4,2104,2104,2134,2134,30,10,10,0,2,0
+CSV,197,2,0,49,2,2104,2084,2154,2154,70,20,8,0,2,0
+CSV,198,3,0,49,2,2105,2084,2154,2154,70,20,7,1,8,0
+CSV,199,2,0,49,2,2105,2084,2154,2154,70,20,7,0,2,0
+CSV,200,3,0,49,2,2106,2084,2154,2154,70,20,6,1,7,0
+CSV,201,2,0,49,2,2106,2084,2154,2154,70,20,6,0,2,0
+CSV,202,3,0,49,2,2107,2084,2154,2154,70,20,5,1,6,0
+CSV,203,2,0,49,2,2107,2084,2154,2154,70,20,5,0,2,0
+CSV,204,3,0,49,2,2108,2084,2154,2154,70,20,4,1,5,0
+CSV,205,2,0,49,2,2108,2084,2154,2154,70,20,4,0,2,0
+CSV,206,5,0,49,2,2108,2084,2154,2154,70,20,0,1,0,0
+CSV,207,8,0,42,0,2108,0,0,0,0,0,0,1,0,0
+CSV,208,1,0,48,4,2134,2134,2174,2174,40,10,10,0,0,0
+CSV,209,2,0,48,4,2134,2134,2174,2174,40,10,10,0,2,0
+CSV,210,8,0,42,0,2134,0,0,0,0,0,0,1,0,0
+CSV,211,1,0,49,3,2154,2154,2224,2224,70,20,20,0,0,0
+CSV,212,2,0,49,3,2154,2154,2224,2224,70,20,20,0,2,0
+CSV,213,3,0,49,3,2155,2154,2224,2224,70,20,19,1,20,0
+CSV,214,2,0,49,3,2155,2154,2224,2224,70,20,19,0,2,0
+CSV,215,3,0,49,3,2156,2154,2224,2224,70,20,18,1,19,0
+CSV,216,2,0,49,3,2156,2154,2224,2224,70,20,18,0,2,0
+CSV,217,3,0,49,3,2157,2154,2224,2224,70,20,17,1,18,0
+CSV,218,2,0,49,3,2157,2154,2224,2224,70,20,17,0,2,0
+CSV,219,3,0,49,3,2158,2154,2224,2224,70,20,16,1,17,0
+CSV,220,2,0,49,3,2158,2154,2224,2224,70,20,16,0,2,0
+CSV,221,3,0,49,3,2159,2154,2224,2224,70,20,15,1,16,0
+CSV,222,2,0,49,3,2159,2154,2224,2224,70,20,15,0,2,0
+CSV,223,3,0,49,3,2160,2154,2224,2224,70,20,14,1,15,0
+CSV,224,2,0,49,3,2160,2154,2224,2224,70,20,14,0,2,0
+CSV,225,3,0,49,3,2161,2154,2224,2224,70,20,13,1,14,0
+CSV,226,2,0,49,3,2161,2154,2224,2224,70,20,13,0,2,0
+CSV,227,3,0,49,3,2162,2154,2224,2224,70,20,12,1,13,0
+CSV,228,2,0,49,3,2162,2154,2224,2224,70,20,12,0,2,0
+CSV,229,3,0,49,3,2163,2154,2224,2224,70,20,11,1,12,0
+CSV,230,2,0,49,3,2163,2154,2224,2224,70,20,11,0,2,0
+CSV,231,3,0,49,3,2164,2154,2224,2224,70,20,10,1,11,0
+CSV,232,2,0,49,3,2164,2154,2224,2224,70,20,10,0,2,0
+CSV,233,3,0,49,3,2165,2154,2224,2224,70,20,9,1,10,0
+CSV,234,2,0,49,3,2165,2154,2224,2224,70,20,9,0,2,0
+CSV,235,3,0,49,3,2166,2154,2224,2224,70,20,8,1,9,0
+CSV,236,2,0,49,3,2166,2154,2224,2224,70,20,8,0,2,0
+CSV,237,3,0,49,3,2167,2154,2224,2224,70,20,7,1,8,0
+CSV,238,2,0,49,3,2167,2154,2224,2224,70,20,7,0,2,0
+CSV,239,3,0,49,3,2168,2154,2224,2224,70,20,6,1,7,0
+CSV,240,2,0,49,3,2168,2154,2224,2224,70,20,6,0,2,0
+CSV,241,3,0,49,3,2169,2154,2224,2224,70,20,5,1,6,0
+CSV,242,2,0,49,3,2169,2154,2224,2224,70,20,5,0,2,0
+CSV,243,3,0,49,3,2170,2154,2224,2224,70,20,4,1,5,0
+CSV,244,2,0,49,3,2170,2154,2224,2224,70,20,4,0,2,0
+CSV,245,5,0,49,3,2170,2154,2224,2224,70,20,0,1,0,0
+CSV,246,1,0,49,4,2224,2224,2294,2294,70,20,20,0,0,0
+CSV,247,2,0,49,4,2224,2224,2294,2294,70,20,20,0,2,0
+CSV,248,8,0,42,0,2224,0,0,0,0,0,0,1,0,0
+CHECK trace export: PASS
+TASK A: pid=47
+TASK B: pid=48
+TASK C: pid=49
+WORKLOAD RESULT: PASS
+
+CHECK restore policy: PASS
+PAIRED WORKLOAD RESULT: PASS
+TRACE VALIDATION: requires Thanh's checker
+ORDER COMPARISON: requires separate trace validation
+$ $ QEMU: Terminated
+
+Script done on 2026-11-22 22:32:24+07:00 [COMMAND_EXIT_CODE="0"]
