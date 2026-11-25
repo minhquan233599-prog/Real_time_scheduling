@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="365" viewBox="0 0 1200 365">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" font-size="13" fill="#172033">
+<text x="25" y="28" font-size="20">XV6 EDF — compare — sampled CPU timeline</text>
+<text x="25" y="50">Input hash: 2f584ad1; origin tick: 3406; unit: kernel tick</text>
+<text x="20" y="117">Task A</text>
+<line x1="95" y1="130" x2="1170" y2="130" stroke="#cbd5e1"/>
+<text x="20" y="187">Task B</text>
+<line x1="95" y1="200" x2="1170" y2="200" stroke="#cbd5e1"/>
+<text x="20" y="257">Task C</text>
+<line x1="95" y1="270" x2="1170" y2="270" stroke="#cbd5e1"/>
+<line x1="95.00" y1="75" x2="95.00" y2="285" stroke="#e2e8f0"/>
+<text x="95.00" y="307" text-anchor="middle">0</text>
+<line x1="190.25" y1="75" x2="190.25" y2="285" stroke="#e2e8f0"/>
+<text x="190.25" y="307" text-anchor="middle">14</text>
+<line x1="285.51" y1="75" x2="285.51" y2="285" stroke="#e2e8f0"/>
+<text x="285.51" y="307" text-anchor="middle">28</text>
+<line x1="380.76" y1="75" x2="380.76" y2="285" stroke="#e2e8f0"/>
+<text x="380.76" y="307" text-anchor="middle">42</text>
+<line x1="476.01" y1="75" x2="476.01" y2="285" stroke="#e2e8f0"/>
+<text x="476.01" y="307" text-anchor="middle">56</text>
+<line x1="571.27" y1="75" x2="571.27" y2="285" stroke="#e2e8f0"/>
+<text x="571.27" y="307" text-anchor="middle">70</text>
+<line x1="666.52" y1="75" x2="666.52" y2="285" stroke="#e2e8f0"/>
+<text x="666.52" y="307" text-anchor="middle">84</text>
+<line x1="761.77" y1="75" x2="761.77" y2="285" stroke="#e2e8f0"/>
+<text x="761.77" y="307" text-anchor="middle">98</text>
+<line x1="857.03" y1="75" x2="857.03" y2="285" stroke="#e2e8f0"/>
+<text x="857.03" y="307" text-anchor="middle">112</text>
+<line x1="952.28" y1="75" x2="952.28" y2="285" stroke="#e2e8f0"/>
+<text x="952.28" y="307" text-anchor="middle">126</text>
+<line x1="1047.53" y1="75" x2="1047.53" y2="285" stroke="#e2e8f0"/>
+<text x="1047.53" y="307" text-anchor="middle">140</text>
+<line x1="1142.78" y1="75" x2="1142.78" y2="285" stroke="#e2e8f0"/>
+<text x="1142.78" y="307" text-anchor="middle">154</text>
+<line x1="95.00" y1="93" x2="95.00" y2="133" stroke="#111827" stroke-width="2"><title>A1: type=1, t=0, remaining=10</title></line>
+<line x1="95.00" y1="163" x2="95.00" y2="203" stroke="#111827" stroke-width="2"><title>B1: type=1, t=0, remaining=10</title></line>
+<line x1="95.00" y1="233" x2="95.00" y2="273" stroke="#111827" stroke-width="2"><title>C1: type=1, t=0, remaining=20</title></line>
+<rect x="95.00" y="100" width="6.80" height="28" fill="#2563eb"><title>A1: type=3, t=1, remaining=9</title></rect>
+<rect x="101.80" y="100" width="6.80" height="28" fill="#2563eb"><title>A1: type=3, t=2, remaining=8</title></rect>
+<rect x="108.61" y="100" width="6.80" height="28" fill="#2563eb"><title>A1: type=3, t=3, remaining=7</title></rect>
+<rect x="115.41" y="100" width="6.80" height="28" fill="#2563eb"><title>A1: type=3, t=4, remaining=6</title></rect>
+<rect x="122.22" y="100" width="6.80" height="28" fill="#2563eb"><title>A1: type=3, t=5, remaining=5</title></rect>
+<rect x="129.02" y="100" width="6.80" height="28" fill="#2563eb"><title>A1: type=3, t=6, remaining=4</title></rect>
+<rect x="135.82" y="100" width="6.80" height="28" fill="#2563eb"><title>A1: type=3, t=7, remaining=3</title></rect>
+<rect x="142.63" y="100" width="6.80" height="28" fill="#2563eb"><title>A1: type=3, t=8, remaining=2</title></rect>
+<line x1="149.43" y1="93" x2="149.43" y2="133" stroke="#dc2626" stroke-width="2"><title>A1: type=5, t=8, remaining=0</title></line>
+<rect x="149.43" y="170" width="6.80" height="28" fill="#d97706"><title>B1: type=3, t=9, remaining=9</title></rect>
+<rect x="156.23" y="170" width="6.80" height="28" fill="#d97706"><title>B1: type=3, t=10, remaining=8</title></rect>
+<rect x="163.04" y="170" width="6.80" height="28" fill="#d97706"><title>B1: type=3, t=11, remaining=7</title></rect>
+<rect x="169.84" y="170" width="6.80" height="28" fill="#d97706"><title>B1: type=3, t=12, remaining=6</title></rect>
+<rect x="176.65" y="170" width="6.80" height="28" fill="#d97706"><title>B1: type=3, t=13, remaining=5</title></rect>
+<rect x="183.45" y="170" width="6.80" height="28" fill="#d97706"><title>B1: type=3, t=14, remaining=4</title></rect>
+<rect x="190.25" y="170" width="6.80" height="28" fill="#d97706"><title>B1: type=3, t=15, remaining=3</title></rect>
+<rect x="197.06" y="170" width="6.80" height="28" fill="#d97706"><title>B1: type=3, t=16, remaining=2</title></rect>
+<rect x="203.86" y="170" width="6.80" height="28" fill="#d97706"><title>B1: type=3, t=17, remaining=1</title></rect>
+<line x1="210.66" y1="163" x2="210.66" y2="203" stroke="#dc2626" stroke-width="2"><title>B1: type=5, t=17, remaining=0</title></line>
+<rect x="210.66" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=18, remaining=19</title></rect>
+<rect x="217.47" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=19, remaining=18</title></rect>
+<rect x="224.27" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=20, remaining=17</title></rect>
+<rect x="231.08" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=21, remaining=16</title></rect>
+<rect x="237.88" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=22, remaining=15</title></rect>
+<rect x="244.68" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=23, remaining=14</title></rect>
+<rect x="251.49" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=24, remaining=13</title></rect>
+<rect x="258.29" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=25, remaining=12</title></rect>
+<rect x="265.09" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=26, remaining=11</title></rect>
+<rect x="271.90" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=27, remaining=10</title></rect>
+<rect x="278.70" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=28, remaining=9</title></rect>
+<rect x="285.51" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=29, remaining=8</title></rect>
+<rect x="292.31" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=30, remaining=7</title></rect>
+<line x1="299.11" y1="93" x2="299.11" y2="133" stroke="#111827" stroke-width="2"><title>A2: type=1, t=30, remaining=10</title></line>
+<rect x="299.11" y="100" width="6.80" height="28" fill="#2563eb"><title>A2: type=3, t=31, remaining=9</title></rect>
+<rect x="305.92" y="100" width="6.80" height="28" fill="#2563eb"><title>A2: type=3, t=32, remaining=8</title></rect>
+<rect x="312.72" y="100" width="6.80" height="28" fill="#2563eb"><title>A2: type=3, t=33, remaining=7</title></rect>
+<rect x="319.53" y="100" width="6.80" height="28" fill="#2563eb"><title>A2: type=3, t=34, remaining=6</title></rect>
+<rect x="326.33" y="100" width="6.80" height="28" fill="#2563eb"><title>A2: type=3, t=35, remaining=5</title></rect>
+<rect x="333.13" y="100" width="6.80" height="28" fill="#2563eb"><title>A2: type=3, t=36, remaining=4</title></rect>
+<rect x="339.94" y="100" width="6.80" height="28" fill="#2563eb"><title>A2: type=3, t=37, remaining=3</title></rect>
+<rect x="346.74" y="100" width="6.80" height="28" fill="#2563eb"><title>A2: type=3, t=38, remaining=2</title></rect>
+<line x1="353.54" y1="93" x2="353.54" y2="133" stroke="#dc2626" stroke-width="2"><title>A2: type=5, t=38, remaining=0</title></line>
+<rect x="353.54" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=39, remaining=6</title></rect>
+<rect x="360.35" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=40, remaining=5</title></rect>
+<line x1="367.15" y1="163" x2="367.15" y2="203" stroke="#111827" stroke-width="2"><title>B2: type=1, t=40, remaining=10</title></line>
+<rect x="367.15" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=41, remaining=4</title></rect>
+<rect x="373.96" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=42, remaining=3</title></rect>
+<rect x="380.76" y="240" width="6.80" height="28" fill="#059669"><title>C1: type=3, t=43, remaining=2</title></rect>
+<line x1="387.56" y1="233" x2="387.56" y2="273" stroke="#dc2626" stroke-width="2"><title>C1: type=5, t=43, remaining=0</title></line>
+<rect x="387.56" y="170" width="6.80" height="28" fill="#d97706"><title>B2: type=3, t=44, remaining=9</title></rect>
+<rect x="394.37" y="170" width="6.80" height="28" fill="#d97706"><title>B2: type=3, t=45, remaining=8</title></rect>
+<rect x="401.17" y="170" width="6.80" height="28" fill="#d97706"><title>B2: type=3, t=46, remaining=7</title></rect>
+<rect x="407.97" y="170" width="6.80" height="28" fill="#d97706"><title>B2: type=3, t=47, remaining=6</title></rect>
+<rect x="414.78" y="170" width="6.80" height="28" fill="#d97706"><title>B2: type=3, t=48, remaining=5</title></rect>
+<rect x="421.58" y="170" width="6.80" height="28" fill="#d97706"><title>B2: type=3, t=49, remaining=4</title></rect>
+<rect x="428.39" y="170" width="6.80" height="28" fill="#d97706"><title>B2: type=3, t=50, remaining=3</title></rect>
+<rect x="435.19" y="170" width="6.80" height="28" fill="#d97706"><title>B2: type=3, t=51, remaining=2</title></rect>
+<line x1="441.99" y1="163" x2="441.99" y2="203" stroke="#dc2626" stroke-width="2"><title>B2: type=5, t=51, remaining=0</title></line>
+<line x1="503.23" y1="93" x2="503.23" y2="133" stroke="#111827" stroke-width="2"><title>A3: type=1, t=60, remaining=10</title></line>
+<rect x="503.23" y="100" width="6.80" height="28" fill="#2563eb"><title>A3: type=3, t=61, remaining=9</title></rect>
+<rect x="510.03" y="100" width="6.80" height="28" fill="#2563eb"><title>A3: type=3, t=62, remaining=8</title></rect>
+<rect x="516.84" y="100" width="6.80" height="28" fill="#2563eb"><title>A3: type=3, t=63, remaining=7</title></rect>
+<rect x="523.64" y="100" width="6.80" height="28" fill="#2563eb"><title>A3: type=3, t=64, remaining=6</title></rect>
+<rect x="530.44" y="100" width="6.80" height="28" fill="#2563eb"><title>A3: type=3, t=65, remaining=5</title></rect>
+<rect x="537.25" y="100" width="6.80" height="28" fill="#2563eb"><title>A3: type=3, t=66, remaining=4</title></rect>
+<rect x="544.05" y="100" width="6.80" height="28" fill="#2563eb"><title>A3: type=3, t=67, remaining=3</title></rect>
+<rect x="550.85" y="100" width="6.80" height="28" fill="#2563eb"><title>A3: type=3, t=68, remaining=2</title></rect>
+<line x1="557.66" y1="93" x2="557.66" y2="133" stroke="#dc2626" stroke-width="2"><title>A3: type=5, t=68, remaining=0</title></line>
+<line x1="571.27" y1="233" x2="571.27" y2="273" stroke="#111827" stroke-width="2"><title>C2: type=1, t=70, remaining=20</title></line>
+<rect x="571.27" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=71, remaining=19</title></rect>
+<rect x="578.07" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=72, remaining=18</title></rect>
+<rect x="584.87" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=73, remaining=17</title></rect>
+<rect x="591.68" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=74, remaining=16</title></rect>
+<rect x="598.48" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=75, remaining=15</title></rect>
+<rect x="605.28" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=76, remaining=14</title></rect>
+<rect x="612.09" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=77, remaining=13</title></rect>
+<rect x="618.89" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=78, remaining=12</title></rect>
+<rect x="625.70" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=79, remaining=11</title></rect>
+<rect x="632.50" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=80, remaining=10</title></rect>
+<line x1="639.30" y1="163" x2="639.30" y2="203" stroke="#111827" stroke-width="2"><title>B3: type=1, t=80, remaining=10</title></line>
+<rect x="639.30" y="170" width="6.80" height="28" fill="#d97706"><title>B3: type=3, t=81, remaining=9</title></rect>
+<rect x="646.11" y="170" width="6.80" height="28" fill="#d97706"><title>B3: type=3, t=82, remaining=8</title></rect>
+<rect x="652.91" y="170" width="6.80" height="28" fill="#d97706"><title>B3: type=3, t=83, remaining=7</title></rect>
+<rect x="659.72" y="170" width="6.80" height="28" fill="#d97706"><title>B3: type=3, t=84, remaining=6</title></rect>
+<rect x="666.52" y="170" width="6.80" height="28" fill="#d97706"><title>B3: type=3, t=85, remaining=5</title></rect>
+<rect x="673.32" y="170" width="6.80" height="28" fill="#d97706"><title>B3: type=3, t=86, remaining=4</title></rect>
+<rect x="680.13" y="170" width="6.80" height="28" fill="#d97706"><title>B3: type=3, t=87, remaining=3</title></rect>
+<rect x="686.93" y="170" width="6.80" height="28" fill="#d97706"><title>B3: type=3, t=88, remaining=2</title></rect>
+<line x1="693.73" y1="163" x2="693.73" y2="203" stroke="#dc2626" stroke-width="2"><title>B3: type=5, t=88, remaining=0</title></line>
+<rect x="693.73" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=89, remaining=9</title></rect>
+<rect x="700.54" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=90, remaining=8</title></rect>
+<rect x="707.34" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=91, remaining=7</title></rect>
+<rect x="714.15" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=92, remaining=6</title></rect>
+<rect x="720.95" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=93, remaining=5</title></rect>
+<rect x="727.75" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=94, remaining=4</title></rect>
+<rect x="734.56" y="240" width="6.80" height="28" fill="#059669"><title>C2: type=3, t=95, remaining=3</title></rect>
+<line x1="741.36" y1="233" x2="741.36" y2="273" stroke="#dc2626" stroke-width="2"><title>C2: type=5, t=95, remaining=0</title></line>
+<line x1="1047.53" y1="233" x2="1047.53" y2="273" stroke="#111827" stroke-width="2"><title>C3: type=1, t=140, remaining=20</title></line>
+<rect x="1047.53" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=141, remaining=19</title></rect>
+<rect x="1054.34" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=142, remaining=18</title></rect>
+<rect x="1061.14" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=143, remaining=17</title></rect>
+<rect x="1067.94" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=144, remaining=16</title></rect>
+<rect x="1074.75" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=145, remaining=15</title></rect>
+<rect x="1081.55" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=146, remaining=14</title></rect>
+<rect x="1088.35" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=147, remaining=13</title></rect>
+<rect x="1095.16" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=148, remaining=12</title></rect>
+<rect x="1101.96" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=149, remaining=11</title></rect>
+<rect x="1108.77" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=150, remaining=10</title></rect>
+<rect x="1115.57" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=151, remaining=9</title></rect>
+<rect x="1122.37" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=152, remaining=8</title></rect>
+<rect x="1129.18" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=153, remaining=7</title></rect>
+<rect x="1135.98" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=154, remaining=6</title></rect>
+<rect x="1142.78" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=155, remaining=5</title></rect>
+<rect x="1149.59" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=156, remaining=4</title></rect>
+<rect x="1156.39" y="240" width="6.80" height="28" fill="#059669"><title>C3: type=3, t=157, remaining=3</title></rect>
+<line x1="1163.20" y1="233" x2="1163.20" y2="273" stroke="#dc2626" stroke-width="2"><title>C3: type=5, t=157, remaining=0</title></line>
+<text x="25" y="335">Colored cell: RT_EV_TICK sample; black: RELEASE; red: COMPLETE. Blank does not prove CPU idle.</text>
+<text x="25" y="355">Each cell [t-1,t) represents a sample at t, not exact execution duration. Job after final completion is excluded.</text>
+</g></svg>

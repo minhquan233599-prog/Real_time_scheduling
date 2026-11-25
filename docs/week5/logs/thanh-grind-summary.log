@@ -1,0 +1,9 @@
+Đang kiểm tra grind CPUS=1...
+HARNESS RESULT — GRIND CPUS=1: PASS
+A=4, B=4
+Đủ 60 giây, có A/B và không phát hiện lỗi.
+Đang kiểm tra grind CPUS=4...
+HARNESS RESULT — GRIND CPUS=4: PASS
+A=4, B=4
+Đủ 60 giây, có A/B và không phát hiện lỗi.
+GRIND SUITE: PASS

@@ -164,7 +164,8 @@ UPROGS=\
 	$U/_rt_w4test\
     $U/_rt_edftest\
     $U/_rt_policytest\
-    $U/_rt_compare
+    $U/_rt_compare\
+	$U/_rt_rmtest
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)
